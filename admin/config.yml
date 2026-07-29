@@ -1,0 +1,151 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+locale: 'zh_Hant'
+
+collections:
+  # ===== 首頁內容 =====
+  - name: "homepage"
+    label: "首頁"
+    files:
+      - name: "hero"
+        label: "Hero 主視覺區"
+        file: "content/homepage.json"
+        fields:
+          - { name: "hero_image", label: "Hero 主圖 (建議 1200×1500px)", widget: "image" }
+          - { name: "hero_tag", label: "Hero 案例標籤", widget: "string", default: "桃園 · 品牌識別" }
+          - { name: "hero_title", label: "Hero 案例名稱", widget: "string", default: "自律放縱茶療所" }
+
+      - name: "work1"
+        label: "精選實績 - 案例一"
+        file: "content/work1.json"
+        fields:
+          - { name: "image", label: "案例圖片 (建議 800×500px)", widget: "image" }
+          - { name: "tag", label: "分類標籤", widget: "string" }
+          - { name: "title", label: "案例名稱", widget: "string" }
+          - { name: "desc", label: "案例描述", widget: "text" }
+
+      - name: "work2"
+        label: "精選實績 - 案例二"
+        file: "content/work2.json"
+        fields:
+          - { name: "image", label: "案例圖片 (建議 800×500px)", widget: "image" }
+          - { name: "tag", label: "分類標籤", widget: "string" }
+          - { name: "title", label: "案例名稱", widget: "string" }
+          - { name: "desc", label: "案例描述", widget: "text" }
+
+      - name: "work3"
+        label: "精選實績 - 案例三"
+        file: "content/work3.json"
+        fields:
+          - { name: "image", label: "案例圖片 (建議 800×500px)", widget: "image" }
+          - { name: "tag", label: "分類標籤", widget: "string" }
+          - { name: "title", label: "案例名稱", widget: "string" }
+          - { name: "desc", label: "案例描述", widget: "text" }
+
+      - name: "work4"
+        label: "精選實績 - 案例四"
+        file: "content/work4.json"
+        fields:
+          - { name: "image", label: "案例圖片 (建議 800×500px)", widget: "image" }
+          - { name: "tag", label: "分類標籤", widget: "string" }
+          - { name: "title", label: "案例名稱", widget: "string" }
+          - { name: "desc", label: "案例描述", widget: "text" }
+
+  # ===== 網站共用設定（Logo等） =====
+  - name: "settings"
+    label: "網站設定"
+    files:
+      - name: "brand"
+        label: "品牌識別 (Logo)"
+        file: "content/settings.json"
+        fields:
+          - { name: "logo_horizontal", label: "Logo 橫式 (電腦版，建議 200×60px)", widget: "image" }
+          - { name: "logo_round", label: "Logo 圓形 (手機版，建議 80×80px)", widget: "image" }
+          - { name: "og_image", label: "分享縮圖 (LINE/FB分享用，建議 1200×630px)", widget: "image" }
+
+  # ===== 各服務頁面 =====
+  - name: "services"
+    label: "服務頁面"
+    files:
+      - name: "popup-store"
+        label: "快閃店設計"
+        file: "content/services/popup-store.json"
+        fields:
+          - { name: "banner", label: "頁面 Banner (建議 1600×900px)", widget: "image" }
+          - name: "cases"
+            label: "案例列表"
+            widget: "list"
+            fields:
+              - { name: "image", label: "案例圖片 (建議 800×500px)", widget: "image" }
+              - { name: "title", label: "案例名稱", widget: "string" }
+              - { name: "desc", label: "案例描述", widget: "text" }
+
+      - name: "store-renovation"
+        label: "門店輕裝修"
+        file: "content/services/store-renovation.json"
+        fields:
+          - { name: "banner", label: "頁面 Banner (建議 1600×900px)", widget: "image" }
+          - name: "cases"
+            label: "案例列表"
+            widget: "list"
+            fields:
+              - { name: "image", label: "案例圖片 (建議 800×500px)", widget: "image" }
+              - { name: "title", label: "案例名稱", widget: "string" }
+              - { name: "desc", label: "案例描述", widget: "text" }
+
+      - name: "posm"
+        label: "POSM設計製作"
+        file: "content/services/posm.json"
+        fields:
+          - { name: "banner", label: "頁面 Banner (建議 1600×900px)", widget: "image" }
+          - name: "cases"
+            label: "案例列表"
+            widget: "list"
+            fields:
+              - { name: "image", label: "案例圖片 (建議 800×500px)", widget: "image" }
+              - { name: "title", label: "案例名稱", widget: "string" }
+              - { name: "desc", label: "案例描述", widget: "text" }
+
+      - name: "branding"
+        label: "品牌識別／包裝設計"
+        file: "content/services/branding.json"
+        fields:
+          - { name: "banner", label: "頁面 Banner (建議 1600×900px)", widget: "image" }
+          - name: "cases"
+            label: "案例列表"
+            widget: "list"
+            fields:
+              - { name: "image", label: "案例圖片 (建議 800×500px)", widget: "image" }
+              - { name: "title", label: "案例名稱", widget: "string" }
+              - { name: "desc", label: "案例描述", widget: "text" }
+
+      - name: "booth"
+        label: "展攤設計"
+        file: "content/services/booth.json"
+        fields:
+          - { name: "banner", label: "頁面 Banner (建議 1600×900px)", widget: "image" }
+          - name: "cases"
+            label: "案例列表"
+            widget: "list"
+            fields:
+              - { name: "image", label: "案例圖片 (建議 800×500px)", widget: "image" }
+              - { name: "title", label: "案例名稱", widget: "string" }
+              - { name: "desc", label: "案例描述", widget: "text" }
+
+      - name: "chain-management"
+        label: "連鎖輔銷品一站式管理"
+        file: "content/services/chain-management.json"
+        fields:
+          - { name: "banner", label: "頁面 Banner (建議 1600×900px)", widget: "image" }
+          - name: "cases"
+            label: "案例列表"
+            widget: "list"
+            fields:
+              - { name: "image", label: "案例圖片 (建議 800×500px)", widget: "image" }
+              - { name: "title", label: "案例名稱", widget: "string" }
+              - { name: "desc", label: "案例描述", widget: "text" }
