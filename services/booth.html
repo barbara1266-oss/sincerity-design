@@ -146,7 +146,7 @@ footer a:hover{color:var(--klein);}
 <section class="section">
   <div class="block-title">一場活動的曝光，稍縱即逝。</div>
   <p class="block-text">市集、展覽、活動現場，往往是品牌與客人第一次相遇的地方。攤位規劃、視覺陳列、現場布置，每一個細節都在無聲地說著品牌故事。我們把握這個唯一機會，讓攤位成為客人願意停下腳步的地方。</p>
-  <div class="banner-visual card-particle"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="card-particle-content"><div class="card-particle-tag">FLAGSHIP EVENT</div><div class="card-particle-title">展攤規劃示意</div></div></div>
+  <div class="banner-visual card-particle" id="slot-svc_booth_banner"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="card-particle-content"><div class="card-particle-tag">FLAGSHIP EVENT</div><div class="card-particle-title">展攤規劃示意</div></div></div>
 </section>
 
 <section class="section tight" style="background:var(--offwhite);">
@@ -179,6 +179,25 @@ footer a:hover{color:var(--klein);}
     <span>110台北市信義區信安街103巷10號4樓-7</span>
   </div>
 </footer>
+
+<script>
+(async function(){
+  try{
+    const res = await fetch('../content/site-data.json', {cache:'no-store'});
+    if(!res.ok) return;
+    const data = await res.json();
+    const d = data['svc_booth_banner'];
+    if(d && d.image){
+      const el = document.getElementById('slot-svc_booth_banner');
+      if(el){
+        el.style.backgroundImage = `url('${d.image}')`;
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+      }
+    }
+  }catch(e){ /* 沒有資料時維持原內容 */ }
+})();
+</script>
 
 </body>
 </html>

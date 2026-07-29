@@ -146,7 +146,7 @@ footer a:hover{color:var(--klein);}
 <section class="section">
   <div class="block-title">認出的速度，決定了成交的機會。</div>
   <p class="block-text">消費者在通路現場，往往只花幾秒鐘掃過貨架。商標、包裝、視覺系統，不是用來說一個好故事，而是要讓人在眾多競品中，第一眼就認出你、記住你。我們熟悉營養品、食品、酒類這種一眼定生死的貨架戰場，把辨識度做進設計的每個細節裡。</p>
-  <div class="banner-visual" style="background:var(--white);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 100 60" style="width:50%;stroke:var(--klein);stroke-width:1.2;fill:none;"><path d="M10,50 L10,20 L50,10 L90,20 L90,50 Z"/><path style="stroke:var(--gold);" d="M30,50 L30,30 L45,25 L45,50" /><circle cx="70" cy="35" r="8"/></svg></div>
+  <div class="banner-visual" id="slot-svc_branding_banner" style="background:var(--white);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 100 60" style="width:50%;stroke:var(--klein);stroke-width:1.2;fill:none;"><path d="M10,50 L10,20 L50,10 L90,20 L90,50 Z"/><path style="stroke:var(--gold);" d="M30,50 L30,30 L45,25 L45,50" /><circle cx="70" cy="35" r="8"/></svg></div>
 </section>
 
 <section class="section tight" style="background:var(--offwhite);">
@@ -179,6 +179,25 @@ footer a:hover{color:var(--klein);}
     <span>110台北市信義區信安街103巷10號4樓-7</span>
   </div>
 </footer>
+
+<script>
+(async function(){
+  try{
+    const res = await fetch('../content/site-data.json', {cache:'no-store'});
+    if(!res.ok) return;
+    const data = await res.json();
+    const d = data['svc_branding_banner'];
+    if(d && d.image){
+      const el = document.getElementById('slot-svc_branding_banner');
+      if(el){
+        el.style.backgroundImage = `url('${d.image}')`;
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+      }
+    }
+  }catch(e){ /* 沒有資料時維持原內容 */ }
+})();
+</script>
 
 </body>
 </html>

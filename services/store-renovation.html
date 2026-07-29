@@ -146,7 +146,7 @@ footer a:hover{color:var(--klein);}
 <section class="section">
   <div class="block-title">質感，不必靠昂貴的工程堆出來。</div>
   <p class="block-text">很多店家以為「有質感」等於「要花大錢做硬裝工程」，但實際上，視覺設計往往比土木工程更能創造第一印象的記憶點。我們把硬裝成本控制在20%以下，把預算集中投入在招牌、陳列、視覺這些客人真正會注意到的地方。</p>
-  <div class="banner-visual card-blueprint"><svg viewBox="0 0 200 140"><rect x="20" y="30" width="160" height="90" fill="none" stroke="#002FA7" stroke-width="1"/><line x1="20" y1="30" x2="180" y2="120" stroke="#B8925A" stroke-width="0.5" stroke-dasharray="3,3"/><line x1="180" y1="30" x2="20" y2="120" stroke="#B8925A" stroke-width="0.5" stroke-dasharray="3,3"/><circle cx="100" cy="75" r="4" fill="#002FA7"/></svg></div>
+  <div class="banner-visual card-blueprint" id="slot-svc_store_banner"><svg viewBox="0 0 200 140"><rect x="20" y="30" width="160" height="90" fill="none" stroke="#002FA7" stroke-width="1"/><line x1="20" y1="30" x2="180" y2="120" stroke="#B8925A" stroke-width="0.5" stroke-dasharray="3,3"/><line x1="180" y1="30" x2="20" y2="120" stroke="#B8925A" stroke-width="0.5" stroke-dasharray="3,3"/><circle cx="100" cy="75" r="4" fill="#002FA7"/></svg></div>
 </section>
 
 <section class="section tight" style="background:var(--offwhite);">
@@ -179,6 +179,25 @@ footer a:hover{color:var(--klein);}
     <span>110台北市信義區信安街103巷10號4樓-7</span>
   </div>
 </footer>
+
+<script>
+(async function(){
+  try{
+    const res = await fetch('../content/site-data.json', {cache:'no-store'});
+    if(!res.ok) return;
+    const data = await res.json();
+    const d = data['svc_store_banner'];
+    if(d && d.image){
+      const el = document.getElementById('slot-svc_store_banner');
+      if(el){
+        el.style.backgroundImage = `url('${d.image}')`;
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+      }
+    }
+  }catch(e){ /* 沒有資料時維持原內容 */ }
+})();
+</script>
 
 </body>
 </html>

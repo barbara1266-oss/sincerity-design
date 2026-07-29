@@ -118,6 +118,7 @@ footer a:hover{color:var(--klein);}
   <div class="page-eyebrow">FOR CHAIN BRANDS · 連鎖總部專屬服務</div>
   <h1 class="page-title">連鎖輔銷品<br>一站式管理</h1>
   <p class="page-sub">從設計需求、印刷執行，到物流配送——一個窗口說清楚，其他分店，什麼都不用煩惱。</p>
+  <div class="banner-visual" id="slot-svc_chain_banner" style="aspect-ratio:16/9;border-radius:4px;overflow:hidden;position:relative;margin-top:32px;background:linear-gradient(160deg,#F0EDE6,#E8E2D4);"></div>
 </section>
 
 <section class="section">
@@ -176,6 +177,25 @@ footer a:hover{color:var(--klein);}
     <span>110台北市信義區信安街103巷10號4樓-7</span>
   </div>
 </footer>
+
+<script>
+(async function(){
+  try{
+    const res = await fetch('../content/site-data.json', {cache:'no-store'});
+    if(!res.ok) return;
+    const data = await res.json();
+    const d = data['svc_chain_banner'];
+    if(d && d.image){
+      const el = document.getElementById('slot-svc_chain_banner');
+      if(el){
+        el.style.backgroundImage = `url('${d.image}')`;
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+      }
+    }
+  }catch(e){ /* 沒有資料時維持原內容 */ }
+})();
+</script>
 
 </body>
 </html>

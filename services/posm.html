@@ -146,7 +146,7 @@ footer a:hover{color:var(--klein);}
 <section class="section">
   <div class="block-title">貨架上的競爭，比想像中更激烈。</div>
   <p class="block-text">消費者站在貨架前的決策時間往往只有幾秒鐘，這幾秒鐘決定了商品有沒有機會被拿起來。我們從結構白樣圖開始規劃，確保設計不只好看，更能直接交付施工，讓商品在架上先贏一步。</p>
-  <div class="banner-visual card-blueprint"><svg viewBox="0 0 200 140"><rect x="20" y="30" width="160" height="90" fill="none" stroke="#002FA7" stroke-width="1"/><rect x="60" y="50" width="30" height="50" fill="none" stroke="#002FA7" stroke-width="0.8"/><rect x="110" y="60" width="40" height="40" fill="none" stroke="#002FA7" stroke-width="0.8"/></svg></div>
+  <div class="banner-visual card-blueprint" id="slot-svc_posm_banner"><svg viewBox="0 0 200 140"><rect x="20" y="30" width="160" height="90" fill="none" stroke="#002FA7" stroke-width="1"/><rect x="60" y="50" width="30" height="50" fill="none" stroke="#002FA7" stroke-width="0.8"/><rect x="110" y="60" width="40" height="40" fill="none" stroke="#002FA7" stroke-width="0.8"/></svg></div>
 </section>
 
 <section class="section tight" style="background:var(--offwhite);">
@@ -179,6 +179,25 @@ footer a:hover{color:var(--klein);}
     <span>110台北市信義區信安街103巷10號4樓-7</span>
   </div>
 </footer>
+
+<script>
+(async function(){
+  try{
+    const res = await fetch('../content/site-data.json', {cache:'no-store'});
+    if(!res.ok) return;
+    const data = await res.json();
+    const d = data['svc_posm_banner'];
+    if(d && d.image){
+      const el = document.getElementById('slot-svc_posm_banner');
+      if(el){
+        el.style.backgroundImage = `url('${d.image}')`;
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+      }
+    }
+  }catch(e){ /* 沒有資料時維持原內容 */ }
+})();
+</script>
 
 </body>
 </html>

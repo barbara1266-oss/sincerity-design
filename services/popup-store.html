@@ -146,7 +146,7 @@ footer a:hover{color:var(--klein);}
 <section class="section">
   <div class="block-title">短期曝光，更需要精準設計。</div>
   <p class="block-text">快閃店、快閃櫃的曝光時間短，沒有第二次機會慢慢累積印象。從空間規劃、陳列動線、到視覺呈現，每一個決定都需要在有限的時間與預算內，發揮最大效益。我們用結構化的陳列動線設計，讓有限的空間創造最大的停留與記憶。</p>
-  <div class="banner-visual card-particle"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="card-particle-content"><div class="card-particle-tag">POPUP STORE</div><div class="card-particle-title">快閃空間規劃示意</div></div></div>
+  <div class="banner-visual card-particle" id="slot-svc_popup_banner"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="card-particle-content"><div class="card-particle-tag">POPUP STORE</div><div class="card-particle-title">快閃空間規劃示意</div></div></div>
 </section>
 
 <section class="section tight" style="background:var(--offwhite);">
@@ -179,6 +179,25 @@ footer a:hover{color:var(--klein);}
     <span>110台北市信義區信安街103巷10號4樓-7</span>
   </div>
 </footer>
+
+<script>
+(async function(){
+  try{
+    const res = await fetch('../content/site-data.json', {cache:'no-store'});
+    if(!res.ok) return;
+    const data = await res.json();
+    const d = data['svc_popup_banner'];
+    if(d && d.image){
+      const el = document.getElementById('slot-svc_popup_banner');
+      if(el){
+        el.style.backgroundImage = `url('${d.image}')`;
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+      }
+    }
+  }catch(e){ /* 沒有資料時維持原內容 */ }
+})();
+</script>
 
 </body>
 </html>
