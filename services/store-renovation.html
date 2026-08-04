@@ -180,24 +180,8 @@ footer a:hover{color:var(--klein);}
   </div>
 </footer>
 
-<script>
-(async function(){
-  try{
-    const res = await fetch('../content/site-data.json', {cache:'no-store'});
-    if(!res.ok) return;
-    const data = await res.json();
-    const d = data['svc_store_banner'];
-    if(d && d.image){
-      const el = document.getElementById('slot-svc_store_banner');
-      if(el){
-        el.style.backgroundImage = `url('${d.image}')`;
-        el.style.backgroundSize = 'cover';
-        el.style.backgroundPosition = 'center';
-      }
-    }
-  }catch(e){ /* 沒有資料時維持原內容 */ }
-})();
-</script>
+<script>window.SD_BASE = '../';</script>
+<script src="../js/site-loader.js"></script>
 
 </body>
 </html>

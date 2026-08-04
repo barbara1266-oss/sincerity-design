@@ -196,20 +196,27 @@ function renderForm(){
     const row = document.createElement('div');
     row.className = 'item-row';
 
-    const existingImgUrl = d.image
-      ? `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${d.image}`
-      : '';
+    const existingImages = d.images || [];
+    const thumbsHtml = [0, 1, 2].map(i=>{
+      const path = existingImages[i];
+      const url = path ? `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${path}` : '';
+      return `
+        <div style="margin-bottom:14px;">
+          <div class="thumb" id="thumb-${slot.key}-${i}" style="width:180px;height:110px;">
+            ${url ? `<img src="${url}">` : ''}
+          </div>
+          <label class="upload-btn">
+            📁 圖片 ${i+1}
+            <input type="file" accept="image/*" onchange="handleFile(event,'${slot.key}',${i})">
+          </label>
+        </div>
+      `;
+    }).join('');
 
     row.innerHTML = `
       <div>
-        <div class="thumb" id="thumb-${slot.key}">
-          ${existingImgUrl ? `<img src="${existingImgUrl}">` : ''}
-        </div>
-        <label class="upload-btn">
-          📁 選擇圖片
-          <input type="file" accept="image/*" onchange="handleFile(event,'${slot.key}')">
-        </label>
-        <div class="recommend">建議尺寸：${slot.img}</div>
+        ${thumbsHtml}
+        <div class="recommend">建議尺寸：${slot.img}（最多3張，可輪播；只放1張則不會輪播）</div>
       </div>
       <div>
         ${slot.hasTag ? `<div class="field-label">標籤</div><input class="field-input" id="tag-${slot.key}" value="${(d.tag||'').replace(/"/g,'&quot;')}">` : ''}
@@ -221,13 +228,13 @@ function renderForm(){
   });
 }
 
-function handleFile(evt, key){
+function handleFile(evt, key, idx){
   const file = evt.target.files[0];
   if(!file) return;
-  pendingFiles[key] = file;
+  pendingFiles[`${key}__${idx}`] = { key, idx, file };
   const reader = new FileReader();
   reader.onload = e=>{
-    document.getElementById(`thumb-${key}`).innerHTML = `<img src="${e.target.result}"><div class="thumb-label">尚未儲存</div>`;
+    document.getElementById(`thumb-${key}-${idx}`).innerHTML = `<img src="${e.target.result}"><div class="thumb-label">尚未儲存</div>`;
   };
   reader.readAsDataURL(file);
 }
@@ -246,11 +253,11 @@ async function saveAll(){
   btn.disabled = true;
   btn.textContent = '儲存中，請稍候...';
   try{
-    // 1. 先上傳所有待上傳的新圖片
-    for(const key of Object.keys(pendingFiles)){
-      const file = pendingFiles[key];
+    // 1. 先上傳所有待上傳的新圖片（每個 slot 最多3張）
+    for(const pendKey of Object.keys(pendingFiles)){
+      const { key, idx, file } = pendingFiles[pendKey];
       const ext = file.name.split('.').pop();
-      const path = `images/uploads/${key}.${ext}`;
+      const path = `images/uploads/${key}_${idx}.${ext}`;
       const base64 = await fileToBase64(file);
 
       let existingSha = null;
@@ -262,7 +269,7 @@ async function saveAll(){
       await ghFetch(`/contents/${path}`, {
         method: 'PUT',
         body: JSON.stringify({
-          message: `更新圖片：${key}`,
+          message: `更新圖片：${key} #${idx+1}`,
           content: base64,
           branch: BRANCH,
           ...(existingSha ? {sha: existingSha} : {})
@@ -270,7 +277,8 @@ async function saveAll(){
       });
 
       siteData[key] = siteData[key] || {};
-      siteData[key].image = path;
+      siteData[key].images = siteData[key].images || [];
+      siteData[key].images[idx] = path;
     }
     pendingFiles = {};
 

@@ -400,7 +400,7 @@ footer a:hover{color:var(--klein);}
       </div>
     </div>
     <div class="work-card">
-      <div class="work-image card-blueprint" style="border-radius:0;">
+      <div class="work-image card-blueprint" style="border-radius:0;" id="slot-work3">
         <svg viewBox="0 0 200 140">
           <rect x="20" y="30" width="160" height="90" fill="none" stroke="#002FA7" stroke-width="1"/>
           <line x1="20" y1="30" x2="180" y2="120" stroke="#B8925A" stroke-width="0.5" stroke-dasharray="3,3"/>
@@ -455,31 +455,8 @@ footer a:hover{color:var(--klein);}
   </div>
 </footer>
 
-<script>
-// 讀取後台儲存的內容，動態套用圖片與文字（若後台沒存過資料，維持原本內建內容）
-(async function(){
-  try{
-    const res = await fetch('content/site-data.json', {cache:'no-store'});
-    if(!res.ok) return;
-    const data = await res.json();
-    Object.keys(data).forEach(key=>{
-      const d = data[key];
-      const el = document.getElementById('slot-' + key);
-      if(el && d.image){
-        el.style.backgroundImage = `url('${d.image}')`;
-        el.style.backgroundSize = 'cover';
-        el.style.backgroundPosition = 'center';
-      }
-      const tagEl = document.getElementById('slot-' + key + '-tag');
-      if(tagEl && d.tag) tagEl.textContent = d.tag;
-      const titleEl = document.getElementById('slot-' + key + '-title');
-      if(titleEl && d.title) titleEl.textContent = d.title;
-      const descEl = document.getElementById('slot-' + key + '-desc');
-      if(descEl && d.desc) descEl.innerHTML = d.desc;
-    });
-  }catch(e){ /* 沒有資料檔案時，網站照常顯示原內容 */ }
-})();
-</script>
+<script>window.SD_BASE = '';</script>
+<script src="js/site-loader.js"></script>
 
 </body>
 </html>
