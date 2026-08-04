@@ -1,1 +1,35 @@
-{}
+{
+  "hero": {
+    "image": "images/uploads/hero.png",
+    "tag": "",
+    "title": ""
+  },
+  "work1": {
+    "tag": "",
+    "title": "",
+    "desc": ""
+  },
+  "work2": {
+    "tag": "",
+    "title": "",
+    "desc": ""
+  },
+  "work3": {
+    "tag": "",
+    "title": "",
+    "desc": ""
+  },
+  "work4": {
+    "tag": "",
+    "title": "",
+    "desc": ""
+  },
+  "logo_horizontal": {},
+  "logo_round": {},
+  "svc_popup_banner": {},
+  "svc_store_banner": {},
+  "svc_posm_banner": {},
+  "svc_branding_banner": {},
+  "svc_booth_banner": {},
+  "svc_chain_banner": {}
+}
