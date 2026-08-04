@@ -37,7 +37,10 @@ function buildCarousel(slot, images){
   const keepChildren = Array.from(slot.children).filter(c =>
     c.classList.contains('card-shine-content') ||
     c.classList.contains('card-particle-content') ||
-    c.classList.contains('card-shine-corner')
+    c.classList.contains('card-shine-corner') ||
+    c.classList.contains('extend-inner') ||
+    c.classList.contains('extend-desc-white') ||
+    c.classList.contains('extend-desc-dark')
   );
 
   const imgLayer = document.createElement('div');

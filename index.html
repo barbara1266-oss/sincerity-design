@@ -188,6 +188,25 @@ footer a:hover{color:var(--klein);}
 .hero-visual.card-shine{aspect-ratio:4/5;border-radius:4px;}
 .work-image{aspect-ratio:16/10;}
 
+.extend-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.extend-card{border-radius:6px;overflow:hidden;display:flex;flex-direction:column;background:var(--white);box-shadow:0 4px 14px rgba(0,0,0,0.05);}
+.extend-card.card-shine,.extend-card.card-particle{aspect-ratio:auto;min-height:150px;padding:22px;justify-content:flex-end;}
+.extend-card.card-blueprint,.extend-card.card-sketch{aspect-ratio:auto;min-height:150px;padding:22px;justify-content:center;position:relative;}
+.extend-card.card-blueprint svg,.extend-card.card-sketch svg{width:55%;height:55%;margin:0 auto;}
+.extend-card .card-shine-tag,.extend-card .card-particle-tag{font-size:10.5px;}
+.extend-card .card-shine-title,.extend-card .card-particle-title{font-size:16px;}
+.extend-card .card-blueprint-label{position:static;background:none;padding:0;text-align:center;margin-top:10px;font-size:13px;}
+.extend-card .card-sketch-tag{position:static;text-align:center;margin-top:10px;}
+.extend-desc-white{font-size:12px;color:rgba(255,255,255,0.85);line-height:1.7;margin-top:10px;position:relative;z-index:2;}
+.extend-desc-dark{font-size:12px;color:var(--mute);line-height:1.7;padding:0 20px 20px;text-align:left;}
+
+@media(max-width:900px){
+  .extend-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:560px){
+  .extend-grid{grid-template-columns:1fr;}
+}
+
 .stat-band{display:grid;grid-template-columns:repeat(3,1fr);background:var(--klein);color:var(--white);margin:0 -6vw;padding:64px 6vw;}
 .stat-band-item{text-align:center;border-right:1px solid rgba(255,255,255,0.2);}
 .stat-band-item:last-child{border-right:none;}
@@ -356,16 +375,48 @@ footer a:hover{color:var(--klein);}
 
 <section class="section" style="background:linear-gradient(160deg,#F0EDE6,#E8E2D4);">
   <div class="section-head">
-    <div class="section-eyebrow">延伸服務 · 線上曝光</div>
+    <div class="section-eyebrow">延伸服務 · 產業鏈夥伴</div>
     <h2 class="section-title">空間有了樣子，<br><span class="blue">故事還沒說完</span></h2>
-    <div class="section-desc">我們攜手業界口碑深厚的線上行銷夥伴，讓你的品牌從實體延伸到線上，持續被看見。</div>
+    <div class="section-desc">設計只是起點。我們攜手業界口碑深厚的各領域夥伴，陪你把品牌的每一步，走得更穩。</div>
   </div>
-  <div class="card-sketch" style="max-width:480px;">
-    <svg viewBox="0 0 100 60">
-      <rect x="15" y="15" width="70" height="35"/>
-      <path class="accent" d="M15,30 L85,30 M40,15 L40,50 M60,15 L60,50"/>
-    </svg>
-    <div class="card-sketch-tag">實體 × 線上 · 品牌延伸</div>
+  <div class="extend-grid">
+    <div class="extend-card card-shine" id="slot-extend_influencer">
+      <div class="extend-inner card-shine-content">
+        <div class="card-shine-tag" id="slot-extend_influencer-tag">全通路曝光</div>
+        <div class="card-shine-title" id="slot-extend_influencer-title">網紅／部落客行銷</div>
+      </div>
+      <div class="extend-desc-white" id="slot-extend_influencer-desc">單靠線上，或只靠線下，都不夠讓人被記住了。我們攜手熟悉全通路操作的行銷夥伴，讓你的品牌，線上線下都被看見。</div>
+    </div>
+    <div class="extend-card card-particle" id="slot-extend_construction">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="extend-inner card-particle-content">
+        <div class="card-particle-tag" id="slot-extend_construction-tag">結構執行</div>
+        <div class="card-particle-title" id="slot-extend_construction-title">商空木工／結構輸出</div>
+      </div>
+      <div class="extend-desc-white" id="slot-extend_construction-desc">好設計，需要有人穩穩把它做出來。我們攜手熟悉商空木工與結構施作的夥伴，把圖紙上的想法，變成摸得到的現場。</div>
+    </div>
+    <div class="extend-card card-blueprint" id="slot-extend_efficiency">
+      <div class="extend-inner">
+        <svg viewBox="0 0 200 140">
+          <rect x="20" y="30" width="160" height="90" fill="none" stroke="#002FA7" stroke-width="1"/>
+          <circle cx="70" cy="60" r="12" fill="none" stroke="#002FA7" stroke-width="0.8"/>
+          <circle cx="130" cy="90" r="8" fill="none" stroke="#B8925A" stroke-width="0.8"/>
+          <line x1="82" y1="60" x2="122" y2="90" stroke="#B8925A" stroke-width="0.5" stroke-dasharray="3,3"/>
+        </svg>
+        <div class="card-blueprint-label" id="slot-extend_efficiency-title">動線與流程優化</div>
+      </div>
+      <div class="extend-desc-dark" id="slot-extend_efficiency-desc">人力成本，是連鎖經營最現實的壓力。我們攜手熟悉動線規劃、送餐機器人、產線流程優化的夥伴，讓你把人力，留在真正需要人的地方。</div>
+    </div>
+    <div class="extend-card card-sketch" id="slot-extend_online">
+      <div class="extend-inner">
+        <svg viewBox="0 0 100 60">
+          <rect x="15" y="15" width="70" height="35"/>
+          <path class="accent" d="M15,30 L85,30 M40,15 L40,50 M60,15 L60,50"/>
+        </svg>
+        <div class="card-sketch-tag" id="slot-extend_online-title">品牌延伸</div>
+      </div>
+      <div class="extend-desc-dark" id="slot-extend_online-desc">我們攜手業界口碑深厚的線上行銷夥伴，讓你的品牌從實體延伸到線上，持續被看見。</div>
+    </div>
   </div>
 </section>
 
