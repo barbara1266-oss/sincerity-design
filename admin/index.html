@@ -14,24 +14,19 @@ header{background:var(--klein);color:#fff;padding:20px 5vw;display:flex;justify-
 header h1{font-size:18px;font-weight:700;}
 header .status{font-size:13px;opacity:0.85;}
 .wrap{padding:32px 5vw;max-width:1100px;margin:0 auto;}
-
-/* 登入畫面 */
 .login-box{max-width:440px;margin:80px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:40px;}
 .login-box h2{font-size:20px;margin-bottom:12px;}
 .login-box p{font-size:14px;color:var(--mute);line-height:1.8;margin-bottom:20px;}
-.login-box a{color:var(--klein);}
 .login-box input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:4px;font-size:14px;margin-bottom:16px;}
 .login-box button{width:100%;background:var(--klein);color:#fff;border:none;padding:14px;border-radius:4px;font-size:15px;font-weight:700;cursor:pointer;}
 .login-box button:hover{background:#001F70;}
 .login-box .steps{background:var(--klein-light);border-radius:6px;padding:16px 18px;font-size:13px;line-height:2;margin-bottom:20px;color:#333;}
 .login-box .steps b{color:var(--klein);}
-
-/* 後台主畫面 */
 .section-block{background:#fff;border:1px solid var(--line);border-radius:8px;margin-bottom:24px;overflow:hidden;}
 .section-header{background:var(--klein-light);padding:16px 24px;font-weight:700;font-size:15px;color:var(--klein);}
 .item-row{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:24px;border-bottom:1px solid var(--line);align-items:start;}
 .item-row:last-child{border-bottom:none;}
-.thumb{width:180px;height:120px;border-radius:4px;background:#F0EDE6 url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23ccc%22 stroke-width=%221.5%22%3E%3Crect x=%223%22 y=%223%22 width=%2218%22 height=%2218%22 rx=%222%22/%3E%3Ccircle cx=%228.5%22 cy=%228.5%22 r=%221.5%22/%3E%3Cpath d=%22M21 15l-5-5L5 21%22/%3E%3C/svg%3E') center/40px no-repeat;background-size:cover;position:relative;overflow:hidden;border:1px solid var(--line);}
+.thumb{width:180px;height:110px;border-radius:4px;background:#F0EDE6;position:relative;overflow:hidden;border:1px solid var(--line);}
 .thumb img{width:100%;height:100%;object-fit:cover;}
 .thumb-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.55);color:#fff;font-size:10px;padding:4px 6px;text-align:center;}
 .field-label{font-size:12px;color:var(--gold);font-weight:700;margin-bottom:6px;}
@@ -41,7 +36,6 @@ textarea.field-input{resize:vertical;min-height:52px;}
 .upload-btn:hover{background:var(--klein-light);}
 input[type=file]{display:none;}
 .recommend{font-size:11.5px;color:var(--mute);margin-top:6px;}
-
 .savebar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:16px 5vw;display:flex;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,0.06);z-index:60;}
 .savebar .msg{font-size:13px;color:var(--mute);}
 .save-btn{background:var(--klein);color:#fff;border:none;padding:14px 40px;border-radius:4px;font-size:15px;font-weight:700;cursor:pointer;}
@@ -50,10 +44,7 @@ input[type=file]{display:none;}
 .toast{position:fixed;top:80px;right:5vw;background:var(--ok);color:#fff;padding:14px 22px;border-radius:6px;font-size:14px;font-weight:500;z-index:100;box-shadow:0 8px 20px rgba(0,0,0,0.15);display:none;}
 .toast.bad{background:var(--bad);}
 .hidden{display:none!important;}
-@media(max-width:700px){
-  .item-row{grid-template-columns:1fr;}
-  .thumb{width:100%;height:160px;}
-}
+@media(max-width:700px){.item-row{grid-template-columns:1fr;}.thumb{width:100%;height:160px;}}
 </style>
 </head>
 <body>
@@ -94,17 +85,21 @@ const BRANCH = "main";
 const API = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
 
 let TOKEN = localStorage.getItem('sd_admin_token') || '';
-let siteData = null;       // 目前 content/site-data.json 的完整內容
-let dataSha = null;        // 該檔案目前的 sha（更新時需要）
-let pendingFiles = {};     // { key: {file: File, previewUrl} } 待上傳的新圖片
+let siteData = null;
+let dataSha = null;
+let pendingFiles = {};
 
-// ===== 欄位定義：對應網站上每一個圖文區塊 =====
 const SLOTS = [
   { group: "首頁 · Hero 主視覺", key: "hero", img: "1200×1500px", hasTag:true, hasTitle:true },
+  { group: "首頁 · 服務網格照片磚（補空白格）", key: "service_grid_photo", img: "800×1000px（直式較佳）", hasTag:true, hasTitle:true },
   { group: "首頁 · 精選實績 4 張卡片", key: "work1", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
   { group: "首頁 · 精選實績 4 張卡片", key: "work2", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
   { group: "首頁 · 精選實績 4 張卡片", key: "work3", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
   { group: "首頁 · 精選實績 4 張卡片", key: "work4", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
+  { group: "首頁 · 延伸服務 4張卡片", key: "extend_influencer", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
+  { group: "首頁 · 延伸服務 4張卡片", key: "extend_construction", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
+  { group: "首頁 · 延伸服務 4張卡片", key: "extend_efficiency", img: "800×500px", hasTitle:true, hasDesc:true },
+  { group: "首頁 · 延伸服務 4張卡片", key: "extend_online", img: "800×500px", hasTitle:true, hasDesc:true },
   { group: "網站設定 · Logo", key: "logo_horizontal", img: "200×60px（電腦版橫式）" },
   { group: "網站設定 · Logo", key: "logo_round", img: "80×80px（手機版圓形）" },
   { group: "服務頁 · 快閃店設計 Banner", key: "svc_popup_banner", img: "1600×900px" },
@@ -113,10 +108,6 @@ const SLOTS = [
   { group: "服務頁 · 通路識別 Banner", key: "svc_branding_banner", img: "1600×900px" },
   { group: "服務頁 · 展攤設計 Banner", key: "svc_booth_banner", img: "1600×900px" },
   { group: "服務頁 · 連鎖輔銷品管理 Banner", key: "svc_chain_banner", img: "1600×900px" },
-  { group: "首頁 · 延伸服務 4張卡片", key: "extend_influencer", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "首頁 · 延伸服務 4張卡片", key: "extend_construction", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "首頁 · 延伸服務 4張卡片", key: "extend_efficiency", img: "800×500px", hasTitle:true, hasDesc:true },
-  { group: "首頁 · 延伸服務 4張卡片", key: "extend_online", img: "800×500px", hasTitle:true, hasDesc:true },
 ];
 
 function toast(msg, bad){
@@ -130,11 +121,7 @@ function toast(msg, bad){
 async function ghFetch(path, opts={}){
   const res = await fetch(`${API}${path}`, {
     ...opts,
-    headers: {
-      'Authorization': `Bearer ${TOKEN}`,
-      'Accept': 'application/vnd.github+json',
-      ...(opts.headers||{})
-    }
+    headers: { 'Authorization': `Bearer ${TOKEN}`, 'Accept': 'application/vnd.github+json', ...(opts.headers||{}) }
   });
   if(!res.ok){
     const t = await res.text();
@@ -148,14 +135,13 @@ async function doLogin(){
   if(!input){ toast('請先貼上授權碼', true); return; }
   TOKEN = input;
   try{
-    await ghFetch(''); // 測試連線
+    await ghFetch('');
     localStorage.setItem('sd_admin_token', TOKEN);
     document.getElementById('loginScreen').classList.add('hidden');
     document.getElementById('adminScreen').classList.remove('hidden');
     await loadData();
   }catch(e){
     toast('授權碼無效或無法連線，請確認是否勾選了 repo 權限', true);
-    console.error(e);
   }
 }
 
@@ -168,7 +154,6 @@ async function loadData(){
       dataSha = fileData.sha;
       siteData = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
     }catch(e){
-      // 檔案不存在，用空白初始化
       siteData = {};
       dataSha = null;
     }
@@ -206,15 +191,9 @@ function renderForm(){
       const url = path ? `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${path}` : '';
       return `
         <div style="margin-bottom:14px;">
-          <div class="thumb" id="thumb-${slot.key}-${i}" style="width:180px;height:110px;">
-            ${url ? `<img src="${url}">` : ''}
-          </div>
-          <label class="upload-btn">
-            📁 圖片 ${i+1}
-            <input type="file" accept="image/*" onchange="handleFile(event,'${slot.key}',${i})">
-          </label>
-        </div>
-      `;
+          <div class="thumb" id="thumb-${slot.key}-${i}">${url ? `<img src="${url}">` : ''}</div>
+          <label class="upload-btn">📁 圖片 ${i+1}<input type="file" accept="image/*" onchange="handleFile(event,'${slot.key}',${i})"></label>
+        </div>`;
     }).join('');
 
     row.innerHTML = `
@@ -226,8 +205,7 @@ function renderForm(){
         ${slot.hasTag ? `<div class="field-label">標籤</div><input class="field-input" id="tag-${slot.key}" value="${(d.tag||'').replace(/"/g,'&quot;')}">` : ''}
         ${slot.hasTitle ? `<div class="field-label">標題</div><input class="field-input" id="title-${slot.key}" value="${(d.title||'').replace(/"/g,'&quot;')}">` : ''}
         ${slot.hasDesc ? `<div class="field-label">描述</div><textarea class="field-input" id="desc-${slot.key}">${d.desc||''}</textarea>` : ''}
-      </div>
-    `;
+      </div>`;
     groupDiv.appendChild(row);
   });
 }
@@ -257,7 +235,6 @@ async function saveAll(){
   btn.disabled = true;
   btn.textContent = '儲存中，請稍候...';
   try{
-    // 1. 先上傳所有待上傳的新圖片（每個 slot 最多3張）
     for(const pendKey of Object.keys(pendingFiles)){
       const { key, idx, file } = pendingFiles[pendKey];
       const ext = file.name.split('.').pop();
@@ -268,16 +245,11 @@ async function saveAll(){
       try{
         const existing = await ghFetch(`/contents/${path}?ref=${BRANCH}`);
         existingSha = existing.sha;
-      }catch(e){ /* 檔案不存在，正常 */ }
+      }catch(e){}
 
       await ghFetch(`/contents/${path}`, {
         method: 'PUT',
-        body: JSON.stringify({
-          message: `更新圖片：${key} #${idx+1}`,
-          content: base64,
-          branch: BRANCH,
-          ...(existingSha ? {sha: existingSha} : {})
-        })
+        body: JSON.stringify({ message: `更新圖片：${key} #${idx+1}`, content: base64, branch: BRANCH, ...(existingSha ? {sha: existingSha} : {}) })
       });
 
       siteData[key] = siteData[key] || {};
@@ -286,7 +258,6 @@ async function saveAll(){
     }
     pendingFiles = {};
 
-    // 2. 收集所有文字欄位
     SLOTS.forEach(slot=>{
       siteData[slot.key] = siteData[slot.key] || {};
       if(slot.hasTag) siteData[slot.key].tag = document.getElementById(`tag-${slot.key}`).value;
@@ -294,18 +265,12 @@ async function saveAll(){
       if(slot.hasDesc) siteData[slot.key].desc = document.getElementById(`desc-${slot.key}`).value;
     });
 
-    // 3. 存回 content/site-data.json
     const jsonStr = JSON.stringify(siteData, null, 2);
     const jsonBase64 = btoa(unescape(encodeURIComponent(jsonStr)));
 
     const result = await ghFetch(`/contents/content/site-data.json`, {
       method: 'PUT',
-      body: JSON.stringify({
-        message: '後台更新網站內容',
-        content: jsonBase64,
-        branch: BRANCH,
-        ...(dataSha ? {sha: dataSha} : {})
-      })
+      body: JSON.stringify({ message: '後台更新網站內容', content: jsonBase64, branch: BRANCH, ...(dataSha ? {sha: dataSha} : {}) })
     });
     dataSha = result.content.sha;
 
@@ -313,14 +278,12 @@ async function saveAll(){
     renderForm();
   }catch(e){
     toast('儲存失敗：' + e.message, true);
-    console.error(e);
   }finally{
     btn.disabled = false;
     btn.textContent = '💾 儲存並更新網站';
   }
 }
 
-// 自動登入（如果之前已經貼過授權碼）
 if(TOKEN){
   document.getElementById('loginScreen').classList.add('hidden');
   document.getElementById('adminScreen').classList.remove('hidden');

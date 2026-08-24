@@ -12,7 +12,6 @@
       const d = data[key];
       const slot = document.getElementById('slot-' + key);
 
-      // 文字欄位（標籤／標題／描述）維持原本方式
       const tagEl = document.getElementById('slot-' + key + '-tag');
       if(tagEl && d.tag) tagEl.textContent = d.tag;
       const titleEl = document.getElementById('slot-' + key + '-title');
@@ -22,7 +21,7 @@
 
       if(!slot) return;
       const images = (d.images || []).filter(Boolean).map(p => base + p);
-      if(images.length === 0) return; // 沒有上傳過圖片，維持原本內建畫面
+      if(images.length === 0) return;
 
       buildCarousel(slot, images);
     });
@@ -33,14 +32,14 @@ function buildCarousel(slot, images){
   slot.style.position = 'relative';
   slot.style.overflow = 'hidden';
 
-  // 清掉原本示意用的裝飾內容（保留文字圖層，例如 card-shine-content）
   const keepChildren = Array.from(slot.children).filter(c =>
     c.classList.contains('card-shine-content') ||
     c.classList.contains('card-particle-content') ||
     c.classList.contains('card-shine-corner') ||
     c.classList.contains('extend-inner') ||
     c.classList.contains('extend-desc-white') ||
-    c.classList.contains('extend-desc-dark')
+    c.classList.contains('extend-desc-dark') ||
+    c.classList.contains('service-photo-tile-content')
   );
 
   const imgLayer = document.createElement('div');
@@ -55,7 +54,6 @@ function buildCarousel(slot, images){
   });
   slot.insertBefore(imgLayer, slot.firstChild);
 
-  // 保留原本文字圖層在最上層
   keepChildren.forEach(c => { c.style.position='relative'; c.style.zIndex='2'; });
 
   if(images.length > 1){
