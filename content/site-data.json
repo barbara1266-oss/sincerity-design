@@ -52,5 +52,9 @@
   "extend_online": {
     "title": "",
     "desc": ""
+  },
+  "service_grid_photo": {
+    "tag": "",
+    "title": ""
   }
 }
