@@ -188,6 +188,7 @@ footer a:hover{color:var(--klein);}
   .stat-band-item:last-child{border-bottom:none;}
   .diff-block{grid-template-columns:1fr;gap:36px;}
   .service-grid{grid-template-columns:1fr 1fr;}
+  .service-photo-tile{grid-column:span 2;}
   .extend-grid{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:768px){
@@ -198,6 +199,7 @@ footer a:hover{color:var(--klein);}
   .spec-strip{flex-direction:column;}
   .spec{border-right:none;border-bottom:1px solid var(--line);}
   .service-grid{grid-template-columns:1fr;}
+  .service-photo-tile{grid-column:span 1;}
   .extend-grid{grid-template-columns:1fr;}
 }
 </style>
@@ -290,7 +292,7 @@ footer a:hover{color:var(--klein);}
       <div class="service-desc">每一家分店，都值得被好好照顧——<br>從設計需求、印刷執行，到物流配送，我們把整條路收進同一個窗口，讓每一次交辦，都能放心。</div>
       <div class="service-arrow">查看服務內容 →</div>
     </a>
-    <a href="#work" class="service-photo-tile" id="slot-service_grid_photo">
+    <a href="#work" class="service-photo-tile" id="slot-service_grid_photo" style="grid-column:span 2;">
       <div class="service-photo-tile-content">
         <div class="service-photo-tile-tag" id="slot-service_grid_photo-tag">MORE PROJECTS</div>
         <div class="service-photo-tile-title" id="slot-service_grid_photo-title">看更多實績案例</div>
