@@ -1,8 +1,9 @@
 {
   "hero": {
     "images": [
-      "images/uploads/hero_0.png",
-      "images/uploads/hero_1.jpg"
+      "images/uploads/hero_0.jpeg",
+      "images/uploads/hero_1.jpeg",
+      "images/uploads/hero_2.jpeg"
     ],
     "tag": "",
     "title": ""
