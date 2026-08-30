@@ -33,8 +33,19 @@
   "svc_popup_banner": {},
   "svc_store_banner": {},
   "svc_posm_banner": {},
-  "svc_branding_banner": {},
-  "svc_booth_banner": {},
+  "svc_branding_banner": {
+    "images": [
+      "images/uploads/svc_branding_banner_0.png",
+      "images/uploads/svc_branding_banner_1.png",
+      "images/uploads/svc_branding_banner_2.png"
+    ]
+  },
+  "svc_booth_banner": {
+    "images": [
+      "images/uploads/svc_booth_banner_0.png",
+      "images/uploads/svc_booth_banner_1.jpg"
+    ]
+  },
   "svc_chain_banner": {},
   "extend_influencer": {
     "tag": "",
