@@ -79,6 +79,9 @@
   },
   "service_grid_photo": {
     "tag": "",
-    "title": ""
+    "title": "",
+    "images": [
+      "images/uploads/service_grid_photo_0.jpg"
+    ]
   }
 }
