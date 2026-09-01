@@ -1,99 +1,319 @@
 {
   "hero": {
-    "images": [
-      "images/uploads/hero_0.jpeg",
-      "images/uploads/hero_1.jpeg",
-      "images/uploads/hero_2.jpeg"
-    ],
     "tag": "桃園｜自律放縱｜整體裝修規劃＋視覺微軟裝",
-    "title": ""
+    "items": [
+      {
+        "image": "images/uploads/hero_0.jpeg",
+        "title": "整體空間視覺規劃",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/hero_1.jpeg",
+        "title": "品牌核心價值",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/hero_2.jpeg",
+        "title": "門柱規劃設計",
+        "desc": ""
+      }
+    ]
   },
   "work1": {
     "tag": "",
-    "title": "",
-    "desc": ""
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
   },
   "work2": {
     "tag": "",
-    "title": "",
-    "desc": ""
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
   },
   "work3": {
     "tag": "",
-    "title": "",
-    "desc": ""
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
   },
   "work4": {
     "tag": "",
-    "title": "",
-    "desc": ""
-  },
-  "logo_horizontal": {
-    "images": [
-      "images/uploads/logo_horizontal_0.jpg"
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
     ]
   },
-  "logo_round": {},
+  "logo_horizontal": {
+    "items": [
+      {
+        "image": "images/uploads/logo_horizontal_0.jpg",
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
+  },
+  "logo_round": {
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
+  },
   "svc_popup_banner": {
-    "images": [
-      "images/uploads/svc_popup_banner_0.jpg",
-      "images/uploads/svc_popup_banner_1.jpg",
-      "images/uploads/svc_popup_banner_2.jpg"
+    "items": [
+      {
+        "image": "images/uploads/svc_popup_banner_0.jpg",
+        "title": "台北復興SOGO｜REC咖啡｜快閃櫃",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/svc_popup_banner_1.jpg",
+        "title": "林口｜義式迷｜快閃櫃",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/svc_popup_banner_2.jpg",
+        "title": "台北101｜金德老爹｜快閃櫃",
+        "desc": ""
+      }
     ]
   },
   "svc_store_banner": {
-    "images": [
-      "images/uploads/svc_store_banner_0.jpeg",
-      "images/uploads/svc_store_banner_1.jpeg",
-      "images/uploads/svc_store_banner_2.png"
+    "items": [
+      {
+        "image": "images/uploads/svc_store_banner_0.jpeg",
+        "title": "台北汐止｜天然茶莊｜視覺微軟裝",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/svc_store_banner_1.jpeg",
+        "title": "桃園｜自律放縱｜整體裝修規劃＋視覺微軟裝",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/svc_store_banner_2.png",
+        "title": "台北內湖｜鮮番咖哩｜視覺微軟裝",
+        "desc": ""
+      }
     ]
   },
   "svc_posm_banner": {
-    "images": [
-      "images/uploads/svc_posm_banner_0.png",
-      "images/uploads/svc_posm_banner_1.png",
-      "images/uploads/svc_posm_banner_2.png"
+    "items": [
+      {
+        "image": "images/uploads/svc_posm_banner_0.png",
+        "title": "",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/svc_posm_banner_1.png",
+        "title": "",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/svc_posm_banner_2.png",
+        "title": "",
+        "desc": ""
+      }
     ]
   },
   "svc_branding_banner": {
-    "images": [
-      "images/uploads/svc_branding_banner_0.jpg",
-      "images/uploads/svc_branding_banner_1.jpg",
-      "images/uploads/svc_branding_banner_2.jpg"
+    "items": [
+      {
+        "image": "images/uploads/svc_branding_banner_0.jpg",
+        "title": "",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/svc_branding_banner_1.jpg",
+        "title": "",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/svc_branding_banner_2.jpg",
+        "title": "",
+        "desc": ""
+      }
     ]
   },
   "svc_booth_banner": {
-    "images": [
-      "images/uploads/svc_booth_banner_0.png",
-      "images/uploads/svc_booth_banner_1.jpg"
+    "items": [
+      {
+        "image": "images/uploads/svc_booth_banner_0.png",
+        "title": "",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/svc_booth_banner_1.jpg",
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
     ]
   },
-  "svc_chain_banner": {},
+  "svc_chain_banner": {
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
+  },
   "extend_influencer": {
     "tag": "",
-    "title": "",
-    "desc": ""
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
   },
   "extend_construction": {
     "tag": "",
-    "title": "",
-    "desc": ""
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
   },
   "extend_efficiency": {
-    "title": "",
-    "desc": ""
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
   },
   "extend_online": {
-    "title": "",
-    "desc": ""
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
   },
   "service_grid_photo": {
-    "tag": "台北｜小富貴｜視覺微軟裝",
-    "title": "創媒會｜御璽徵信｜展場規劃",
-    "images": [
-      "images/uploads/service_grid_photo_0.jpg",
-      "images/uploads/service_grid_photo_1.jpeg",
-      "images/uploads/service_grid_photo_2.jpeg"
+    "tag": "延伸服務項目",
+    "items": [
+      {
+        "image": "images/uploads/service_grid_photo_0.jpg",
+        "title": "台北｜小富貴｜視覺微軟裝",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/service_grid_photo_1.jpeg",
+        "title": "創媒會｜御璽徵信｜展場規劃",
+        "desc": ""
+      },
+      {
+        "image": "images/uploads/service_grid_photo_2.jpeg",
+        "title": "台北｜家樂福｜壓克力陳列道具",
+        "desc": ""
+      }
     ]
   }
 }
