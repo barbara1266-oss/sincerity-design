@@ -28,7 +28,11 @@
     "title": "",
     "desc": ""
   },
-  "logo_horizontal": {},
+  "logo_horizontal": {
+    "images": [
+      "images/uploads/logo_horizontal_0.jpg"
+    ]
+  },
   "logo_round": {},
   "svc_popup_banner": {
     "images": [
