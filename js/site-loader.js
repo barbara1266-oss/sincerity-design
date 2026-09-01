@@ -73,6 +73,10 @@ function buildCarousel(slot, items, base, defaultTexts){
   slot.insertBefore(imgLayer, slot.firstChild);
 
   // 標題/描述套用：一律有值才換，沒值就用一開始記住的預設文字，絕不留空白
+  // 找出這一組裡，第一個有填標題/描述的圖片，當作「同組後備」（絕不使用我寫死的固定文字）
+  const firstValidTitle = items.find(it => it.title && it.title.trim().length > 0);
+  const firstValidDesc = items.find(it => it.desc && it.desc.trim().length > 0);
+
   function applyItemText(i){
     const item = items[i];
     if(!item) return;
@@ -80,10 +84,21 @@ function buildCarousel(slot, items, base, defaultTexts){
     const descId = slot.id + '-desc';
     const tEl = document.getElementById(titleId);
     const dEl = document.getElementById(descId);
-    const fallbackTitle = defaultTexts[titleId] || '';
-    const fallbackDesc = defaultTexts[descId] || '';
-    if(tEl) tEl.textContent = (item.title && item.title.trim().length > 0) ? item.title : fallbackTitle;
-    if(dEl) dEl.innerHTML = (item.desc && item.desc.trim().length > 0) ? item.desc : fallbackDesc;
+    if(tEl){
+      if(item.title && item.title.trim().length > 0){
+        tEl.textContent = item.title;
+      } else if(firstValidTitle){
+        tEl.textContent = firstValidTitle.title;
+      }
+      // 如果整組都沒有任何標題，就維持畫面原本的文字，不主動清空
+    }
+    if(dEl){
+      if(item.desc && item.desc.trim().length > 0){
+        dEl.innerHTML = item.desc;
+      } else if(firstValidDesc){
+        dEl.innerHTML = firstValidDesc.desc;
+      }
+    }
   }
   applyItemText(0);
 
