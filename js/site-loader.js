@@ -1,9 +1,17 @@
-// 晨諾創意 官網 · 共用輪播 + 內容讀取程式 v6
-// 統一元件版：所有圖片文字都用 .sd-photo-caption 容器，固定右下角
-// 每個頁面在 <script> 裡先設定 window.SD_BASE（相對路徑前綴），再引入這支檔案
+// 晨諾創意 官網 · 共用輪播 + 內容讀取程式 v9
+// 修正：標題絕不留空白，一開始就先記住所有預設文字
 
 (async function(){
   const base = window.SD_BASE || '';
+
+  // === 第一步：先記住畫面上所有標題/描述的原始預設文字（在任何資料套用之前）===
+  const defaultTexts = {};
+  document.querySelectorAll('[id^="slot-"]').forEach(el=>{
+    defaultTexts[el.id] = el.tagName === 'DIV' && el.classList.contains('sd-caption-title')
+      ? el.textContent
+      : (el.id.endsWith('-desc') ? el.innerHTML : el.textContent);
+  });
+
   try{
     const res = await fetch(base + 'content/site-data.json', {cache:'no-store'});
     if(!res.ok) return;
@@ -29,25 +37,22 @@
       if(!slot) return;
       if(items.length === 0) return;
 
-      buildCarousel(slot, items, base);
+      buildCarousel(slot, items, base, defaultTexts);
     });
 
     applyLogo(data, base);
   }catch(e){ /* 沒有資料時，網站維持原本內建內容 */ }
 })();
 
-function buildCarousel(slot, items, base){
+function buildCarousel(slot, items, base, defaultTexts){
   slot.style.position = 'relative';
   slot.style.overflow = 'hidden';
 
-  // 統一規則：隱藏所有裝飾用SVG線框與圓點，只保留 .sd-photo-caption 文字元件
   slot.querySelectorAll('svg').forEach(svg => { svg.style.display = 'none'; });
   slot.querySelectorAll('.dot').forEach(dot => { dot.style.display = 'none'; });
 
-  // .sd-photo-caption 是唯一保留在照片上層的文字容器
   const caption = slot.querySelector('.sd-photo-caption');
   if(caption){ caption.style.zIndex = '5'; }
-  // extend-inner 這種外層包裝，如果裡面只剩caption，也要保留顯示
   slot.querySelectorAll('.extend-inner').forEach(el=>{ el.style.position='relative'; el.style.zIndex='4'; });
 
   const imgLayer = document.createElement('div');
@@ -67,16 +72,18 @@ function buildCarousel(slot, items, base){
   });
   slot.insertBefore(imgLayer, slot.firstChild);
 
+  // 標題/描述套用：一律有值才換，沒值就用一開始記住的預設文字，絕不留空白
   function applyItemText(i){
     const item = items[i];
     if(!item) return;
-    const tEl = document.getElementById(slot.id + '-title');
-    const dEl = document.getElementById(slot.id + '-desc');
-    // 記住第一次看到的預設文字，之後不管資料狀況如何，都不會讓畫面出現空白標題
-    if(tEl && tEl.dataset.defaultText === undefined) tEl.dataset.defaultText = tEl.textContent;
-    if(dEl && dEl.dataset.defaultText === undefined) dEl.dataset.defaultText = dEl.innerHTML;
-    if(tEl) tEl.textContent = (item.title && item.title.trim()) ? item.title : tEl.dataset.defaultText;
-    if(dEl) dEl.innerHTML = (item.desc && item.desc.trim()) ? item.desc : dEl.dataset.defaultText;
+    const titleId = slot.id + '-title';
+    const descId = slot.id + '-desc';
+    const tEl = document.getElementById(titleId);
+    const dEl = document.getElementById(descId);
+    const fallbackTitle = defaultTexts[titleId] || '';
+    const fallbackDesc = defaultTexts[descId] || '';
+    if(tEl) tEl.textContent = (item.title && item.title.trim().length > 0) ? item.title : fallbackTitle;
+    if(dEl) dEl.innerHTML = (item.desc && item.desc.trim().length > 0) ? item.desc : fallbackDesc;
   }
   applyItemText(0);
 
