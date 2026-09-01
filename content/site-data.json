@@ -1,6 +1,6 @@
 {
   "hero": {
-    "tag": "桃園｜自律放縱｜整體裝修規劃＋視覺微軟裝",
+    "tag": "桃園｜自律放縱",
     "items": [
       {
         "image": "images/uploads/hero_0.jpeg",
@@ -331,17 +331,17 @@
       {
         "image": "images/uploads/service_grid_photo_0.jpg",
         "title": "台北｜小富貴｜視覺微軟裝",
-        "desc": ""
+        "desc": "每個蒞臨的顧客，會觀察門店每一處小巧思！我們越用心就會越讓顧客認同！"
       },
       {
         "image": "images/uploads/service_grid_photo_1.jpeg",
         "title": "台北創媒會｜御璽徵信｜展場規劃",
-        "desc": ""
+        "desc": "從平面動線規劃，到創意發想到完成！感謝給我們最大的信任！"
       },
       {
         "image": "images/uploads/service_grid_photo_2.jpeg",
         "title": "台北｜家樂福｜壓克力陳列道具",
-        "desc": ""
+        "desc": "了解通路需求與視覺優勢，一直是我們專研努力的地方！"
       }
     ]
   }
