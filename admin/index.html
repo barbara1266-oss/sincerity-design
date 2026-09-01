@@ -24,18 +24,22 @@ header .status{font-size:13px;opacity:0.85;}
 .login-box .steps b{color:var(--klein);}
 .section-block{background:#fff;border:1px solid var(--line);border-radius:8px;margin-bottom:24px;overflow:hidden;}
 .section-header{background:var(--klein-light);padding:16px 24px;font-weight:700;font-size:15px;color:var(--klein);}
-.item-row{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:24px;border-bottom:1px solid var(--line);align-items:start;}
-.item-row:last-child{border-bottom:none;}
-.thumb{width:180px;height:110px;border-radius:4px;background:#F0EDE6;position:relative;overflow:hidden;border:1px solid var(--line);}
-.thumb img{width:100%;height:100%;object-fit:cover;}
-.thumb-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.55);color:#fff;font-size:10px;padding:4px 6px;text-align:center;}
+.slot-wrap{padding:20px 24px;border-bottom:1px solid var(--line);}
+.slot-wrap:last-child{border-bottom:none;}
+.slot-tag-row{margin-bottom:16px;}
 .field-label{font-size:12px;color:var(--gold);font-weight:700;margin-bottom:6px;}
 .field-input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:4px;font-size:13.5px;margin-bottom:10px;font-family:inherit;}
-textarea.field-input{resize:vertical;min-height:52px;}
-.upload-btn{display:inline-flex;align-items:center;gap:6px;background:var(--white);border:1.5px solid var(--klein);color:var(--klein);padding:8px 16px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px;}
+textarea.field-input{resize:vertical;min-height:44px;}
+.img-item-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.img-item{border:1px solid var(--line);border-radius:6px;padding:14px;background:#FCFCFC;}
+.img-item-num{font-size:11px;color:var(--mute);font-weight:700;margin-bottom:8px;}
+.thumb{width:100%;height:100px;border-radius:4px;background:#F0EDE6;position:relative;overflow:hidden;border:1px solid var(--line);margin-bottom:8px;}
+.thumb img{width:100%;height:100%;object-fit:cover;}
+.thumb-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.55);color:#fff;font-size:10px;padding:4px 6px;text-align:center;}
+.upload-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:var(--white);border:1.5px solid var(--klein);color:var(--klein);padding:7px 10px;border-radius:4px;font-size:12.5px;font-weight:700;cursor:pointer;margin-bottom:10px;}
 .upload-btn:hover{background:var(--klein-light);}
 input[type=file]{display:none;}
-.recommend{font-size:11.5px;color:var(--mute);margin-top:6px;}
+.recommend{font-size:11.5px;color:var(--mute);margin-top:10px;}
 .savebar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:16px 5vw;display:flex;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,0.06);z-index:60;}
 .savebar .msg{font-size:13px;color:var(--mute);}
 .save-btn{background:var(--klein);color:#fff;border:none;padding:14px 40px;border-radius:4px;font-size:15px;font-weight:700;cursor:pointer;}
@@ -44,7 +48,7 @@ input[type=file]{display:none;}
 .toast{position:fixed;top:80px;right:5vw;background:var(--ok);color:#fff;padding:14px 22px;border-radius:6px;font-size:14px;font-weight:500;z-index:100;box-shadow:0 8px 20px rgba(0,0,0,0.15);display:none;}
 .toast.bad{background:var(--bad);}
 .hidden{display:none!important;}
-@media(max-width:700px){.item-row{grid-template-columns:1fr;}.thumb{width:100%;height:160px;}}
+@media(max-width:700px){.img-item-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -71,7 +75,7 @@ input[type=file]{display:none;}
   </header>
   <div class="wrap" id="contentArea"></div>
   <div class="savebar">
-    <div class="msg" id="saveMsg">修改完成後，記得按「儲存」才會真的更新到網站上</div>
+    <div class="msg" id="saveMsg">每張圖都可以各自填標題與描述，修改完成後記得按「儲存」</div>
     <button class="save-btn" id="saveBtn" onclick="saveAll()">💾 儲存並更新網站</button>
   </div>
 </div>
@@ -89,17 +93,18 @@ let siteData = null;
 let dataSha = null;
 let pendingFiles = {};
 
+// 每個位置最多3張圖，每張圖各自有標題＋描述；標籤是整組共用（分類性質）
 const SLOTS = [
-  { group: "首頁 · Hero 主視覺", key: "hero", img: "1200×1500px", hasTag:true, hasTitle:true },
-  { group: "首頁 · 服務網格照片磚（補空白格）", key: "service_grid_photo", img: "800×1000px（直式較佳）", hasTag:true, hasTitle:true },
-  { group: "「這些，都是我們陪著走過的路」· 01", key: "work1", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "「這些，都是我們陪著走過的路」· 02", key: "work2", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "「這些，都是我們陪著走過的路」· 03", key: "work3", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "「這些，都是我們陪著走過的路」· 04", key: "work4", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "「空間有了樣子，故事還沒說完」· 01 全通路曝光", key: "extend_influencer", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "「空間有了樣子，故事還沒說完」· 02 結構執行", key: "extend_construction", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "「空間有了樣子，故事還沒說完」· 03 動線效率", key: "extend_efficiency", img: "800×500px", hasTitle:true, hasDesc:true },
-  { group: "「空間有了樣子，故事還沒說完」· 04 品牌延伸", key: "extend_online", img: "800×500px", hasTitle:true, hasDesc:true },
+  { group: "首頁 · Hero 主視覺", key: "hero", img: "1200×1500px", hasTag:true },
+  { group: "首頁 · 服務網格照片磚（補空白格）", key: "service_grid_photo", img: "800×1000px（直式較佳）", hasTag:true },
+  { group: "「這些，都是我們陪著走過的路」· 01", key: "work1", img: "800×500px" },
+  { group: "「這些，都是我們陪著走過的路」· 02", key: "work2", img: "800×500px" },
+  { group: "「這些，都是我們陪著走過的路」· 03", key: "work3", img: "800×500px" },
+  { group: "「這些，都是我們陪著走過的路」· 04", key: "work4", img: "800×500px" },
+  { group: "「空間有了樣子，故事還沒說完」· 01 全通路曝光", key: "extend_influencer", img: "800×500px" },
+  { group: "「空間有了樣子，故事還沒說完」· 02 結構執行", key: "extend_construction", img: "800×500px" },
+  { group: "「空間有了樣子，故事還沒說完」· 03 動線效率", key: "extend_efficiency", img: "800×500px" },
+  { group: "「空間有了樣子，故事還沒說完」· 04 品牌延伸", key: "extend_online", img: "800×500px" },
   { group: "網站設定 · Logo", key: "logo_horizontal", img: "200×60px（電腦版橫式）" },
   { group: "網站設定 · Logo", key: "logo_round", img: "80×80px（手機版圓形）" },
   { group: "服務頁 · 快閃店設計 Banner", key: "svc_popup_banner", img: "1600×900px" },
@@ -157,6 +162,17 @@ async function loadData(){
       siteData = {};
       dataSha = null;
     }
+    // 資料格式相容處理：把舊格式（images陣列＋共用title/desc）轉成新格式（items陣列，每張圖各自title/desc）
+    Object.keys(siteData).forEach(key=>{
+      const d = siteData[key];
+      if(!d.items && d.images){
+        d.items = d.images.map((img, i)=> ({
+          image: img,
+          title: i === 0 ? (d.title || '') : '',
+          desc: i === 0 ? (d.desc || '') : ''
+        }));
+      }
+    });
     renderForm();
     document.getElementById('statusText').textContent = '已連線';
   }catch(e){
@@ -182,31 +198,37 @@ function renderForm(){
     }
 
     const d = siteData[slot.key] || {};
-    const row = document.createElement('div');
-    row.className = 'item-row';
+    const items = d.items || [{},{},{}];
+    while(items.length < 3) items.push({});
 
-    const existingImages = d.images || [];
-    const thumbsHtml = [0, 1, 2].map(i=>{
-      const path = existingImages[i];
-      const url = path ? `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${path}` : '';
+    const slotWrap = document.createElement('div');
+    slotWrap.className = 'slot-wrap';
+
+    const tagHtml = slot.hasTag
+      ? `<div class="slot-tag-row"><div class="field-label">整組標籤（分類用，3張圖共用）</div><input class="field-input" id="tag-${slot.key}" value="${(d.tag||'').replace(/"/g,'&quot;')}"></div>`
+      : '';
+
+    const itemsHtml = [0,1,2].map(i=>{
+      const item = items[i] || {};
+      const url = item.image ? `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${item.image}` : '';
       return `
-        <div style="margin-bottom:14px;">
+        <div class="img-item">
+          <div class="img-item-num">圖片 ${i+1}</div>
           <div class="thumb" id="thumb-${slot.key}-${i}">${url ? `<img src="${url}">` : ''}</div>
-          <label class="upload-btn">📁 圖片 ${i+1}<input type="file" accept="image/*" onchange="handleFile(event,'${slot.key}',${i})"></label>
+          <label class="upload-btn">📁 選擇圖片<input type="file" accept="image/*" onchange="handleFile(event,'${slot.key}',${i})"></label>
+          <div class="field-label">標題</div>
+          <input class="field-input" id="title-${slot.key}-${i}" value="${(item.title||'').replace(/"/g,'&quot;')}">
+          <div class="field-label">描述</div>
+          <textarea class="field-input" id="desc-${slot.key}-${i}">${item.desc||''}</textarea>
         </div>`;
     }).join('');
 
-    row.innerHTML = `
-      <div>
-        ${thumbsHtml}
-        <div class="recommend">建議尺寸：${slot.img}（最多3張，可輪播；只放1張則不會輪播）</div>
-      </div>
-      <div>
-        ${slot.hasTag ? `<div class="field-label">標籤</div><input class="field-input" id="tag-${slot.key}" value="${(d.tag||'').replace(/"/g,'&quot;')}">` : ''}
-        ${slot.hasTitle ? `<div class="field-label">標題</div><input class="field-input" id="title-${slot.key}" value="${(d.title||'').replace(/"/g,'&quot;')}">` : ''}
-        ${slot.hasDesc ? `<div class="field-label">描述</div><textarea class="field-input" id="desc-${slot.key}">${d.desc||''}</textarea>` : ''}
-      </div>`;
-    groupDiv.appendChild(row);
+    slotWrap.innerHTML = `
+      ${tagHtml}
+      <div class="img-item-grid">${itemsHtml}</div>
+      <div class="recommend">建議尺寸：${slot.img}（最多3張，可輪播；只放1張則不會輪播；每張圖可各自填標題與描述）</div>
+    `;
+    groupDiv.appendChild(slotWrap);
   });
 }
 
@@ -253,16 +275,32 @@ async function saveAll(){
       });
 
       siteData[key] = siteData[key] || {};
-      siteData[key].images = siteData[key].images || [];
-      siteData[key].images[idx] = path;
+      siteData[key].items = siteData[key].items || [{},{},{}];
+      while(siteData[key].items.length < 3) siteData[key].items.push({});
+      siteData[key].items[idx].image = path;
     }
     pendingFiles = {};
 
+    // 收集所有文字欄位（標籤整組共用 + 每張圖各自的標題/描述）
     SLOTS.forEach(slot=>{
       siteData[slot.key] = siteData[slot.key] || {};
-      if(slot.hasTag) siteData[slot.key].tag = document.getElementById(`tag-${slot.key}`).value;
-      if(slot.hasTitle) siteData[slot.key].title = document.getElementById(`title-${slot.key}`).value;
-      if(slot.hasDesc) siteData[slot.key].desc = document.getElementById(`desc-${slot.key}`).value;
+      siteData[slot.key].items = siteData[slot.key].items || [{},{},{}];
+      while(siteData[slot.key].items.length < 3) siteData[slot.key].items.push({});
+
+      if(slot.hasTag){
+        const tagInput = document.getElementById(`tag-${slot.key}`);
+        if(tagInput) siteData[slot.key].tag = tagInput.value;
+      }
+      for(let i=0;i<3;i++){
+        const titleInput = document.getElementById(`title-${slot.key}-${i}`);
+        const descInput = document.getElementById(`desc-${slot.key}-${i}`);
+        if(titleInput) siteData[slot.key].items[i].title = titleInput.value;
+        if(descInput) siteData[slot.key].items[i].desc = descInput.value;
+      }
+      // 移除舊格式殘留欄位，避免混淆
+      delete siteData[slot.key].images;
+      delete siteData[slot.key].title;
+      delete siteData[slot.key].desc;
     });
 
     const jsonStr = JSON.stringify(siteData, null, 2);
