@@ -1,5 +1,6 @@
 // 晨諾創意 官網 · 共用輪播 + 內容讀取程式
 // 每個頁面在 <script> 裡先設定 window.SD_BASE（相對路徑前綴），再引入這支檔案
+// 資料相容：新格式 items:[{image,title,desc}]；舊格式 images:[...] + 共用title/desc 也會自動套用
 
 (async function(){
   const base = window.SD_BASE || '';
@@ -14,21 +15,26 @@
 
       const tagEl = document.getElementById('slot-' + key + '-tag');
       if(tagEl && d.tag) tagEl.textContent = d.tag;
-      const titleEl = document.getElementById('slot-' + key + '-title');
-      if(titleEl && d.title) titleEl.textContent = d.title;
-      const descEl = document.getElementById('slot-' + key + '-desc');
-      if(descEl && d.desc) descEl.innerHTML = d.desc;
 
-      if(!slot) return;
-      const images = (d.images || []).filter(Boolean).map(p => base + p);
-      if(images.length === 0) return;
+      // 統一轉成 items 陣列格式（新舊資料都相容）
+      let items = d.items;
+      if(!items && d.images){
+        items = d.images.filter(Boolean).map((img,i)=>({
+          image: img,
+          title: i===0 ? (d.title||'') : '',
+          desc: i===0 ? (d.desc||'') : ''
+        }));
+      }
+      items = (items || []).filter(it => it && it.image);
 
-      buildCarousel(slot, images);
+      if(!slot || items.length === 0) return;
+
+      buildCarousel(slot, items, base);
     });
   }catch(e){ /* 沒有資料時，網站維持原本內建內容 */ }
 })();
 
-function buildCarousel(slot, images){
+function buildCarousel(slot, items, base){
   slot.style.position = 'relative';
   slot.style.overflow = 'hidden';
 
@@ -42,41 +48,48 @@ function buildCarousel(slot, images){
     c.classList.contains('service-photo-tile-content')
   );
 
-  const imgLayer = document.createElement('div');
-  imgLayer.className = 'sd-carousel-imgs';
-  imgLayer.style.cssText = 'position:absolute;inset:0;z-index:0;';
-
-  images.forEach((src, i)=>{
-    const img = document.createElement('img');
-    img.style.cssText = `position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease;background:transparent;`;
-    img.dataset.idx = i;
-    // 圖片讀取失敗時自動隱藏，避免破圖示蓋住文字內容
-    img.onerror = function(){
-      this.style.display = 'none';
-      this.dataset.broken = '1';
-    };
-    img.onload = function(){
-      if(this.dataset.idx == '0' && !this.dataset.broken){
-        this.style.opacity = 1;
-      }
-    };
-    img.src = src;
-    imgLayer.appendChild(img);
-  });
-  slot.insertBefore(imgLayer, slot.firstChild);
+  // 找出可以動態更新文字的元素（標題/描述），有真實照片時用該張圖的專屬文字覆蓋
+  const titleEl = document.getElementById(slot.id.replace('slot-','slot-') + '-title');
+  const descEl = document.getElementById(slot.id + '-desc');
 
   keepChildren.forEach(c => {
     c.style.position='relative';
     c.style.zIndex='2';
-    // 已有真實照片時，隱藏卡片原本內建的SVG裝飾線條圖，避免疊在照片上方
     c.querySelectorAll('svg').forEach(svg => { svg.style.display = 'none'; });
   });
 
-  if(images.length > 1){
+  const imgLayer = document.createElement('div');
+  imgLayer.className = 'sd-carousel-imgs';
+  imgLayer.style.cssText = 'position:absolute;inset:0;z-index:0;';
+
+  items.forEach((item, i)=>{
+    const img = document.createElement('img');
+    img.style.cssText = `position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease;background:transparent;`;
+    img.dataset.idx = i;
+    img.onerror = function(){ this.style.display = 'none'; this.dataset.broken = '1'; };
+    img.onload = function(){
+      if(this.dataset.idx == '0' && !this.dataset.broken){ this.style.opacity = 1; }
+    };
+    img.src = base + item.image;
+    imgLayer.appendChild(img);
+  });
+  slot.insertBefore(imgLayer, slot.firstChild);
+
+  function applyItemText(i){
+    const item = items[i];
+    if(!item) return;
+    const tEl = document.getElementById(slot.id + '-title');
+    const dEl = document.getElementById(slot.id + '-desc');
+    if(tEl && item.title) tEl.textContent = item.title;
+    if(dEl && item.desc) dEl.innerHTML = item.desc;
+  }
+  applyItemText(0);
+
+  if(items.length > 1){
     const dots = document.createElement('div');
     dots.className = 'sd-carousel-dots';
     dots.style.cssText = 'position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:3;';
-    images.forEach((_, i)=>{
+    items.forEach((_, i)=>{
       const dot = document.createElement('span');
       dot.style.cssText = `width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,${i===0?'0.95':'0.4'});cursor:pointer;transition:background .3s;`;
       dot.onclick = ()=> goTo(i);
@@ -102,9 +115,10 @@ function buildCarousel(slot, images){
     function goTo(i){
       if(imgs[current]) imgs[current].style.opacity = 0;
       if(dotEls[current]) dotEls[current].style.background = 'rgba(255,255,255,0.4)';
-      current = (i + images.length) % images.length;
+      current = (i + items.length) % items.length;
       if(imgs[current] && imgs[current].dataset.broken !== '1') imgs[current].style.opacity = 1;
       if(dotEls[current]) dotEls[current].style.background = 'rgba(255,255,255,0.95)';
+      applyItemText(current);
     }
 
     prevBtn.onclick = ()=> { goTo(current - 1); resetTimer(); };
