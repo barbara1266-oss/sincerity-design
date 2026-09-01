@@ -37,7 +37,8 @@
 })();
 
 function applyLogo(data, base){
-  const logoSlot = document.getElementById('site-logo');
+  // 用 class="logo" 選取（而非id），這樣首頁與6個服務頁的表頭都會自動套用，不用逐一修改每個頁面
+  const logoSlot = document.querySelector('.logo');
   if(!logoSlot) return;
 
   const getFirstImage = (key)=>{
