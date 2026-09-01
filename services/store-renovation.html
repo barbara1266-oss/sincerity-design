@@ -1,4 +1,4 @@
-<!-- SD-VERSION: 2026-09-01-v5-full-audit -->
+<!-- SD-VERSION: 2026-09-01-v6-rebuild-unified-component -->
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -75,16 +75,9 @@ footer a:hover{color:var(--klein);}
 .card-shine::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.12) 0%, transparent 45%),repeating-linear-gradient(115deg,transparent 0 40px, rgba(255,255,255,0.04) 40px 42px);}
 .card-shine::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transform:skewX(-20deg);animation:shine 3.5s ease-in-out infinite;}
 @keyframes shine{0%{left:-60%;}50%{left:130%;}100%{left:130%;}}
-.card-shine-content{position:absolute!important;bottom:14px!important;right:14px!important;left:14px!important;top:auto!important;color:#fff;z-index:2;text-align:right!important;}
-.card-shine-tag{font-size:11px;letter-spacing:0.05em;font-weight:600;margin-bottom:6px;display:flex!important;align-items:center;justify-content:flex-end!important;gap:6px;flex-wrap:wrap;word-break:break-word;width:100%!important;color:var(--klein-deep)!important;background:rgba(255,255,255,0.92)!important;padding:5px 12px!important;border-radius:14px!important;max-width:fit-content!important;margin-left:auto!important;opacity:1!important;}
-.card-shine-tag::before{display:none!important;}
-.card-shine-tag::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;}
-.card-shine-title{font-size:16px;font-weight:700;word-break:break-word;color:var(--klein-deep)!important;background:rgba(255,255,255,0.92)!important;padding:6px 14px!important;border-radius:2px!important;display:inline-block!important;max-width:fit-content!important;margin-left:auto!important;}
-.card-shine-corner{position:absolute!important;bottom:44px!important;right:14px!important;left:14px!important;top:auto!important;font-size:11px!important;font-weight:600;line-height:1.5;color:var(--klein-deep)!important;background:rgba(255,255,255,0.92)!important;padding:5px 12px!important;border-radius:14px!important;z-index:2;text-align:right!important;max-width:fit-content!important;margin-left:auto!important;}
 
 .card-blueprint{position:relative;overflow:hidden;background:linear-gradient(160deg,#F0EDE6 0%,#E8E2D4 100%);display:flex;align-items:center;justify-content:center;aspect-ratio:16/10;}
 .card-blueprint svg{width:70%;height:70%;opacity:0.9;}
-.card-blueprint-label{position:absolute!important;bottom:16px!important;right:16px!important;left:16px!important;top:auto!important;font-size:16px!important;color:var(--klein-deep)!important;background:rgba(255,255,255,0.92)!important;padding:6px 14px!important;border-radius:2px!important;font-weight:700;text-align:right!important;max-width:fit-content!important;margin-left:auto!important;}
 
 .card-particle{position:relative;overflow:hidden;background:radial-gradient(ellipse at top left, #1a3d8f 0%, #001F70 60%, #000f38 100%);}
 .card-particle .dot{position:absolute;border-radius:50%;background:var(--gold);opacity:0.6;filter:blur(1px);animation:floatDot 6s ease-in-out infinite;}
@@ -92,9 +85,6 @@ footer a:hover{color:var(--klein);}
 .card-particle .dot:nth-child(2){width:5px;height:5px;top:60%;left:75%;animation-delay:1.2s;background:#fff;}
 .card-particle .dot:nth-child(3){width:6px;height:6px;top:75%;left:30%;animation-delay:2.4s;}
 @keyframes floatDot{0%,100%{transform:translateY(0) scale(1);opacity:0.5;}50%{transform:translateY(-16px) scale(1.3);opacity:0.9;}}
-.card-particle-content{position:absolute!important;bottom:20px!important;right:20px!important;left:20px!important;top:auto!important;color:#fff;z-index:2;text-align:right!important;}
-.card-particle-title{font-size:16px;font-weight:700;word-break:break-word;color:var(--klein-deep)!important;background:rgba(255,255,255,0.92)!important;padding:6px 14px!important;border-radius:2px!important;display:inline-block!important;}
-.card-particle-tag{font-size:11px;letter-spacing:0.05em;font-weight:600;margin-top:6px;word-break:break-word;color:var(--klein-deep)!important;background:rgba(255,255,255,0.92)!important;padding:5px 12px!important;border-radius:14px!important;display:inline-block!important;}
 
 @media(max-width:768px){
   .navlinks{position:fixed;top:64px;left:0;right:0;background:var(--white);flex-direction:column;padding:24px 6vw;gap:20px;border-bottom:1px solid var(--line);display:none;z-index:99;}
@@ -103,6 +93,10 @@ footer a:hover{color:var(--klein);}
   .work-grid{grid-template-columns:1fr;}
   .advantage-grid{grid-template-columns:1fr;}
 }
+/* 統一圖片文字元件 v6 */
+.sd-photo-caption{position:absolute!important;bottom:14px!important;right:14px!important;left:14px!important;top:auto!important;z-index:5!important;display:flex!important;flex-direction:column!important;align-items:flex-end!important;gap:6px!important;}
+.sd-caption-tag{font-size:12px!important;font-weight:600!important;line-height:1.4!important;color:var(--klein-deep)!important;background:rgba(255,255,255,0.95)!important;padding:4px 12px!important;border-radius:14px!important;max-width:100%!important;text-align:right!important;word-break:break-word!important;display:inline-block!important;}
+.sd-caption-title{font-size:16px!important;font-weight:700!important;line-height:1.4!important;color:var(--klein-deep)!important;background:rgba(255,255,255,0.95)!important;padding:6px 14px!important;border-radius:2px!important;max-width:100%!important;text-align:right!important;word-break:break-word!important;display:inline-block!important;}
 </style>
 </head>
 <body>
@@ -133,23 +127,10 @@ footer a:hover{color:var(--klein);}
   <p class="block-text">很多店家以為「有質感」等於「要花大錢做硬裝工程」，但實際上，視覺設計往往比土木工程更能創造第一印象的記憶點。我們把硬裝成本控制在20%以下，把預算集中投入在招牌、陳列、視覺這些客人真正會注意到的地方。</p>
   <div class="banner-visual card-blueprint" id="slot-svc_store_banner">
     <svg viewBox="0 0 200 140"><rect x="20" y="30" width="160" height="90" fill="none" stroke="#002FA7" stroke-width="1"/><line x1="20" y1="30" x2="180" y2="120" stroke="#B8925A" stroke-width="0.5" stroke-dasharray="3,3"/><line x1="180" y1="30" x2="20" y2="120" stroke="#B8925A" stroke-width="0.5" stroke-dasharray="3,3"/><circle cx="100" cy="75" r="4" fill="#002FA7"/></svg>
-    <div class="card-blueprint-label" id="slot-svc_store_banner-title">門店輕裝修規劃示意</div>
-  </div>
-</section>
-
-<section class="section tight" style="background:var(--offwhite);">
-  <div class="block-title">實績示意</div>
-  <div class="work-grid">
-    <div class="work-card">
-      <div class="work-image card-shine"><div class="card-shine-content"><div class="card-shine-tag">桃園 · 店面微軟裝</div><div class="card-shine-title">自律放縱茶療所</div></div></div>
-      <div class="work-desc">外觀柱體招牌、無框畫作三件組、品牌文案與命名——低硬裝成本，質感翻倍的店面轉譯。</div>
-    </div>
-    <div class="work-card">
-      <div class="work-image card-blueprint"><svg viewBox="0 0 200 140"><rect x="20" y="30" width="160" height="90" fill="none" stroke="#002FA7" stroke-width="1"/><circle cx="100" cy="75" r="4" fill="#002FA7"/></svg></div>
-      <div class="work-desc">結構規劃與視覺設計並行，讓每一分預算都花在客人看得到的地方。</div>
+    <div class="sd-photo-caption">
+      <div class="sd-caption-title" id="slot-svc_store_banner-title">門店輕裝修規劃示意</div>
     </div>
   </div>
-  <p class="block-text" style="color:var(--gold);margin-top:20px;font-size:13px;">＊以上為現有案例示意，完整作品集整理中，將陸續更新更多實績案例。</p>
 </section>
 
 <section class="cta">

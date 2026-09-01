@@ -1,6 +1,6 @@
-// 晨諾創意 官網 · 共用輪播 + 內容讀取程式
+// 晨諾創意 官網 · 共用輪播 + 內容讀取程式 v6
+// 統一元件版：所有圖片文字都用 .sd-photo-caption 容器，固定右下角
 // 每個頁面在 <script> 裡先設定 window.SD_BASE（相對路徑前綴），再引入這支檔案
-// 資料相容：新格式 items:[{image,title,desc}]；舊格式 images:[...] + 共用title/desc 也會自動套用
 
 (async function(){
   const base = window.SD_BASE || '';
@@ -26,80 +26,29 @@
       }
       items = (items || []).filter(it => it && it.image);
 
-      if(!slot || items.length === 0) return;
+      if(!slot) return;
+      if(items.length === 0) return;
 
       buildCarousel(slot, items, base);
     });
 
-    // === Logo 專屬處理：不用輪播，直接顯示上傳的圖片，電腦版橫式／手機版圓形 ===
     applyLogo(data, base);
   }catch(e){ /* 沒有資料時，網站維持原本內建內容 */ }
 })();
-
-function applyLogo(data, base){
-  // 用 class="logo" 選取（而非id），這樣首頁與6個服務頁的表頭都會自動套用，不用逐一修改每個頁面
-  const logoSlot = document.querySelector('.logo');
-  if(!logoSlot) return;
-
-  const getFirstImage = (key)=>{
-    const d = data[key];
-    if(!d) return null;
-    if(d.items && d.items[0] && d.items[0].image) return d.items[0].image;
-    if(d.images && d.images[0]) return d.images[0];
-    return null;
-  };
-
-  const horizPath = getFirstImage('logo_horizontal');
-  const roundPath = getFirstImage('logo_round');
-  if(!horizPath && !roundPath) return; // 都沒上傳，維持原本文字Logo
-
-  logoSlot.innerHTML = '';
-  logoSlot.style.display = 'flex';
-  logoSlot.style.alignItems = 'center';
-
-  if(horizPath){
-    const imgH = document.createElement('img');
-    imgH.src = base + horizPath;
-    imgH.className = 'sd-logo-horizontal';
-    imgH.style.cssText = 'height:36px;width:auto;display:block;';
-    logoSlot.appendChild(imgH);
-  }
-  if(roundPath){
-    const imgR = document.createElement('img');
-    imgR.src = base + roundPath;
-    imgR.className = 'sd-logo-round';
-    imgR.style.cssText = 'height:36px;width:36px;border-radius:50%;object-fit:cover;display:none;';
-    logoSlot.appendChild(imgR);
-  }
-
-  // 響應式切換：768px以下手機優先顯示圓形版（若有上傳）
-  if(horizPath && roundPath){
-    const style = document.createElement('style');
-    style.textContent = `
-      @media(max-width:768px){
-        .sd-logo-horizontal{display:none!important;}
-        .sd-logo-round{display:block!important;}
-      }
-    `;
-    document.head.appendChild(style);
-  }
-}
 
 function buildCarousel(slot, items, base){
   slot.style.position = 'relative';
   slot.style.overflow = 'hidden';
 
-  // === 全站統一規則：只要這個位置有真實照片，就隱藏所有裝飾用的SVG線框與圓點 ===
-  // 不論卡片是哪一種樣式（card-shine / card-particle / card-blueprint / card-sketch），
-  // 也不論在首頁還是任何服務頁，一律套用同一條規則，避免漏掉任何一處。
+  // 統一規則：隱藏所有裝飾用SVG線框與圓點，只保留 .sd-photo-caption 文字元件
   slot.querySelectorAll('svg').forEach(svg => { svg.style.display = 'none'; });
   slot.querySelectorAll('.dot').forEach(dot => { dot.style.display = 'none'; });
 
-  // 把剩下的內容（文字區塊）全部抬到照片上層，確保看得到文字
-  Array.from(slot.children).forEach(c => {
-    c.style.position = 'relative';
-    c.style.zIndex = '2';
-  });
+  // .sd-photo-caption 是唯一保留在照片上層的文字容器
+  const caption = slot.querySelector('.sd-photo-caption');
+  if(caption){ caption.style.zIndex = '5'; }
+  // extend-inner 這種外層包裝，如果裡面只剩caption，也要保留顯示
+  slot.querySelectorAll('.extend-inner').forEach(el=>{ el.style.position='relative'; el.style.zIndex='4'; });
 
   const imgLayer = document.createElement('div');
   imgLayer.className = 'sd-carousel-imgs';
@@ -131,7 +80,7 @@ function buildCarousel(slot, items, base){
   if(items.length > 1){
     const dots = document.createElement('div');
     dots.className = 'sd-carousel-dots';
-    dots.style.cssText = 'position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:3;';
+    dots.style.cssText = 'position:absolute;bottom:14px;left:14px;display:flex;gap:6px;z-index:6;';
     items.forEach((_, i)=>{
       const dot = document.createElement('span');
       dot.style.cssText = `width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,${i===0?'0.95':'0.4'});cursor:pointer;transition:background .3s;`;
@@ -143,7 +92,7 @@ function buildCarousel(slot, items, base){
     const mkArrow = (dir, symbol)=>{
       const a = document.createElement('button');
       a.textContent = symbol;
-      a.style.cssText = `position:absolute;top:50%;${dir}:10px;transform:translateY(-50%);z-index:3;background:rgba(0,0,0,0.35);color:#fff;border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;line-height:1;`;
+      a.style.cssText = `position:absolute;top:50%;${dir}:10px;transform:translateY(-50%);z-index:6;background:rgba(0,0,0,0.35);color:#fff;border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;line-height:1;`;
       return a;
     };
     const prevBtn = mkArrow('left', '‹');
@@ -169,5 +118,52 @@ function buildCarousel(slot, items, base){
 
     let timer = setInterval(()=> goTo(current + 1), 4000);
     function resetTimer(){ clearInterval(timer); timer = setInterval(()=> goTo(current + 1), 4000); }
+  }
+}
+
+function applyLogo(data, base){
+  const logoSlot = document.querySelector('.logo');
+  if(!logoSlot) return;
+
+  const getFirstImage = (key)=>{
+    const d = data[key];
+    if(!d) return null;
+    if(d.items && d.items[0] && d.items[0].image) return d.items[0].image;
+    if(d.images && d.images[0]) return d.images[0];
+    return null;
+  };
+
+  const horizPath = getFirstImage('logo_horizontal');
+  const roundPath = getFirstImage('logo_round');
+  if(!horizPath && !roundPath) return;
+
+  logoSlot.innerHTML = '';
+  logoSlot.style.display = 'flex';
+  logoSlot.style.alignItems = 'center';
+
+  if(horizPath){
+    const imgH = document.createElement('img');
+    imgH.src = base + horizPath;
+    imgH.className = 'sd-logo-horizontal';
+    imgH.style.cssText = 'height:36px;width:auto;display:block;';
+    logoSlot.appendChild(imgH);
+  }
+  if(roundPath){
+    const imgR = document.createElement('img');
+    imgR.src = base + roundPath;
+    imgR.className = 'sd-logo-round';
+    imgR.style.cssText = 'height:36px;width:36px;border-radius:50%;object-fit:cover;display:none;';
+    logoSlot.appendChild(imgR);
+  }
+
+  if(horizPath && roundPath){
+    const style = document.createElement('style');
+    style.textContent = `
+      @media(max-width:768px){
+        .sd-logo-horizontal{display:none!important;}
+        .sd-logo-round{display:block!important;}
+      }
+    `;
+    document.head.appendChild(style);
   }
 }
