@@ -3,293 +3,482 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>晨諾創意｜網站後台管理</title>
-<meta name="robots" content="noindex, nofollow">
+<title>晨諾創意｜快閃店設計・門店輕裝修・POSM設計製作｜實體通路陳列規劃專家</title>
+<meta name="description" content="晨諾創意用10年以上實體通路視覺設計經驗，累積7,000+案例，陪你把模糊的想法變成具體方案。快閃店設計、門店輕裝修、POSM設計製作，全台接案。">
+<meta name="keywords" content="快閃店設計,快閃櫃規劃,門店輕裝修,微軟裝,POSM設計製作,通路陳列設計,展攤設計,通路識別設計,包裝設計,實體通路視覺設計,連鎖輔銷品管理,台北設計公司">
+<meta name="author" content="晨諾創意 Sincerity Design">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sinceritydesign.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="晨諾創意 Sincerity Design">
+<meta property="og:title" content="晨諾創意｜快閃店設計・門店輕裝修・POSM設計製作｜實體通路陳列規劃專家">
+<meta property="og:description" content="晨諾創意用10年以上實體通路視覺設計經驗，累積7,000+案例，陪你把模糊的想法變成具體方案。">
+<meta property="og:url" content="https://sinceritydesign.com/">
+<meta property="og:image" content="https://sinceritydesign.com/images/og-cover.jpg">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="晨諾創意｜快閃店設計・門店輕裝修・POSM設計製作">
+<meta name="twitter:description" content="10年以上實體通路視覺設計經驗，累積7,000+案例，全台接案。">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23002FA7'/%3E%3Ctext x='50' y='68' font-size='55' fill='white' text-anchor='middle' font-family='sans-serif' font-weight='900'%3E晨%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "晨諾創意設計有限公司",
+  "alternateName": "Sincerity Design",
+  "image": "https://sinceritydesign.com/images/og-cover.jpg",
+  "url": "https://sinceritydesign.com/",
+  "telephone": "+886-909-653-458",
+  "email": "barbara1266@sinceritydesign.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "信安街103巷10號4樓-7",
+    "addressLocality": "信義區",
+    "addressRegion": "台北市",
+    "postalCode": "110",
+    "addressCountry": "TW"
+  },
+  "areaServed": "TW",
+  "priceRange": "NT$25,000+",
+  "description": "晨諾創意深耕實體通路視覺設計10年以上，專精快閃店設計、快閃櫃規劃、門店輕裝修、POSM設計製作、通路識別與包裝設計、展攤設計、連鎖輔銷品一站式管理。",
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "快閃店設計／快閃櫃規劃" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "門店輕裝修／微軟裝" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "POSM設計製作" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "通路識別／包裝設計" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "展攤設計" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "連鎖輔銷品一站式管理" } }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
-:root{--klein:#002FA7;--klein-light:#EAF0FC;--gold:#B8925A;--ink:#1A1A1A;--mute:#6B6B6B;--line:#EAEAEA;--ok:#1B8A5A;--bad:#C0392B;}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+:root{--white:#FFFFFF;--offwhite:#FAFAFA;--klein:#002FA7;--klein-deep:#001F70;--klein-light:#EAF0FC;--gold:#B8925A;--sand:#C9B79C;--ink:#1A1A1A;--mute:#6B6B6B;--line:#EAEAEA;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Noto Sans TC',sans-serif;background:#FAFAFA;color:var(--ink);padding:0 0 80px;}
-header{background:var(--klein);color:#fff;padding:20px 5vw;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50;}
-header h1{font-size:18px;font-weight:700;}
-header .status{font-size:13px;opacity:0.85;}
-.wrap{padding:32px 5vw;max-width:1100px;margin:0 auto;}
-.login-box{max-width:440px;margin:80px auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:40px;}
-.login-box h2{font-size:20px;margin-bottom:12px;}
-.login-box p{font-size:14px;color:var(--mute);line-height:1.8;margin-bottom:20px;}
-.login-box input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:4px;font-size:14px;margin-bottom:16px;}
-.login-box button{width:100%;background:var(--klein);color:#fff;border:none;padding:14px;border-radius:4px;font-size:15px;font-weight:700;cursor:pointer;}
-.login-box button:hover{background:#001F70;}
-.login-box .steps{background:var(--klein-light);border-radius:6px;padding:16px 18px;font-size:13px;line-height:2;margin-bottom:20px;color:#333;}
-.login-box .steps b{color:var(--klein);}
-.section-block{background:#fff;border:1px solid var(--line);border-radius:8px;margin-bottom:24px;overflow:hidden;}
-.section-header{background:var(--klein-light);padding:16px 24px;font-weight:700;font-size:15px;color:var(--klein);}
-.item-row{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:24px;border-bottom:1px solid var(--line);align-items:start;}
-.item-row:last-child{border-bottom:none;}
-.thumb{width:180px;height:110px;border-radius:4px;background:#F0EDE6;position:relative;overflow:hidden;border:1px solid var(--line);}
-.thumb img{width:100%;height:100%;object-fit:cover;}
-.thumb-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.55);color:#fff;font-size:10px;padding:4px 6px;text-align:center;}
-.field-label{font-size:12px;color:var(--gold);font-weight:700;margin-bottom:6px;}
-.field-input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:4px;font-size:13.5px;margin-bottom:10px;font-family:inherit;}
-textarea.field-input{resize:vertical;min-height:52px;}
-.upload-btn{display:inline-flex;align-items:center;gap:6px;background:var(--white);border:1.5px solid var(--klein);color:var(--klein);padding:8px 16px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px;}
-.upload-btn:hover{background:var(--klein-light);}
-input[type=file]{display:none;}
-.recommend{font-size:11.5px;color:var(--mute);margin-top:6px;}
-.savebar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:16px 5vw;display:flex;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,0.06);z-index:60;}
-.savebar .msg{font-size:13px;color:var(--mute);}
-.save-btn{background:var(--klein);color:#fff;border:none;padding:14px 40px;border-radius:4px;font-size:15px;font-weight:700;cursor:pointer;}
-.save-btn:hover{background:#001F70;}
-.save-btn:disabled{background:#ccc;cursor:not-allowed;}
-.toast{position:fixed;top:80px;right:5vw;background:var(--ok);color:#fff;padding:14px 22px;border-radius:6px;font-size:14px;font-weight:500;z-index:100;box-shadow:0 8px 20px rgba(0,0,0,0.15);display:none;}
-.toast.bad{background:var(--bad);}
-.hidden{display:none!important;}
-@media(max-width:700px){.item-row{grid-template-columns:1fr;}.thumb{width:100%;height:160px;}}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--white);color:var(--ink);line-height:1.6;}
+a{color:inherit;}
+::selection{background:var(--klein);color:var(--white);}
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:22px 6vw;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.logo{font-weight:900;font-size:19px;letter-spacing:0.02em;text-decoration:none;color:var(--ink);}
+.logo span{color:var(--klein);}
+.navlinks{display:flex;gap:30px;font-size:14px;align-items:center;}
+.navlinks a{text-decoration:none;color:var(--ink);opacity:0.7;transition:opacity .25s;white-space:nowrap;}
+.navlinks a:hover,.navlinks a.active{opacity:1;color:var(--klein);}
+.nav-cta{background:var(--klein);color:var(--white)!important;padding:10px 22px;border-radius:2px;opacity:1!important;font-weight:500;}
+.nav-cta:hover{background:var(--klein-deep)!important;color:var(--white)!important;}
+.navtoggle{display:none;}
+.hero{padding:88px 6vw 100px;background:linear-gradient(180deg,var(--klein-light) 0%, var(--white) 100%);position:relative;overflow:hidden;}
+.hero-grid-layout{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center;}
+.hero-inner{max-width:640px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--klein);letter-spacing:0.1em;font-weight:700;margin-bottom:28px;}
+.hero-eyebrow::before{content:'';width:7px;height:7px;background:var(--klein);border-radius:50%;}
+.hero-title{font-size:clamp(34px,6vw,64px);font-weight:900;line-height:1.28;letter-spacing:-0.01em;}
+.hero-title .blue{color:var(--klein);}
+.hero-sub{margin-top:28px;font-size:17px;line-height:1.9;color:var(--mute);max-width:56ch;font-weight:400;}
+.hero-cta-row{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;}
+.btn-primary{background:var(--klein);color:var(--white);padding:16px 34px;text-decoration:none;font-size:14.5px;font-weight:700;border-radius:2px;transition:background .3s;}
+.btn-primary:hover{background:var(--klein-deep);}
+.btn-secondary{border:1.5px solid var(--ink);color:var(--ink);padding:15px 34px;text-decoration:none;font-size:14.5px;font-weight:700;border-radius:2px;transition:all .3s;}
+.btn-secondary:hover{background:var(--ink);color:var(--white);}
+.keyword-strip{display:flex;flex-wrap:wrap;gap:12px;margin-top:44px;}
+.keyword-pill{font-size:13px;color:var(--klein-deep);background:var(--white);border:1px solid var(--klein);padding:8px 16px;border-radius:20px;font-weight:500;}
+.section{padding:96px 6vw;}
+.section.tight{padding:64px 6vw;}
+.section-head{margin-bottom:56px;}
+.section-eyebrow{font-size:13px;color:var(--klein);letter-spacing:0.15em;font-weight:700;margin-bottom:14px;}
+.section-title{font-size:clamp(26px,3.2vw,40px);font-weight:900;letter-spacing:-0.01em;}
+.section-title .blue{color:var(--klein);}
+.section-desc{margin-top:18px;color:var(--mute);font-size:15.5px;max-width:60ch;line-height:1.8;}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+.service-card{background:var(--white);padding:44px 36px;text-decoration:none;color:var(--ink);transition:background .3s;display:block;}
+.service-card:hover{background:var(--klein-light);}
+.service-num{font-size:12px;color:var(--gold);letter-spacing:0.15em;font-weight:700;margin-bottom:20px;}
+.service-title{font-size:21px;font-weight:700;margin-bottom:12px;}
+.service-desc{font-size:14px;color:var(--mute);line-height:1.8;font-weight:400;}
+.service-arrow{margin-top:20px;font-size:13px;color:var(--klein);font-weight:500;}
+.service-photo-tile{position:relative;overflow:hidden;background:linear-gradient(135deg,#0A2E7A 0%,#002FA7 45%,#001F70 100%);display:flex;align-items:flex-end;padding:36px;text-decoration:none;min-height:100%;grid-column:span 2;}
+.service-photo-tile::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.14) 0%, transparent 45%),repeating-linear-gradient(115deg,transparent 0 40px, rgba(255,255,255,0.05) 40px 42px);}
+.service-photo-tile-content{position:relative;color:#fff;z-index:2;}
+.service-photo-tile-tag{font-size:11px;letter-spacing:0.15em;opacity:0.75;margin-bottom:8px;}
+.service-photo-tile-title{font-size:19px;font-weight:700;}
+.service-photo-tile-arrow{margin-top:14px;font-size:13px;color:#F0D9A8;font-weight:500;}
+.spec-strip{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:56px 0;}
+.spec{flex:1;min-width:140px;padding:28px 24px;border-right:1px solid var(--line);}
+.spec:last-child{border-right:none;}
+.spec-label{font-size:12px;color:var(--klein);letter-spacing:0.1em;font-weight:700;margin-bottom:8px;}
+.spec-value{font-size:28px;font-weight:900;}
+.diff-block{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.diff-text{font-size:16.5px;color:var(--mute);line-height:1.9;}
+.diff-text strong{color:var(--ink);font-weight:700;}
+.diff-list{display:flex;flex-direction:column;gap:20px;}
+.diff-item{display:flex;gap:16px;align-items:flex-start;}
+.diff-mark{width:28px;height:28px;background:var(--klein);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0;}
+.diff-item-text{font-size:15px;line-height:1.8;color:var(--ink);}
+.diff-item-text strong{font-weight:700;}
+.bonus-block{margin-top:56px;padding:32px 36px;background:var(--white);border:1px dashed var(--gold);border-radius:2px;}
+.bonus-title{font-size:18px;font-weight:700;margin-bottom:14px;}
+.bonus-text{font-size:14.5px;color:var(--mute);line-height:1.9;font-weight:400;}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+.work-card{background:var(--white);position:relative;transition:background .3s;}
+.work-card:hover{background:var(--offwhite);}
+.work-tag{display:inline-block;font-size:11px;color:var(--klein);font-weight:700;letter-spacing:0.08em;background:var(--klein-light);padding:5px 12px;border-radius:2px;margin-bottom:16px;}
+.work-title{font-size:22px;font-weight:700;margin-bottom:10px;}
+.work-desc{font-size:14px;color:var(--mute);line-height:1.8;font-weight:400;max-width:42ch;}
+.cta{padding:110px 6vw;text-align:center;background:var(--klein);color:var(--white);}
+.cta-title{font-size:clamp(28px,4vw,46px);font-weight:900;margin-bottom:20px;}
+.cta-title .gold{color:#F0D9A8;}
+.cta-sub{color:#C8D5F5;font-size:16px;margin-bottom:38px;font-weight:400;}
+.cta-btn{display:inline-block;padding:16px 42px;background:var(--white);color:var(--klein);text-decoration:none;font-size:14.5px;font-weight:700;border-radius:2px;transition:opacity .3s;}
+.cta-btn:hover{opacity:0.88;}
+footer{padding:48px 6vw;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:13px;color:var(--mute);border-top:1px solid var(--line);}
+footer .foot-links{display:flex;gap:24px;}
+footer a{text-decoration:none;color:var(--mute);}
+footer a:hover{color:var(--klein);}
+.card-shine{position:relative;overflow:hidden;background:linear-gradient(135deg,#0A2E7A 0%,#002FA7 45%,#001F70 100%);display:flex;align-items:flex-end;padding:28px;box-shadow:0 20px 40px -12px rgba(0,47,167,0.35);}
+.card-shine::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.12) 0%, transparent 45%),repeating-linear-gradient(115deg,transparent 0 40px, rgba(255,255,255,0.04) 40px 42px);}
+.card-shine::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transform:skewX(-20deg);animation:shine 3.5s ease-in-out infinite;}
+@keyframes shine{0%{left:-60%;}50%{left:130%;}100%{left:130%;}}
+.card-shine-content{position:relative;color:#fff;z-index:2;}
+.card-shine-tag{font-size:11px;letter-spacing:0.15em;opacity:0.7;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.card-shine-tag::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;}
+.card-shine-title{font-size:20px;font-weight:700;}
+.card-shine-corner{position:absolute;top:16px;right:16px;font-size:11px;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.12);padding:5px 12px;border-radius:20px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.15);z-index:2;}
+.card-blueprint{position:relative;overflow:hidden;background:linear-gradient(160deg,#F0EDE6 0%,#E8E2D4 100%);display:flex;align-items:center;justify-content:center;aspect-ratio:16/10;}
+.card-blueprint svg{width:70%;height:70%;opacity:0.9;}
+.card-blueprint-label{position:absolute;bottom:16px;left:16px;font-size:12px;color:var(--klein-deep);background:rgba(255,255,255,0.85);padding:6px 14px;border-radius:2px;font-weight:600;}
+.card-particle{position:relative;overflow:hidden;background:radial-gradient(ellipse at top left, #1a3d8f 0%, #001F70 60%, #000f38 100%);}
+.card-particle .dot{position:absolute;border-radius:50%;background:var(--gold);opacity:0.6;filter:blur(1px);animation:floatDot 6s ease-in-out infinite;}
+.card-particle .dot:nth-child(1){width:8px;height:8px;top:20%;left:15%;animation-delay:0s;}
+.card-particle .dot:nth-child(2){width:5px;height:5px;top:60%;left:75%;animation-delay:1.2s;background:#fff;}
+.card-particle .dot:nth-child(3){width:6px;height:6px;top:75%;left:30%;animation-delay:2.4s;}
+.card-particle .dot:nth-child(4){width:4px;height:4px;top:30%;left:60%;animation-delay:3.6s;background:#fff;}
+@keyframes floatDot{0%,100%{transform:translateY(0) scale(1);opacity:0.5;}50%{transform:translateY(-16px) scale(1.3);opacity:0.9;}}
+.card-particle-content{position:absolute;bottom:20px;left:20px;color:#fff;z-index:2;}
+.card-particle-title{font-size:18px;font-weight:700;}
+.card-particle-tag{font-size:11px;opacity:0.7;letter-spacing:0.1em;margin-top:4px;}
+.card-sketch{position:relative;overflow:hidden;background:var(--white);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;aspect-ratio:16/10;}
+.card-sketch svg{width:60%;stroke:var(--klein);stroke-width:1.2;fill:none;}
+.card-sketch .accent{stroke:var(--gold);}
+.card-sketch-tag{position:absolute;bottom:16px;left:16px;font-size:12px;color:var(--mute);letter-spacing:0.05em;}
+.hero-visual.card-shine{aspect-ratio:4/5;border-radius:4px;}
+.work-image{aspect-ratio:16/10;}
+.stat-band{display:grid;grid-template-columns:repeat(3,1fr);background:var(--klein);color:var(--white);margin:0 -6vw;padding:64px 6vw;}
+.stat-band-item{text-align:center;border-right:1px solid rgba(255,255,255,0.2);}
+.stat-band-item:last-child{border-right:none;}
+.stat-band-num{font-size:clamp(32px,4.5vw,52px);font-weight:900;}
+.stat-band-label{font-size:13.5px;margin-top:8px;color:#C8D5F5;font-weight:400;}
+.extend-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.extend-card{border-radius:6px;overflow:hidden;display:flex;flex-direction:column;background:var(--white);box-shadow:0 4px 14px rgba(0,0,0,0.05);}
+.extend-card.card-shine,.extend-card.card-particle{aspect-ratio:auto;min-height:150px;padding:22px;justify-content:flex-end;}
+.extend-card.card-blueprint,.extend-card.card-sketch{aspect-ratio:auto;min-height:150px;padding:22px;justify-content:center;position:relative;}
+.extend-card.card-blueprint svg,.extend-card.card-sketch svg{width:55%;height:55%;margin:0 auto;}
+.extend-card .card-shine-tag,.extend-card .card-particle-tag{font-size:10.5px;}
+.extend-card .card-shine-title,.extend-card .card-particle-title{font-size:16px;}
+.extend-card .card-blueprint-label{position:static;background:none;padding:0;text-align:center;margin-top:10px;font-size:13px;}
+.extend-card .card-sketch-tag{position:static;text-align:center;margin-top:10px;}
+.extend-desc-white{font-size:12px;color:rgba(255,255,255,0.85);line-height:1.7;margin-top:10px;position:relative;z-index:2;}
+.extend-desc-dark{font-size:12px;color:var(--mute);line-height:1.7;padding:0 20px 20px;text-align:left;}
+@media(max-width:900px){
+  .hero-grid-layout{grid-template-columns:1fr;}
+  .hero-visual{order:-1;aspect-ratio:16/9;}
+  .stat-band{grid-template-columns:1fr;gap:32px;}
+  .stat-band-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:24px;}
+  .stat-band-item:last-child{border-bottom:none;}
+  .diff-block{grid-template-columns:1fr;gap:36px;}
+  .service-grid{grid-template-columns:1fr;}
+  .service-photo-tile{grid-column:span 1;}
+  .extend-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .navlinks{position:fixed;top:64px;left:0;right:0;background:var(--white);flex-direction:column;padding:24px 6vw;gap:20px;border-bottom:1px solid var(--line);display:none;z-index:99;}
+  .navlinks.open{display:flex;}
+  .navtoggle{display:block;background:none;border:none;font-size:22px;cursor:pointer;}
+  .work-grid{grid-template-columns:1fr;}
+  .spec-strip{flex-direction:column;}
+  .spec{border-right:none;border-bottom:1px solid var(--line);}
+  .service-grid{grid-template-columns:1fr;}
+  .service-photo-tile{grid-column:span 1;}
+  .extend-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
-<div id="loginScreen" class="login-box">
-  <h2>晨諾創意｜網站後台</h2>
-  <p>第一次使用，需要先產生一組「授權碼」，之後這台電腦就會記住，不用每次都設定。</p>
-  <div class="steps">
-    <b>①</b> 打開 GitHub → 右上角頭像 → Settings<br>
-    <b>②</b> 左側最下面 Developer settings<br>
-    <b>③</b> Personal access tokens → Tokens (classic)<br>
-    <b>④</b> Generate new token (classic)<br>
-    <b>⑤</b> 勾選 <b>repo</b> 這一項，時間選 90 days 或 No expiration<br>
-    <b>⑥</b> 產生後複製那串代碼，貼到下面
+<nav>
+  <a href="index.html" class="logo">晨諾創意<span> Design</span></a>
+  <button class="navtoggle" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+  <div class="navlinks">
+    <a href="services/popup-store.html">快閃店設計</a>
+    <a href="services/store-renovation.html">門店輕裝修</a>
+    <a href="services/posm.html">POSM設計</a>
+    <a href="services/branding.html">通路識別</a>
+    <a href="services/booth.html">展攤設計</a>
+    <a href="services/chain-management.html">連鎖輔銷品管理</a>
+    <a href="contact.html" class="nav-cta">讓相遇，從這裡開始</a>
   </div>
-  <input type="password" id="tokenInput" placeholder="貼上你的授權碼 (ghp_ 開頭)">
-  <button onclick="doLogin()">登入後台</button>
-</div>
+</nav>
 
-<div id="adminScreen" class="hidden">
-  <header>
-    <h1>晨諾創意｜網站後台管理</h1>
-    <div class="status" id="statusText">已連線</div>
-  </header>
-  <div class="wrap" id="contentArea"></div>
-  <div class="savebar">
-    <div class="msg" id="saveMsg">修改完成後，記得按「儲存」才會真的更新到網站上</div>
-    <button class="save-btn" id="saveBtn" onclick="saveAll()">💾 儲存並更新網站</button>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<script>
-const REPO_OWNER = "barbara1266-oss";
-const REPO_NAME = "sincerity-design";
-const BRANCH = "main";
-const API = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
-
-let TOKEN = localStorage.getItem('sd_admin_token') || '';
-let siteData = null;
-let dataSha = null;
-let pendingFiles = {};
-
-const SLOTS = [
-  { group: "首頁 · Hero 主視覺", key: "hero", img: "1200×1500px", hasTag:true, hasTitle:true },
-  { group: "首頁 · 服務網格照片磚（補空白格）", key: "service_grid_photo", img: "800×1000px（直式較佳）", hasTag:true, hasTitle:true },
-  { group: "「這些，都是我們陪著走過的路」· 01", key: "work1", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "「這些，都是我們陪著走過的路」· 02", key: "work2", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "「這些，都是我們陪著走過的路」· 03", key: "work3", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "「這些，都是我們陪著走過的路」· 04", key: "work4", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "「空間有了樣子，故事還沒說完」· 01 全通路曝光", key: "extend_influencer", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "「空間有了樣子，故事還沒說完」· 02 結構執行", key: "extend_construction", img: "800×500px", hasTag:true, hasTitle:true, hasDesc:true },
-  { group: "「空間有了樣子，故事還沒說完」· 03 動線效率", key: "extend_efficiency", img: "800×500px", hasTitle:true, hasDesc:true },
-  { group: "「空間有了樣子，故事還沒說完」· 04 品牌延伸", key: "extend_online", img: "800×500px", hasTitle:true, hasDesc:true },
-  { group: "網站設定 · Logo", key: "logo_horizontal", img: "200×60px（電腦版橫式）" },
-  { group: "網站設定 · Logo", key: "logo_round", img: "80×80px（手機版圓形）" },
-  { group: "服務頁 · 快閃店設計 Banner", key: "svc_popup_banner", img: "1600×900px" },
-  { group: "服務頁 · 門店輕裝修 Banner", key: "svc_store_banner", img: "1600×900px" },
-  { group: "服務頁 · POSM設計製作 Banner", key: "svc_posm_banner", img: "1600×900px" },
-  { group: "服務頁 · 通路識別 Banner", key: "svc_branding_banner", img: "1600×900px" },
-  { group: "服務頁 · 展攤設計 Banner", key: "svc_booth_banner", img: "1600×900px" },
-  { group: "服務頁 · 連鎖輔銷品管理 Banner", key: "svc_chain_banner", img: "1600×900px" },
-];
-
-function toast(msg, bad){
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast' + (bad ? ' bad' : '');
-  t.style.display = 'block';
-  setTimeout(()=> t.style.display='none', 3500);
-}
-
-async function ghFetch(path, opts={}){
-  const res = await fetch(`${API}${path}`, {
-    ...opts,
-    headers: { 'Authorization': `Bearer ${TOKEN}`, 'Accept': 'application/vnd.github+json', ...(opts.headers||{}) }
-  });
-  if(!res.ok){
-    const t = await res.text();
-    throw new Error(`GitHub API 錯誤 (${res.status}): ${t.slice(0,200)}`);
-  }
-  return res.json();
-}
-
-async function doLogin(){
-  const input = document.getElementById('tokenInput').value.trim();
-  if(!input){ toast('請先貼上授權碼', true); return; }
-  TOKEN = input;
-  try{
-    await ghFetch('');
-    localStorage.setItem('sd_admin_token', TOKEN);
-    document.getElementById('loginScreen').classList.add('hidden');
-    document.getElementById('adminScreen').classList.remove('hidden');
-    await loadData();
-  }catch(e){
-    toast('授權碼無效或無法連線，請確認是否勾選了 repo 權限', true);
-  }
-}
-
-async function loadData(){
-  document.getElementById('statusText').textContent = '讀取中...';
-  try{
-    let fileData;
-    try{
-      fileData = await ghFetch(`/contents/content/site-data.json?ref=${BRANCH}`);
-      dataSha = fileData.sha;
-      siteData = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
-    }catch(e){
-      siteData = {};
-      dataSha = null;
-    }
-    renderForm();
-    document.getElementById('statusText').textContent = '已連線';
-  }catch(e){
-    toast('讀取資料失敗：' + e.message, true);
-  }
-}
-
-function renderForm(){
-  const area = document.getElementById('contentArea');
-  area.innerHTML = '';
-  let currentGroup = '';
-  let groupDiv = null;
-
-  SLOTS.forEach(slot=>{
-    if(slot.group !== currentGroup){
-      currentGroup = slot.group;
-      const block = document.createElement('div');
-      block.className = 'section-block';
-      block.innerHTML = `<div class="section-header">${slot.group}</div>`;
-      groupDiv = document.createElement('div');
-      block.appendChild(groupDiv);
-      area.appendChild(block);
-    }
-
-    const d = siteData[slot.key] || {};
-    const row = document.createElement('div');
-    row.className = 'item-row';
-
-    const existingImages = d.images || [];
-    const thumbsHtml = [0, 1, 2].map(i=>{
-      const path = existingImages[i];
-      const url = path ? `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${path}` : '';
-      return `
-        <div style="margin-bottom:14px;">
-          <div class="thumb" id="thumb-${slot.key}-${i}">${url ? `<img src="${url}">` : ''}</div>
-          <label class="upload-btn">📁 圖片 ${i+1}<input type="file" accept="image/*" onchange="handleFile(event,'${slot.key}',${i})"></label>
-        </div>`;
-    }).join('');
-
-    row.innerHTML = `
-      <div>
-        ${thumbsHtml}
-        <div class="recommend">建議尺寸：${slot.img}（最多3張，可輪播；只放1張則不會輪播）</div>
+<section class="hero">
+  <div class="hero-grid-layout">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">SINCERITY DESIGN · 10年以上實體通路視覺設計</div>
+      <h1 class="hero-title">每一次相遇，<br>都<span class="blue">願意讓人停下腳步</span></h1>
+      <p class="hero-sub">把想法轉化成畫面，是我們最熟悉的工作。<br>十年以上的現場經驗，陪你把每一次相遇，都變成客人記住的樣子。</p>
+      <p class="hero-sub" style="margin-top:12px;font-weight:700;color:var(--klein-deep);">一個窗口、一條龍整合服務——涵蓋從初期視覺企劃、結構設計、現場落地，到印刷執行與物流配送。</p>
+      <div class="hero-cta-row">
+        <a href="contact.html" class="btn-primary">讓相遇，從這裡開始</a>
+        <a href="#work" class="btn-secondary">看實績案例</a>
       </div>
-      <div>
-        ${slot.hasTag ? `<div class="field-label">標籤</div><input class="field-input" id="tag-${slot.key}" value="${(d.tag||'').replace(/"/g,'&quot;')}">` : ''}
-        ${slot.hasTitle ? `<div class="field-label">標題</div><input class="field-input" id="title-${slot.key}" value="${(d.title||'').replace(/"/g,'&quot;')}">` : ''}
-        ${slot.hasDesc ? `<div class="field-label">描述</div><textarea class="field-input" id="desc-${slot.key}">${d.desc||''}</textarea>` : ''}
-      </div>`;
-    groupDiv.appendChild(row);
-  });
-}
+      <div class="keyword-strip">
+        <span class="keyword-pill">快閃店設計</span>
+        <span class="keyword-pill">快閃櫃規劃</span>
+        <span class="keyword-pill">門店輕裝修</span>
+        <span class="keyword-pill">微軟裝</span>
+        <span class="keyword-pill">POSM設計製作</span>
+        <span class="keyword-pill">通路陳列</span>
+      </div>
+    </div>
+    <div class="hero-visual card-shine" id="slot-hero">
+      <span class="card-shine-corner">FEATURED PROJECT</span>
+      <div class="card-shine-content">
+        <div class="card-shine-tag" id="slot-hero-tag">桃園 · 店面微軟裝</div>
+        <div class="card-shine-title" id="slot-hero-title">自律放縱茶療所</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-function handleFile(evt, key, idx){
-  const file = evt.target.files[0];
-  if(!file) return;
-  pendingFiles[`${key}__${idx}`] = { key, idx, file };
-  const reader = new FileReader();
-  reader.onload = e=>{
-    document.getElementById(`thumb-${key}-${idx}`).innerHTML = `<img src="${e.target.result}"><div class="thumb-label">尚未儲存</div>`;
-  };
-  reader.readAsDataURL(file);
-}
+<section class="section" id="services">
+  <div class="section-head">
+    <div class="section-eyebrow">CORE SERVICES</div>
+    <h2 class="section-title">核心服務</h2>
+    <div class="section-desc">說出你想邁出的那一步，<br>我們幫你把路鋪好。</div>
+  </div>
+  <div class="service-grid">
+    <a href="services/popup-store.html" class="service-card">
+      <div class="service-num">01 · 空間類</div>
+      <h3 class="service-title">快閃店設計／快閃櫃規劃</h3>
+      <div class="service-desc">打造具備高社群傳播力與品牌體驗的快閃空間——<br>讓每一次曝光，都成為顧客主動分享的理由。</div>
+      <div class="service-arrow">查看服務內容 →</div>
+    </a>
+    <a href="services/store-renovation.html" class="service-card">
+      <div class="service-num">02 · 空間類</div>
+      <h3 class="service-title">門店輕裝修／微軟裝</h3>
+      <div class="service-desc">不破壞既有主結構，用輕裝修快速建立專業一致的品牌形象——<br>硬裝控制在 20% 以下，把預算留給真正打動人的細節。</div>
+      <div class="service-arrow">查看服務內容 →</div>
+    </a>
+    <a href="services/posm.html" class="service-card">
+      <div class="service-num">03 · 陳列類</div>
+      <h3 class="service-title">POSM 設計製作</h3>
+      <div class="service-desc">針對快消品進駐不同風格的連鎖通路，設計兼具強大吸睛力、又能適應各門店規範的陳列道具——<br>讓商品在架上，先贏一步。</div>
+      <div class="service-arrow">查看服務內容 →</div>
+    </a>
+    <a href="services/branding.html" class="service-card">
+      <div class="service-num">04 · 品牌類</div>
+      <h3 class="service-title">通路識別／包裝設計</h3>
+      <div class="service-desc">在通路現場，第一眼就被認出——<br>延續原有的商標、包裝、放大視覺系統，讓辨識度不用靠解釋。</div>
+      <div class="service-arrow">查看服務內容 →</div>
+    </a>
+    <a href="services/booth.html" class="service-card">
+      <div class="service-num">05 · 活動類</div>
+      <h3 class="service-title">展攤設計</h3>
+      <div class="service-desc">一場活動，可能是客人認識你的唯一機會——<br>把攤位，變成會讓人記住你的地方。</div>
+      <div class="service-arrow">查看服務內容 →</div>
+    </a>
+    <a href="services/chain-management.html" class="service-card">
+      <div class="service-num">06 · 連鎖類</div>
+      <h3 class="service-title">連鎖輔銷品一站式管理</h3>
+      <div class="service-desc">專為 5 家以上連鎖品牌設計，將設計需求、印刷執行與物流配送整合，由單一窗口統一控管品質與多點配送痛點——<br>每一次交辦，都能放心。</div>
+      <div class="service-arrow">查看服務內容 →</div>
+    </a>
+    <a href="#work" class="service-photo-tile" id="slot-service_grid_photo">
+      <div class="service-photo-tile-content">
+        <div class="service-photo-tile-tag" id="slot-service_grid_photo-tag">MORE PROJECTS</div>
+        <div class="service-photo-tile-title" id="slot-service_grid_photo-title">看更多實績案例</div>
+        <div class="service-photo-tile-arrow">往下看更多 ↓</div>
+      </div>
+    </a>
+  </div>
+</section>
 
-function fileToBase64(file){
-  return new Promise((resolve,reject)=>{
-    const reader = new FileReader();
-    reader.onload = ()=> resolve(reader.result.split(',')[1]);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
+<section class="section" style="background:var(--offwhite);">
+  <div class="section-head">
+    <div class="section-eyebrow">WHY SINCERITY DESIGN</div>
+    <h2 class="section-title">你不用先想清楚，才能來找我們</h2>
+  </div>
+  <div class="diff-block">
+    <div class="diff-text">
+      一個模糊的畫面、幾張隨手拍的照片，或是一句「就是想要有質感一點」——<br>
+      這樣，就足夠讓我們開始。<br><br>
+      把想像落地成真實的樣子，是我們最熟悉的路。<br>
+      你只需要，帶著方向來。<br><br>
+      很多客戶合作到後來才發現，最珍貴的不是設計做得多快，而是——<br>
+      從此以後，遇到類似的事，<strong>第一個想到的人是我們</strong>。
+    </div>
+    <div class="diff-list">
+      <div class="diff-item"><div class="diff-mark">1</div><div class="diff-item-text">一句方向，成形為打動人的成果——<br>你負責感覺，我們負責落地。</div></div>
+      <div class="diff-item"><div class="diff-mark">2</div><div class="diff-item-text">手上的素材，不必完美——<br>讓它更有說服力，本來就是我們的專業。</div></div>
+      <div class="diff-item"><div class="diff-mark">3</div><div class="diff-item-text">每一分預算，都花在看得見的地方——<br>硬裝控制在 <strong>20%</strong> 以下，把資源留給真正重要的細節。</div></div>
+      <div class="diff-item"><div class="diff-mark">4</div><div class="diff-item-text">從想法到現場，一路陪你走到底——<br><strong>多窗口簡化成單一窗口</strong>，把心力留給真正的決策。</div></div>
+    </div>
+  </div>
+  <div class="bonus-block">
+    <div class="bonus-title">我們擁有產業鏈整合能力</div>
+    <div class="bonus-text">設計之後的每一步，我們都已經備好了同行的夥伴。<br>現場執行、線上曝光、維運、印刷後製、禮贈品——<br>你不用重新開口，我們早已在路上。</div>
+  </div>
+  <div class="spec-strip">
+    <div class="spec"><div class="spec-label">EXPERIENCE</div><div class="spec-value">10 年+</div></div>
+    <div class="spec"><div class="spec-label">PROJECTS</div><div class="spec-value">7,000+</div></div>
+    <div class="spec"><div class="spec-label">硬裝成本控制</div><div class="spec-value">≤20%</div></div>
+    <div class="spec"><div class="spec-label">SERVICE AREA</div><div class="spec-value">全台接案</div></div>
+  </div>
+</section>
 
-async function saveAll(){
-  const btn = document.getElementById('saveBtn');
-  btn.disabled = true;
-  btn.textContent = '儲存中，請稍候...';
-  try{
-    for(const pendKey of Object.keys(pendingFiles)){
-      const { key, idx, file } = pendingFiles[pendKey];
-      const ext = file.name.split('.').pop();
-      const path = `images/uploads/${key}_${idx}.${ext}`;
-      const base64 = await fileToBase64(file);
+<section class="section" style="background:linear-gradient(160deg,#F0EDE6,#E8E2D4);">
+  <div class="section-head">
+    <div class="section-eyebrow">延伸服務 · 產業鏈夥伴</div>
+    <h2 class="section-title">空間有了樣子，<br><span class="blue">故事還沒說完</span></h2>
+    <div class="section-desc">設計只是起點。我們攜手業界口碑深厚的各領域夥伴，陪你把品牌的每一步，走得更穩。</div>
+  </div>
+  <div class="extend-grid">
+    <div class="extend-card card-shine" id="slot-extend_influencer">
+      <div class="extend-inner card-shine-content">
+        <div class="card-shine-tag" id="slot-extend_influencer-tag">全通路曝光</div>
+        <div class="card-shine-title" id="slot-extend_influencer-title">網紅／部落客行銷</div>
+      </div>
+      <div class="extend-desc-white" id="slot-extend_influencer-desc">單靠線上，或只靠線下，都不夠讓人被記住了。我們攜手熟悉全通路操作的行銷夥伴，讓你的品牌，線上線下都被看見。</div>
+    </div>
+    <div class="extend-card card-particle" id="slot-extend_construction">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="extend-inner card-particle-content">
+        <div class="card-particle-tag" id="slot-extend_construction-tag">結構執行</div>
+        <div class="card-particle-title" id="slot-extend_construction-title">商空木工／結構輸出</div>
+      </div>
+      <div class="extend-desc-white" id="slot-extend_construction-desc">好設計，需要有人穩穩把它做出來。我們攜手熟悉商空木工與結構施作的夥伴，把圖紙上的想法，變成摸得到的現場。</div>
+    </div>
+    <div class="extend-card card-blueprint" id="slot-extend_efficiency">
+      <div class="extend-inner">
+        <svg viewBox="0 0 200 140">
+          <rect x="20" y="30" width="160" height="90" fill="none" stroke="#002FA7" stroke-width="1"/>
+          <circle cx="70" cy="60" r="12" fill="none" stroke="#002FA7" stroke-width="0.8"/>
+          <circle cx="130" cy="90" r="8" fill="none" stroke="#B8925A" stroke-width="0.8"/>
+          <line x1="82" y1="60" x2="122" y2="90" stroke="#B8925A" stroke-width="0.5" stroke-dasharray="3,3"/>
+        </svg>
+        <div class="card-blueprint-label" id="slot-extend_efficiency-title">動線與流程優化</div>
+      </div>
+      <div class="extend-desc-dark" id="slot-extend_efficiency-desc">人力成本，是連鎖經營最現實的壓力。我們攜手熟悉動線規劃、送餐機器人、產線流程優化的夥伴，讓你把人力，留在真正需要人的地方。</div>
+    </div>
+    <div class="extend-card card-sketch" id="slot-extend_online">
+      <div class="extend-inner">
+        <svg viewBox="0 0 100 60">
+          <rect x="15" y="15" width="70" height="35"/>
+          <path class="accent" d="M15,30 L85,30 M40,15 L40,50 M60,15 L60,50"/>
+        </svg>
+        <div class="card-sketch-tag" id="slot-extend_online-title">品牌延伸</div>
+      </div>
+      <div class="extend-desc-dark" id="slot-extend_online-desc">我們攜手業界口碑深厚的線上行銷夥伴，讓你的品牌從實體延伸到線上，持續被看見。</div>
+    </div>
+  </div>
+</section>
 
-      let existingSha = null;
-      try{
-        const existing = await ghFetch(`/contents/${path}?ref=${BRANCH}`);
-        existingSha = existing.sha;
-      }catch(e){}
+<section class="section" id="work">
+  <div class="section-head">
+    <div class="section-eyebrow">SELECTED WORK</div>
+    <h2 class="section-title">這些，<br>都是我們陪著走過的路</h2>
+    <div class="section-desc" style="color:var(--gold);">＊以下為現有案例示意，完整作品集整理中，將陸續更新更多實績案例。</div>
+  </div>
+  <div class="work-grid">
+    <div class="work-card">
+      <div class="work-image card-shine" style="border-radius:0;" id="slot-work1">
+        <span class="card-shine-corner" id="slot-work1-tag">桃園 · 店面微軟裝</span>
+        <div class="card-shine-content"><div class="card-shine-title" id="slot-work1-title">自律放縱茶療所</div></div>
+      </div>
+      <div style="padding:28px 32px 8px;">
+        <span class="work-tag">門店輕裝修 · 通路識別</span>
+        <div class="work-desc" id="slot-work1-desc">外觀柱體招牌、無框畫作三件組、品牌文案與命名——<br>把「手搖飲店」說成了一個會讓人想推門進去的地方。</div>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="work-image card-particle" style="border-radius:0;" id="slot-work2">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="card-particle-content">
+          <div class="card-particle-tag" id="slot-work2-tag">STORE RENOVATION</div>
+          <div class="card-particle-title" id="slot-work2-title">鮮番咖哩輕食餐盒</div>
+        </div>
+      </div>
+      <div style="padding:28px 32px 8px;">
+        <span class="work-tag">門店輕裝修</span>
+        <div class="work-desc" id="slot-work2-desc">餐盒視覺與陳列規劃，結構化動線設計——<br>短短幾週的曝光，也能讓人記住品牌的樣子。</div>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="work-image card-blueprint" style="border-radius:0;" id="slot-work3">
+        <svg viewBox="0 0 200 140">
+          <rect x="20" y="30" width="160" height="90" fill="none" stroke="#002FA7" stroke-width="1"/>
+          <line x1="20" y1="30" x2="180" y2="120" stroke="#B8925A" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <line x1="180" y1="30" x2="20" y2="120" stroke="#B8925A" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <circle cx="100" cy="75" r="4" fill="#002FA7"/>
+          <rect x="60" y="50" width="30" height="50" fill="none" stroke="#002FA7" stroke-width="0.8"/>
+          <rect x="110" y="60" width="40" height="40" fill="none" stroke="#002FA7" stroke-width="0.8"/>
+        </svg>
+        <div class="card-blueprint-label" id="slot-work3-title">結構白樣圖</div>
+      </div>
+      <div style="padding:28px 32px 8px;">
+        <span class="work-tag">POSM設計製作</span>
+        <div class="work-desc" id="slot-work3-desc">W150×D100×H90-160cm 日系美學展示架，結構白樣圖精準到位——<br>讓商品在架上，先贏得第一眼。</div>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="work-image card-particle" style="border-radius:0;background:radial-gradient(ellipse at top left,#1a3d8f,#001F70 60%,#000f38);" id="slot-work4">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="card-particle-content">
+          <div class="card-particle-tag" id="slot-work4-tag">FLAGSHIP EVENT · 大型活動／公部門合作案</div>
+          <div class="card-particle-title" id="slot-work4-title">TWCAC 世界餐飲藝術挑戰賽</div>
+        </div>
+      </div>
+      <div style="padding:28px 32px 8px;">
+        <span class="work-tag">展攤設計 · 活動品牌</span>
+        <div class="work-desc" id="slot-work4-desc">深藍×金色主視覺系統，橫跨主視覺、邀請卡、看板到證書——<br>把一場賽事，變成一段被記住的體驗。</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      await ghFetch(`/contents/${path}`, {
-        method: 'PUT',
-        body: JSON.stringify({ message: `更新圖片：${key} #${idx+1}`, content: base64, branch: BRANCH, ...(existingSha ? {sha: existingSha} : {}) })
-      });
+<section class="section tight" style="background:var(--klein-light);text-align:center;">
+  <div style="max-width:720px;margin:0 auto;">
+    <div style="font-size:40px;color:var(--gold);line-height:1;margin-bottom:16px;">"</div>
+    <div style="font-size:19px;line-height:1.9;color:var(--ink);font-weight:500;">晨諾創意的一個窗口整合服務，為我們省下了大量的跨部門溝通時間，從設計到現場落地完美呈現了品牌質感！</div>
+    <div style="margin-top:20px;font-size:13px;color:var(--mute);letter-spacing:0.05em;">— 長期合作客戶回饋</div>
+  </div>
+</section>
 
-      siteData[key] = siteData[key] || {};
-      siteData[key].images = siteData[key].images || [];
-      siteData[key].images[idx] = path;
-    }
-    pendingFiles = {};
+<section class="section tight" style="padding-top:0;padding-bottom:0;">
+  <div class="stat-band">
+    <div class="stat-band-item"><div class="stat-band-num">7,000+</div><div class="stat-band-label">累積完成案例</div></div>
+    <div class="stat-band-item"><div class="stat-band-num">40+</div><div class="stat-band-label">長期合作品牌客戶</div></div>
+    <div class="stat-band-item"><div class="stat-band-num">≤20%</div><div class="stat-band-label">平均硬裝成本控制</div></div>
+  </div>
+</section>
 
-    SLOTS.forEach(slot=>{
-      siteData[slot.key] = siteData[slot.key] || {};
-      if(slot.hasTag) siteData[slot.key].tag = document.getElementById(`tag-${slot.key}`).value;
-      if(slot.hasTitle) siteData[slot.key].title = document.getElementById(`title-${slot.key}`).value;
-      if(slot.hasDesc) siteData[slot.key].desc = document.getElementById(`desc-${slot.key}`).value;
-    });
+<section class="cta">
+  <div class="cta-title">你的下一步，<br><span class="gold">我們已經準備好了</span>。</div>
+  <p class="cta-sub">讓我們創造一次美好的相遇——<br>說出你的靈光一閃，剩下的路，我們陪你走。</p>
+  <a href="contact.html" class="cta-btn">讓相遇，從這裡開始</a>
+</section>
 
-    const jsonStr = JSON.stringify(siteData, null, 2);
-    const jsonBase64 = btoa(unescape(encodeURIComponent(jsonStr)));
+<footer>
+  <div>晨諾創意設計有限公司 Sincerity Design ｜統編 55030274</div>
+  <div class="foot-links">
+    <a href="tel:0909653458">0909-653-458</a>
+    <a href="mailto:barbara1266@sinceritydesign.com">barbara1266@sinceritydesign.com</a>
+    <span>110台北市信義區信安街103巷10號4樓-7</span>
+  </div>
+</footer>
 
-    const result = await ghFetch(`/contents/content/site-data.json`, {
-      method: 'PUT',
-      body: JSON.stringify({ message: '後台更新網站內容', content: jsonBase64, branch: BRANCH, ...(dataSha ? {sha: dataSha} : {}) })
-    });
-    dataSha = result.content.sha;
-
-    toast('✅ 已成功儲存！網站約 1-2 分鐘後會更新');
-    renderForm();
-  }catch(e){
-    toast('儲存失敗：' + e.message, true);
-  }finally{
-    btn.disabled = false;
-    btn.textContent = '💾 儲存並更新網站';
-  }
-}
-
-if(TOKEN){
-  document.getElementById('loginScreen').classList.add('hidden');
-  document.getElementById('adminScreen').classList.remove('hidden');
-  loadData();
-}
-</script>
+<script>window.SD_BASE = '';</script>
+<script src="js/site-loader.js"></script>
 
 </body>
 </html>
