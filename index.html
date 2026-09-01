@@ -201,6 +201,14 @@ footer a:hover{color:var(--klein);}
   .service-grid{grid-template-columns:1fr;}
   .service-photo-tile{grid-column:span 1;}
   .extend-grid{grid-template-columns:1fr;}
+}/* 全站永久移除所有裝飾用SVG線框與圓點，不論是否已上傳照片，只保留文字與背景色 */
+.card-blueprint svg,
+.card-sketch svg,
+.card-particle .dot,
+.extend-card svg,
+.extend-card .dot,
+.service-photo-tile svg{
+  display:none !important;
 }
 </style>
 </head>
