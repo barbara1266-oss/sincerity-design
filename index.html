@@ -168,8 +168,7 @@ footer a:hover{color:var(--klein);}
 .extend-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
 .extend-card{border-radius:6px;overflow:hidden;display:flex;flex-direction:column;background:var(--white);box-shadow:0 4px 14px rgba(0,0,0,0.05);}
 .extend-photo{position:relative;overflow:hidden;aspect-ratio:9/16;}
-.extend-photo.card-blueprint,.extend-photo.card-sketch{display:flex;align-items:center;justify-content:center;}
-.extend-photo.card-blueprint svg,.extend-photo.card-sketch svg{width:55%;height:55%;margin:0 auto;}
+.extend-photo.card-blueprint svg,.extend-photo.card-sketch svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:55%;height:55%;}
 .extend-card .sd-caption-tag{font-size:10.5px!important;padding:3px 10px!important;}
 .extend-card .sd-caption-title{font-size:14px!important;padding:5px 12px!important;}
 .extend-desc{font-size:12px;color:var(--mute);line-height:1.7;padding:16px 20px 20px;text-align:left;}
@@ -348,10 +347,8 @@ footer a:hover{color:var(--klein);}
   <div class="extend-grid">
     <div class="extend-card">
       <div class="extend-photo card-shine" id="slot-extend_influencer">
-        <div class="extend-inner">
-          <div class="sd-photo-caption">
-            <div class="sd-caption-title" id="slot-extend_influencer-title">網紅／部落客行銷</div>
-          </div>
+        <div class="sd-photo-caption">
+          <div class="sd-caption-title" id="slot-extend_influencer-title">網紅／部落客行銷</div>
         </div>
       </div>
       <div class="extend-desc" id="slot-extend_influencer-desc">單靠線上，或只靠線下，都不夠讓人被記住了。我們攜手熟悉全通路操作的行銷夥伴，讓你的品牌，線上線下都被看見。</div>
@@ -359,10 +356,8 @@ footer a:hover{color:var(--klein);}
     <div class="extend-card">
       <div class="extend-photo card-particle" id="slot-extend_construction">
         <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        <div class="extend-inner">
-          <div class="sd-photo-caption">
-            <div class="sd-caption-title" id="slot-extend_construction-title">商空木工／結構輸出</div>
-          </div>
+        <div class="sd-photo-caption">
+          <div class="sd-caption-title" id="slot-extend_construction-title">商空木工／結構輸出</div>
         </div>
       </div>
       <div class="extend-desc" id="slot-extend_construction-desc">好設計，需要有人穩穩把它做出來。我們攜手熟悉商空木工與結構施作的夥伴，把圖紙上的想法，變成摸得到的現場。</div>
