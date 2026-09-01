@@ -45,16 +45,32 @@ function buildCarousel(slot, images){
   const imgLayer = document.createElement('div');
   imgLayer.className = 'sd-carousel-imgs';
   imgLayer.style.cssText = 'position:absolute;inset:0;z-index:0;';
+
   images.forEach((src, i)=>{
     const img = document.createElement('img');
-    img.src = src;
-    img.style.cssText = `position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:${i===0?1:0};transition:opacity .6s ease;`;
+    img.style.cssText = `position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease;background:transparent;`;
     img.dataset.idx = i;
+    // 圖片讀取失敗時自動隱藏，避免破圖示蓋住文字內容
+    img.onerror = function(){
+      this.style.display = 'none';
+      this.dataset.broken = '1';
+    };
+    img.onload = function(){
+      if(this.dataset.idx == '0' && !this.dataset.broken){
+        this.style.opacity = 1;
+      }
+    };
+    img.src = src;
     imgLayer.appendChild(img);
   });
   slot.insertBefore(imgLayer, slot.firstChild);
 
-  keepChildren.forEach(c => { c.style.position='relative'; c.style.zIndex='2'; });
+  keepChildren.forEach(c => {
+    c.style.position='relative';
+    c.style.zIndex='2';
+    // 已有真實照片時，隱藏卡片原本內建的SVG裝飾線條圖，避免疊在照片上方
+    c.querySelectorAll('svg').forEach(svg => { svg.style.display = 'none'; });
+  });
 
   if(images.length > 1){
     const dots = document.createElement('div');
@@ -84,11 +100,11 @@ function buildCarousel(slot, images){
     const dotEls = dots.querySelectorAll('span');
 
     function goTo(i){
-      imgs[current].style.opacity = 0;
-      dotEls[current].style.background = 'rgba(255,255,255,0.4)';
+      if(imgs[current]) imgs[current].style.opacity = 0;
+      if(dotEls[current]) dotEls[current].style.background = 'rgba(255,255,255,0.4)';
       current = (i + images.length) % images.length;
-      imgs[current].style.opacity = 1;
-      dotEls[current].style.background = 'rgba(255,255,255,0.95)';
+      if(imgs[current] && imgs[current].dataset.broken !== '1') imgs[current].style.opacity = 1;
+      if(dotEls[current]) dotEls[current].style.background = 'rgba(255,255,255,0.95)';
     }
 
     prevBtn.onclick = ()=> { goTo(current - 1); resetTimer(); };
