@@ -30,7 +30,13 @@
   },
   "logo_horizontal": {},
   "logo_round": {},
-  "svc_popup_banner": {},
+  "svc_popup_banner": {
+    "images": [
+      "images/uploads/svc_popup_banner_0.jpg",
+      "images/uploads/svc_popup_banner_1.jpg",
+      "images/uploads/svc_popup_banner_2.jpg"
+    ]
+  },
   "svc_store_banner": {
     "images": [
       "images/uploads/svc_store_banner_0.jpeg",
