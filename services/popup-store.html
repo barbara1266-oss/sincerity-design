@@ -8,40 +8,13 @@
 <meta name="keywords" content="快閃店設計,快閃櫃規劃,快閃空間設計,pop-up store設計,期間限定店設計">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://sinceritydesign.com/services/popup-store.html">
-
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="晨諾創意 Sincerity Design">
 <meta property="og:title" content="快閃店設計・快閃櫃規劃｜短期曝光空間設計｜晨諾創意">
 <meta property="og:description" content="想在短時間內建立品牌記憶點？晨諾創意提供快閃店設計、快閃櫃規劃服務，用結構化陳列動線設計，讓短暫曝光發揮最大效益，全台接案。">
 <meta property="og:url" content="https://sinceritydesign.com/services/popup-store.html">
 <meta property="og:locale" content="zh_TW">
-
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23002FA7'/%3E%3Ctext x='50' y='68' font-size='55' fill='white' text-anchor='middle' font-family='sans-serif' font-weight='900'%3E晨%3C/text%3E%3C/svg%3E">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "快閃店設計／快閃櫃規劃",
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "晨諾創意設計有限公司",
-    "telephone": "+886-909-653-458",
-    "email": "barbara1266@sinceritydesign.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "信安街103巷10號4樓-7",
-      "addressLocality": "信義區",
-      "addressRegion": "台北市",
-      "postalCode": "110",
-      "addressCountry": "TW"
-    }
-  },
-  "areaServed": "TW",
-  "description": "想在短時間內建立品牌記憶點？晨諾創意提供快閃店設計、快閃櫃規劃服務，用結構化陳列動線設計，讓短暫曝光發揮最大效益，全台接案。"
-}
-</script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
@@ -80,6 +53,11 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .closing-block{background:var(--offwhite);padding:48px 40px;border-left:3px solid var(--gold);margin-top:56px;}
 .closing-title{font-size:19px;font-weight:700;margin-bottom:12px;}
 .closing-text{font-size:15px;color:var(--mute);line-height:1.85;}
+.advantage-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:40px;}
+.advantage-card{background:var(--white);padding:36px 32px;}
+.advantage-icon{width:36px;height:36px;background:var(--klein);border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;margin-bottom:20px;}
+.advantage-title{font-size:18px;font-weight:700;margin-bottom:10px;}
+.advantage-desc{font-size:14.5px;color:var(--mute);line-height:1.8;}
 .cta{padding:100px 6vw;text-align:center;background:var(--klein);color:var(--white);}
 .cta-title{font-size:clamp(26px,3.8vw,42px);font-weight:900;margin-bottom:20px;}
 .cta-title .gold{color:#F0D9A8;}
@@ -91,13 +69,20 @@ footer .foot-links{display:flex;gap:24px;}
 footer a{text-decoration:none;color:var(--mute);}
 footer a:hover{color:var(--klein);}
 
-.card-shine{position:relative;overflow:hidden;background:linear-gradient(135deg,#0A2E7A 0%,#002FA7 45%,#001F70 100%);display:flex;align-items:flex-end;padding:24px;}
+/* === 卡片文字統一右下角，固定字級，長文字自動換行不撐版 === */
+.card-shine{position:relative;overflow:hidden;background:linear-gradient(135deg,#0A2E7A 0%,#002FA7 45%,#001F70 100%);}
 .card-shine::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.12) 0%, transparent 45%),repeating-linear-gradient(115deg,transparent 0 40px, rgba(255,255,255,0.04) 40px 42px);}
 .card-shine::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transform:skewX(-20deg);animation:shine 3.5s ease-in-out infinite;}
 @keyframes shine{0%{left:-60%;}50%{left:130%;}100%{left:130%;}}
-.card-shine-content{position:relative;color:#fff;z-index:2;}
-.card-shine-tag{font-size:11px;letter-spacing:0.15em;opacity:0.7;margin-bottom:6px;}
-.card-shine-title{font-size:20px;font-weight:700;}
+.card-shine-content{position:absolute;bottom:14px;right:14px;left:14px;color:#fff;z-index:2;text-align:right;}
+.card-shine-tag{font-size:11px;letter-spacing:0.1em;opacity:0.7;margin-bottom:6px;display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;word-break:break-word;}
+.card-shine-tag::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;}
+.card-shine-title{font-size:20px;font-weight:700;word-break:break-word;}
+.card-shine-corner{position:absolute;bottom:44px;right:14px;left:14px;font-size:10.5px;line-height:1.5;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.12);padding:4px 10px;border-radius:12px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.15);z-index:2;text-align:right;max-width:fit-content;margin-left:auto;}
+
+.card-blueprint{position:relative;overflow:hidden;background:linear-gradient(160deg,#F0EDE6 0%,#E8E2D4 100%);display:flex;align-items:center;justify-content:center;aspect-ratio:16/10;}
+.card-blueprint svg{width:70%;height:70%;opacity:0.9;}
+.card-blueprint-label{position:absolute;bottom:16px;right:16px;left:16px;font-size:12px;color:var(--klein-deep);background:rgba(255,255,255,0.85);padding:6px 14px;border-radius:2px;font-weight:600;text-align:right;max-width:fit-content;margin-left:auto;}
 
 .card-particle{position:relative;overflow:hidden;background:radial-gradient(ellipse at top left, #1a3d8f 0%, #001F70 60%, #000f38 100%);}
 .card-particle .dot{position:absolute;border-radius:50%;background:var(--gold);opacity:0.6;filter:blur(1px);animation:floatDot 6s ease-in-out infinite;}
@@ -105,18 +90,16 @@ footer a:hover{color:var(--klein);}
 .card-particle .dot:nth-child(2){width:5px;height:5px;top:60%;left:75%;animation-delay:1.2s;background:#fff;}
 .card-particle .dot:nth-child(3){width:6px;height:6px;top:75%;left:30%;animation-delay:2.4s;}
 @keyframes floatDot{0%,100%{transform:translateY(0) scale(1);opacity:0.5;}50%{transform:translateY(-16px) scale(1.3);opacity:0.9;}}
-.card-particle-content{position:absolute;bottom:20px;left:20px;color:#fff;z-index:2;}
-.card-particle-title{font-size:18px;font-weight:700;}
-.card-particle-tag{font-size:11px;opacity:0.7;letter-spacing:0.1em;margin-top:4px;}
-
-.card-blueprint{position:relative;overflow:hidden;background:linear-gradient(160deg,#F0EDE6 0%,#E8E2D4 100%);display:flex;align-items:center;justify-content:center;}
-.card-blueprint svg{width:60%;height:60%;opacity:0.9;}
+.card-particle-content{position:absolute;bottom:20px;right:20px;left:20px;color:#fff;z-index:2;text-align:right;}
+.card-particle-title{font-size:18px;font-weight:700;word-break:break-word;}
+.card-particle-tag{font-size:11px;opacity:0.7;letter-spacing:0.05em;margin-top:4px;word-break:break-word;}
 
 @media(max-width:768px){
   .navlinks{position:fixed;top:64px;left:0;right:0;background:var(--white);flex-direction:column;padding:24px 6vw;gap:20px;border-bottom:1px solid var(--line);display:none;z-index:99;}
   .navlinks.open{display:flex;}
   .navtoggle{display:block;background:none;border:none;font-size:22px;cursor:pointer;}
   .work-grid{grid-template-columns:1fr;}
+  .advantage-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -146,21 +129,23 @@ footer a:hover{color:var(--klein);}
 <section class="section">
   <div class="block-title">短期曝光，更需要精準設計。</div>
   <p class="block-text">快閃店、快閃櫃的曝光時間短，沒有第二次機會慢慢累積印象。從空間規劃、陳列動線、到視覺呈現，每一個決定都需要在有限的時間與預算內，發揮最大效益。我們用結構化的陳列動線設計，讓有限的空間創造最大的停留與記憶。</p>
-  <div class="banner-visual card-particle" id="slot-svc_popup_banner"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="card-particle-content"><div class="card-particle-tag">POPUP STORE</div><div class="card-particle-title">快閃空間規劃示意</div></div></div>
+  <div class="banner-visual card-particle" id="slot-svc_popup_banner">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="card-particle-content"><div class="card-particle-tag">POPUP STORE</div><div class="card-particle-title">快閃空間規劃示意</div></div>
+  </div>
 </section>
 
 <section class="section tight" style="background:var(--offwhite);">
   <div class="block-title">實績示意</div>
   <div class="work-grid">
-    
-        <div class="work-card">
-          <div class="work-image card-particle"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="card-particle-content"><div class="card-particle-tag">POPUP STORE</div><div class="card-particle-title">UNOVE 韓系護髮</div></div></div>
-          <div class="work-desc">500×250×220cm 快閃空間規劃，結構化陳列動線設計——短短幾週的曝光，也能讓人記住品牌的樣子。</div>
-        </div>
-        <div class="work-card">
-          <div class="work-image card-shine"><div class="card-shine-content"><div class="card-shine-tag">桃園 · 店面微軟裝</div><div class="card-shine-title">自律放縱茶療所</div></div></div>
-          <div class="work-desc">外觀柱體招牌、無框畫作三件組、品牌文案與命名——把「手搖飲店」說成了一個會讓人想推門進去的地方。</div>
-        </div>
+    <div class="work-card">
+      <div class="work-image card-particle"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="card-particle-content"><div class="card-particle-tag">POPUP STORE</div><div class="card-particle-title">UNOVE 韓系護髮</div></div></div>
+      <div class="work-desc">500×250×220cm 快閃空間規劃，結構化陳列動線設計——短短幾週的曝光，也能讓人記住品牌的樣子。</div>
+    </div>
+    <div class="work-card">
+      <div class="work-image card-shine"><div class="card-shine-content"><div class="card-shine-tag">桃園 · 店面微軟裝</div><div class="card-shine-title">自律放縱茶療所</div></div></div>
+      <div class="work-desc">外觀柱體招牌、無框畫作三件組、品牌文案與命名——把「手搖飲店」說成了一個會讓人想推門進去的地方。</div>
+    </div>
   </div>
   <p class="block-text" style="color:var(--gold);margin-top:20px;font-size:13px;">＊以上為現有案例示意，完整作品集整理中，將陸續更新更多實績案例。</p>
 </section>

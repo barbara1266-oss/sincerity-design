@@ -8,40 +8,13 @@
 <meta name="keywords" content="連鎖輔銷品管理,連鎖分店印刷物流,連鎖總部設計服務,加盟店形象管理,POSM系統整合">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://sinceritydesign.com/services/chain-management.html">
-
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="晨諾創意 Sincerity Design">
-<meta property="og:title" content="連鎖輔銷品一站式管理｜晨諾創意">
-<meta property="og:description" content="把設計、印刷、物流整合進同一個窗口，讓連鎖總部的每一家分店，都一致、都放心。">
+<meta property="og:title" content="連鎖輔銷品一站式管理｜連鎖分店印刷物流整合｜晨諾創意">
+<meta property="og:description" content="連鎖總部分店越多，形象管理越難顧齊？晨諾創意用實際管理超過40間分院輔銷品的經驗，把設計、印刷、物流整合進同一個窗口，讓每一家分店都一致、都放心。">
 <meta property="og:url" content="https://sinceritydesign.com/services/chain-management.html">
 <meta property="og:locale" content="zh_TW">
-
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23002FA7'/%3E%3Ctext x='50' y='68' font-size='55' fill='white' text-anchor='middle' font-family='sans-serif' font-weight='900'%3E晨%3C/text%3E%3C/svg%3E">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "連鎖輔銷品一站式管理",
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "晨諾創意設計有限公司",
-    "telephone": "+886-909-653-458",
-    "email": "barbara1266@sinceritydesign.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "信安街103巷10號4樓-7",
-      "addressLocality": "信義區",
-      "addressRegion": "台北市",
-      "postalCode": "110",
-      "addressCountry": "TW"
-    }
-  },
-  "areaServed": "TW",
-  "description": "為連鎖總部提供設計需求、印刷執行、物流配送的一站式整合管理服務，適合5間以上分店的連鎖品牌。"
-}
-</script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
@@ -71,14 +44,20 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .block-title{font-size:clamp(22px,2.8vw,32px);font-weight:900;margin-bottom:20px;line-height:1.4;}
 .block-text{font-size:16px;color:var(--mute);line-height:1.9;max-width:62ch;}
 .block-text.emphasis{color:var(--ink);font-weight:700;font-size:18px;}
+.banner-visual{aspect-ratio:16/9;border-radius:4px;overflow:hidden;position:relative;margin-top:32px;}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:32px;}
+.work-card{background:var(--white);position:relative;}
+.work-image{aspect-ratio:16/10;position:relative;overflow:hidden;}
+.work-tag{display:inline-block;font-size:11px;color:var(--klein);font-weight:700;letter-spacing:0.08em;background:var(--klein-light);padding:5px 12px;border-radius:2px;margin-bottom:12px;}
+.work-desc{font-size:14px;color:var(--mute);line-height:1.8;font-weight:400;padding:24px 28px;}
+.closing-block{background:var(--offwhite);padding:48px 40px;border-left:3px solid var(--gold);margin-top:56px;}
+.closing-title{font-size:19px;font-weight:700;margin-bottom:12px;}
+.closing-text{font-size:15px;color:var(--mute);line-height:1.85;}
 .advantage-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:40px;}
 .advantage-card{background:var(--white);padding:36px 32px;}
 .advantage-icon{width:36px;height:36px;background:var(--klein);border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;margin-bottom:20px;}
 .advantage-title{font-size:18px;font-weight:700;margin-bottom:10px;}
 .advantage-desc{font-size:14.5px;color:var(--mute);line-height:1.8;}
-.closing-block{background:var(--offwhite);padding:48px 40px;border-left:3px solid var(--gold);margin-top:56px;}
-.closing-title{font-size:19px;font-weight:700;margin-bottom:12px;}
-.closing-text{font-size:15px;color:var(--mute);line-height:1.85;}
 .cta{padding:100px 6vw;text-align:center;background:var(--klein);color:var(--white);}
 .cta-title{font-size:clamp(26px,3.8vw,42px);font-weight:900;margin-bottom:20px;}
 .cta-title .gold{color:#F0D9A8;}
@@ -89,10 +68,37 @@ footer{padding:48px 6vw;display:flex;flex-wrap:wrap;justify-content:space-betwee
 footer .foot-links{display:flex;gap:24px;}
 footer a{text-decoration:none;color:var(--mute);}
 footer a:hover{color:var(--klein);}
+
+/* === 卡片文字統一右下角，固定字級，長文字自動換行不撐版 === */
+.card-shine{position:relative;overflow:hidden;background:linear-gradient(135deg,#0A2E7A 0%,#002FA7 45%,#001F70 100%);}
+.card-shine::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.12) 0%, transparent 45%),repeating-linear-gradient(115deg,transparent 0 40px, rgba(255,255,255,0.04) 40px 42px);}
+.card-shine::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transform:skewX(-20deg);animation:shine 3.5s ease-in-out infinite;}
+@keyframes shine{0%{left:-60%;}50%{left:130%;}100%{left:130%;}}
+.card-shine-content{position:absolute;bottom:14px;right:14px;left:14px;color:#fff;z-index:2;text-align:right;}
+.card-shine-tag{font-size:11px;letter-spacing:0.1em;opacity:0.7;margin-bottom:6px;display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;word-break:break-word;}
+.card-shine-tag::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;}
+.card-shine-title{font-size:20px;font-weight:700;word-break:break-word;}
+.card-shine-corner{position:absolute;bottom:44px;right:14px;left:14px;font-size:10.5px;line-height:1.5;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.12);padding:4px 10px;border-radius:12px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.15);z-index:2;text-align:right;max-width:fit-content;margin-left:auto;}
+
+.card-blueprint{position:relative;overflow:hidden;background:linear-gradient(160deg,#F0EDE6 0%,#E8E2D4 100%);display:flex;align-items:center;justify-content:center;aspect-ratio:16/10;}
+.card-blueprint svg{width:70%;height:70%;opacity:0.9;}
+.card-blueprint-label{position:absolute;bottom:16px;right:16px;left:16px;font-size:12px;color:var(--klein-deep);background:rgba(255,255,255,0.85);padding:6px 14px;border-radius:2px;font-weight:600;text-align:right;max-width:fit-content;margin-left:auto;}
+
+.card-particle{position:relative;overflow:hidden;background:radial-gradient(ellipse at top left, #1a3d8f 0%, #001F70 60%, #000f38 100%);}
+.card-particle .dot{position:absolute;border-radius:50%;background:var(--gold);opacity:0.6;filter:blur(1px);animation:floatDot 6s ease-in-out infinite;}
+.card-particle .dot:nth-child(1){width:8px;height:8px;top:20%;left:15%;animation-delay:0s;}
+.card-particle .dot:nth-child(2){width:5px;height:5px;top:60%;left:75%;animation-delay:1.2s;background:#fff;}
+.card-particle .dot:nth-child(3){width:6px;height:6px;top:75%;left:30%;animation-delay:2.4s;}
+@keyframes floatDot{0%,100%{transform:translateY(0) scale(1);opacity:0.5;}50%{transform:translateY(-16px) scale(1.3);opacity:0.9;}}
+.card-particle-content{position:absolute;bottom:20px;right:20px;left:20px;color:#fff;z-index:2;text-align:right;}
+.card-particle-title{font-size:18px;font-weight:700;word-break:break-word;}
+.card-particle-tag{font-size:11px;opacity:0.7;letter-spacing:0.05em;margin-top:4px;word-break:break-word;}
+
 @media(max-width:768px){
   .navlinks{position:fixed;top:64px;left:0;right:0;background:var(--white);flex-direction:column;padding:24px 6vw;gap:20px;border-bottom:1px solid var(--line);display:none;z-index:99;}
   .navlinks.open{display:flex;}
   .navtoggle{display:block;background:none;border:none;font-size:22px;cursor:pointer;}
+  .work-grid{grid-template-columns:1fr;}
   .advantage-grid{grid-template-columns:1fr;}
 }
 </style>
@@ -135,28 +141,11 @@ footer a:hover{color:var(--klein);}
 <section class="section">
   <div class="block-title">與我們合作，你會得到——</div>
   <div class="advantage-grid">
-    <div class="advantage-card">
-      <div class="advantage-icon">1</div>
-      <div class="advantage-title">一致的品牌形象</div>
-      <div class="advantage-desc">每間分店同規格、同品質，不用來回確認。</div>
-    </div>
-    <div class="advantage-card">
-      <div class="advantage-icon">2</div>
-      <div class="advantage-title">一個窗口，取代五家廠商</div>
-      <div class="advantage-desc">設計、印刷、物流，一次到位。</div>
-    </div>
-    <div class="advantage-card">
-      <div class="advantage-icon">3</div>
-      <div class="advantage-title">系統隨版圖成長</div>
-      <div class="advantage-desc">5 間店到 15 間店，不用另起爐灶。</div>
-    </div>
-    <div class="advantage-card">
-      <div class="advantage-icon">4</div>
-      <div class="advantage-title">把時間還給真正重要的事</div>
-      <div class="advantage-desc">形象管理交給我們，人力與營運交給你自己。</div>
-    </div>
+    <div class="advantage-card"><div class="advantage-icon">1</div><div class="advantage-title">一致的品牌形象</div><div class="advantage-desc">每間分店同規格、同品質，不用來回確認。</div></div>
+    <div class="advantage-card"><div class="advantage-icon">2</div><div class="advantage-title">一個窗口，取代五家廠商</div><div class="advantage-desc">設計、印刷、物流，一次到位。</div></div>
+    <div class="advantage-card"><div class="advantage-icon">3</div><div class="advantage-title">系統隨版圖成長</div><div class="advantage-desc">5 間店到 15 間店，不用另起爐灶。</div></div>
+    <div class="advantage-card"><div class="advantage-icon">4</div><div class="advantage-title">把時間還給真正重要的事</div><div class="advantage-desc">形象管理交給我們，人力與營運交給你自己。</div></div>
   </div>
-
   <div class="closing-block">
     <div class="closing-title">系統建置，我們簡化流程直擊需求！</div>
     <div class="closing-text">真正重要的，是接下來長期、穩定的合作。</div>
@@ -164,7 +153,7 @@ footer a:hover{color:var(--klein);}
 </section>
 
 <section class="cta">
-  <div class="cta-title">你的連鎖版圖，<span class="gold">值得更穩的樣子</span>。</div>
+  <div class="cta-title">你的<span class="gold">連鎖版圖</span>，值得更穩的樣子。</div>
   <p class="cta-sub">說出你的分店規模與需求，我們幫你把管理，變簡單。</p>
   <a href="../contact.html" class="cta-btn">一起創造更大的商機</a>
 </section>
