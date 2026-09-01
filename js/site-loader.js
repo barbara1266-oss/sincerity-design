@@ -16,7 +16,6 @@
       const tagEl = document.getElementById('slot-' + key + '-tag');
       if(tagEl && d.tag) tagEl.textContent = d.tag;
 
-      // 統一轉成 items 陣列格式（新舊資料都相容）
       let items = d.items;
       if(!items && d.images){
         items = d.images.filter(Boolean).map((img,i)=>({
@@ -31,31 +30,74 @@
 
       buildCarousel(slot, items, base);
     });
+
+    // === Logo 專屬處理：不用輪播，直接顯示上傳的圖片，電腦版橫式／手機版圓形 ===
+    applyLogo(data, base);
   }catch(e){ /* 沒有資料時，網站維持原本內建內容 */ }
 })();
+
+function applyLogo(data, base){
+  const logoSlot = document.getElementById('site-logo');
+  if(!logoSlot) return;
+
+  const getFirstImage = (key)=>{
+    const d = data[key];
+    if(!d) return null;
+    if(d.items && d.items[0] && d.items[0].image) return d.items[0].image;
+    if(d.images && d.images[0]) return d.images[0];
+    return null;
+  };
+
+  const horizPath = getFirstImage('logo_horizontal');
+  const roundPath = getFirstImage('logo_round');
+  if(!horizPath && !roundPath) return; // 都沒上傳，維持原本文字Logo
+
+  logoSlot.innerHTML = '';
+  logoSlot.style.display = 'flex';
+  logoSlot.style.alignItems = 'center';
+
+  if(horizPath){
+    const imgH = document.createElement('img');
+    imgH.src = base + horizPath;
+    imgH.className = 'sd-logo-horizontal';
+    imgH.style.cssText = 'height:36px;width:auto;display:block;';
+    logoSlot.appendChild(imgH);
+  }
+  if(roundPath){
+    const imgR = document.createElement('img');
+    imgR.src = base + roundPath;
+    imgR.className = 'sd-logo-round';
+    imgR.style.cssText = 'height:36px;width:36px;border-radius:50%;object-fit:cover;display:none;';
+    logoSlot.appendChild(imgR);
+  }
+
+  // 響應式切換：768px以下手機優先顯示圓形版（若有上傳）
+  if(horizPath && roundPath){
+    const style = document.createElement('style');
+    style.textContent = `
+      @media(max-width:768px){
+        .sd-logo-horizontal{display:none!important;}
+        .sd-logo-round{display:block!important;}
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}
 
 function buildCarousel(slot, items, base){
   slot.style.position = 'relative';
   slot.style.overflow = 'hidden';
 
-  const keepChildren = Array.from(slot.children).filter(c =>
-    c.classList.contains('card-shine-content') ||
-    c.classList.contains('card-particle-content') ||
-    c.classList.contains('card-shine-corner') ||
-    c.classList.contains('extend-inner') ||
-    c.classList.contains('extend-desc-white') ||
-    c.classList.contains('extend-desc-dark') ||
-    c.classList.contains('service-photo-tile-content')
-  );
+  // === 全站統一規則：只要這個位置有真實照片，就隱藏所有裝飾用的SVG線框與圓點 ===
+  // 不論卡片是哪一種樣式（card-shine / card-particle / card-blueprint / card-sketch），
+  // 也不論在首頁還是任何服務頁，一律套用同一條規則，避免漏掉任何一處。
+  slot.querySelectorAll('svg').forEach(svg => { svg.style.display = 'none'; });
+  slot.querySelectorAll('.dot').forEach(dot => { dot.style.display = 'none'; });
 
-  // 找出可以動態更新文字的元素（標題/描述），有真實照片時用該張圖的專屬文字覆蓋
-  const titleEl = document.getElementById(slot.id.replace('slot-','slot-') + '-title');
-  const descEl = document.getElementById(slot.id + '-desc');
-
-  keepChildren.forEach(c => {
-    c.style.position='relative';
-    c.style.zIndex='2';
-    c.querySelectorAll('svg').forEach(svg => { svg.style.display = 'none'; });
+  // 把剩下的內容（文字區塊）全部抬到照片上層，確保看得到文字
+  Array.from(slot.children).forEach(c => {
+    c.style.position = 'relative';
+    c.style.zIndex = '2';
   });
 
   const imgLayer = document.createElement('div');
