@@ -97,10 +97,10 @@ let pendingFiles = {};
 const SLOTS = [
   { group: "首頁 · Hero 主視覺", key: "hero", img: "1200×1500px", hasTag:true },
   { group: "首頁 · 服務網格照片磚（補空白格）", key: "service_grid_photo", img: "800×1000px（直式較佳）", hasTag:true },
-  { group: "「這些，都是我們陪著走過的路」· 01", key: "work1", img: "800×500px" },
-  { group: "「這些，都是我們陪著走過的路」· 02", key: "work2", img: "800×500px" },
-  { group: "「這些，都是我們陪著走過的路」· 03", key: "work3", img: "800×500px" },
-  { group: "「這些，都是我們陪著走過的路」· 04", key: "work4", img: "800×500px" },
+  { group: "「這些，都是我們陪著走過的路」· 01", key: "work1", img: "800×500px", maxImages: 4 },
+  { group: "「這些，都是我們陪著走過的路」· 02", key: "work2", img: "800×500px", maxImages: 4 },
+  { group: "「這些，都是我們陪著走過的路」· 03", key: "work3", img: "800×500px", maxImages: 4 },
+  { group: "「這些，都是我們陪著走過的路」· 04", key: "work4", img: "800×500px", maxImages: 4 },
   { group: "「空間有了樣子，故事還沒說完」· 01 全通路曝光", key: "extend_influencer", img: "800×500px" },
   { group: "「空間有了樣子，故事還沒說完」· 02 結構執行", key: "extend_construction", img: "800×500px" },
   { group: "「空間有了樣子，故事還沒說完」· 03 動線效率", key: "extend_efficiency", img: "800×500px" },
@@ -197,18 +197,19 @@ function renderForm(){
       area.appendChild(block);
     }
 
+    const maxImgs = slot.maxImages || 3;
     const d = siteData[slot.key] || {};
-    const items = d.items || [{},{},{}];
-    while(items.length < 3) items.push({});
+    const items = d.items || [];
+    while(items.length < maxImgs) items.push({});
 
     const slotWrap = document.createElement('div');
     slotWrap.className = 'slot-wrap';
 
     const tagHtml = slot.hasTag
-      ? `<div class="slot-tag-row"><div class="field-label">整組標籤（分類用，3張圖共用）</div><input class="field-input" id="tag-${slot.key}" value="${(d.tag||'').replace(/"/g,'&quot;')}"></div>`
+      ? `<div class="slot-tag-row"><div class="field-label">整組標籤（分類用，${maxImgs}張圖共用）</div><input class="field-input" id="tag-${slot.key}" value="${(d.tag||'').replace(/"/g,'&quot;')}"></div>`
       : '';
 
-    const itemsHtml = [0,1,2].map(i=>{
+    const itemsHtml = Array.from({length: maxImgs}, (_, i) => i).map(i=>{
       const item = items[i] || {};
       const url = item.image ? `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${item.image}` : '';
       return `
@@ -226,7 +227,7 @@ function renderForm(){
     slotWrap.innerHTML = `
       ${tagHtml}
       <div class="img-item-grid">${itemsHtml}</div>
-      <div class="recommend">建議尺寸：${slot.img}（最多3張，可輪播；只放1張則不會輪播；每張圖可各自填標題與描述）</div>
+      <div class="recommend">建議尺寸：${slot.img}（最多${maxImgs}張，可輪播；只放1張則不會輪播；每張圖可各自填標題與描述）</div>
     `;
     groupDiv.appendChild(slotWrap);
   });
@@ -275,23 +276,26 @@ async function saveAll(){
       });
 
       siteData[key] = siteData[key] || {};
-      siteData[key].items = siteData[key].items || [{},{},{}];
-      while(siteData[key].items.length < 3) siteData[key].items.push({});
+      siteData[key].items = siteData[key].items || [];
+      const slotDef = SLOTS.find(s => s.key === key);
+      const maxForThisSlot = (slotDef && slotDef.maxImages) || 3;
+      while(siteData[key].items.length < maxForThisSlot) siteData[key].items.push({});
       siteData[key].items[idx].image = path;
     }
     pendingFiles = {};
 
     // 收集所有文字欄位（標籤整組共用 + 每張圖各自的標題/描述）
     SLOTS.forEach(slot=>{
+      const maxImgs = slot.maxImages || 3;
       siteData[slot.key] = siteData[slot.key] || {};
-      siteData[slot.key].items = siteData[slot.key].items || [{},{},{}];
-      while(siteData[slot.key].items.length < 3) siteData[slot.key].items.push({});
+      siteData[slot.key].items = siteData[slot.key].items || [];
+      while(siteData[slot.key].items.length < maxImgs) siteData[slot.key].items.push({});
 
       if(slot.hasTag){
         const tagInput = document.getElementById(`tag-${slot.key}`);
         if(tagInput) siteData[slot.key].tag = tagInput.value;
       }
-      for(let i=0;i<3;i++){
+      for(let i=0;i<maxImgs;i++){
         const titleInput = document.getElementById(`title-${slot.key}-${i}`);
         const descInput = document.getElementById(`desc-${slot.key}-${i}`);
         if(titleInput) siteData[slot.key].items[i].title = titleInput.value;
