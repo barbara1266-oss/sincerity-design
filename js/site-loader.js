@@ -72,8 +72,11 @@ function buildCarousel(slot, items, base){
     if(!item) return;
     const tEl = document.getElementById(slot.id + '-title');
     const dEl = document.getElementById(slot.id + '-desc');
-    if(tEl && item.title) tEl.textContent = item.title;
-    if(dEl && item.desc) dEl.innerHTML = item.desc;
+    // 記住第一次看到的預設文字，之後不管資料狀況如何，都不會讓畫面出現空白標題
+    if(tEl && tEl.dataset.defaultText === undefined) tEl.dataset.defaultText = tEl.textContent;
+    if(dEl && dEl.dataset.defaultText === undefined) dEl.dataset.defaultText = dEl.innerHTML;
+    if(tEl) tEl.textContent = (item.title && item.title.trim()) ? item.title : tEl.dataset.defaultText;
+    if(dEl) dEl.innerHTML = (item.desc && item.desc.trim()) ? item.desc : dEl.dataset.defaultText;
   }
   applyItemText(0);
 

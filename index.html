@@ -1,4 +1,4 @@
-<!-- SD-VERSION: 2026-09-01-v7-extend-9x16 -->
+<!-- SD-VERSION: 2026-09-01-v8-cta-modal -->
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -220,7 +220,7 @@ footer a:hover{color:var(--klein);}
     <a href="services/branding.html">通路識別</a>
     <a href="services/booth.html">展攤設計</a>
     <a href="services/chain-management.html">連鎖輔銷品管理</a>
-    <a href="contact.html" class="nav-cta">讓相遇，從這裡開始</a>
+    <a href="javascript:void(0)" class="nav-cta" onclick="openCTAModal()">讓相遇，從這裡開始</a>
   </div>
 </nav>
 
@@ -232,7 +232,7 @@ footer a:hover{color:var(--klein);}
       <p class="hero-sub">把想法轉化成畫面，是我們最熟悉的工作。<br>十年以上的現場經驗，陪你把每一次相遇，都變成客人記住的樣子。</p>
       <p class="hero-sub" style="margin-top:12px;font-weight:700;color:var(--klein-deep);">一個窗口、一條龍整合服務——涵蓋從初期視覺企劃、結構設計、現場落地，到印刷執行與物流配送。</p>
       <div class="hero-cta-row">
-        <a href="contact.html" class="btn-primary">讓相遇，從這裡開始</a>
+        <a href="javascript:void(0)" class="btn-primary" onclick="openCTAModal()">讓相遇，從這裡開始</a>
         <a href="#work" class="btn-secondary">看實績案例</a>
       </div>
       <div class="keyword-strip">
@@ -484,7 +484,7 @@ footer a:hover{color:var(--klein);}
 <section class="cta">
   <div class="cta-title">你的下一步，<br><span class="gold">我們已經準備好了</span>。</div>
   <p class="cta-sub">讓我們創造一次美好的相遇——<br>說出你的靈光一閃，剩下的路，我們陪你走。</p>
-  <a href="contact.html" class="cta-btn">讓相遇，從這裡開始</a>
+  <a href="javascript:void(0)" class="cta-btn" onclick="openCTAModal()">讓相遇，從這裡開始</a>
 </section>
 
 <footer>
@@ -495,6 +495,27 @@ footer a:hover{color:var(--klein);}
     <span>110台北市信義區信安街103巷10號4樓-7</span>
   </div>
 </footer>
+
+<div id="ctaModal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.75);align-items:center;justify-content:center;padding:24px;">
+  <div style="position:relative;max-width:420px;width:100%;">
+    <button onclick="closeCTAModal()" aria-label="關閉" style="position:absolute;top:-44px;right:0;background:none;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer;">×</button>
+    <img src="images/cta-poster.png" alt="讓相遇，從這裡開始" style="width:100%;height:auto;border-radius:8px;display:block;">
+  </div>
+</div>
+
+<script>
+function openCTAModal(){
+  document.getElementById('ctaModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeCTAModal(){
+  document.getElementById('ctaModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.getElementById('ctaModal').addEventListener('click', function(e){
+  if(e.target.id === 'ctaModal') closeCTAModal();
+});
+</script>
 
 <script>window.SD_BASE = '';</script>
 <script src="js/site-loader.js"></script>
