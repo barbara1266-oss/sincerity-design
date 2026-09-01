@@ -1,4 +1,4 @@
-<!-- SD-VERSION: 2026-09-01-v6-rebuild-unified-component -->
+<!-- SD-VERSION: 2026-09-01-v7-extend-9x16 -->
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -167,8 +167,8 @@ footer a:hover{color:var(--klein);}
 .stat-band-label{font-size:13.5px;margin-top:8px;color:#C8D5F5;font-weight:400;}
 .extend-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
 .extend-card{border-radius:6px;overflow:hidden;display:flex;flex-direction:column;background:var(--white);box-shadow:0 4px 14px rgba(0,0,0,0.05);}
-.extend-photo{position:relative;overflow:hidden;height:140px;}
-.extend-photo.card-blueprint,.extend-photo.card-sketch{display:flex;align-items:center;justify-content:center;aspect-ratio:auto;}
+.extend-photo{position:relative;overflow:hidden;aspect-ratio:9/16;}
+.extend-photo.card-blueprint,.extend-photo.card-sketch{display:flex;align-items:center;justify-content:center;}
 .extend-photo.card-blueprint svg,.extend-photo.card-sketch svg{width:55%;height:55%;margin:0 auto;}
 .extend-card .sd-caption-tag{font-size:10.5px!important;padding:3px 10px!important;}
 .extend-card .sd-caption-title{font-size:14px!important;padding:5px 12px!important;}
@@ -182,7 +182,7 @@ footer a:hover{color:var(--klein);}
   .diff-block{grid-template-columns:1fr;gap:36px;}
   .service-grid{grid-template-columns:1fr;}
   .service-photo-tile{grid-column:span 1;}
-  .extend-grid{grid-template-columns:1fr 1fr;}
+  .extend-grid{grid-template-columns:repeat(4,1fr);gap:10px;}
 }
 @media(max-width:768px){
   .navlinks{position:fixed;top:64px;left:0;right:0;background:var(--white);flex-direction:column;padding:24px 6vw;gap:20px;border-bottom:1px solid var(--line);display:none;z-index:99;}
@@ -193,7 +193,10 @@ footer a:hover{color:var(--klein);}
   .spec{border-right:none;border-bottom:1px solid var(--line);}
   .service-grid{grid-template-columns:1fr;}
   .service-photo-tile{grid-column:span 1;}
-  .extend-grid{grid-template-columns:1fr;}
+  .extend-grid{grid-template-columns:repeat(4,1fr);gap:8px;}
+  .extend-card .sd-caption-tag{font-size:9px!important;padding:2px 7px!important;}
+  .extend-card .sd-caption-title{font-size:11px!important;padding:3px 8px!important;}
+  .extend-desc{display:none;}
 }/* 全站永久移除所有裝飾用SVG線框與圓點，不論是否已上傳照片，只保留文字與背景色 */
 .card-blueprint svg,
 .card-sketch svg,
