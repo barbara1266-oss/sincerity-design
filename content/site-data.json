@@ -99,8 +99,9 @@
         "image": "images/uploads/work4_0.jpg"
       },
       {
-        "title": "",
-        "desc": ""
+        "title": "品牌延伸｜手提袋｜推廣道具",
+        "desc": "曝光從來不是只有文字，我們更考慮吸睛度與實用兼具！讓品牌印象長續在他人心中！",
+        "image": "images/uploads/work4_1.jpg"
       },
       {
         "title": "",
@@ -259,12 +260,14 @@
     "tag": "",
     "items": [
       {
-        "title": "",
-        "desc": ""
+        "title": "紅威媒體｜讓產品一定紅",
+        "desc": "",
+        "image": "images/uploads/extend_influencer_0.jpg"
       },
       {
         "title": "",
-        "desc": ""
+        "desc": "",
+        "image": "images/uploads/extend_influencer_1.jpg"
       },
       {
         "title": "",
@@ -342,6 +345,73 @@
         "image": "images/uploads/service_grid_photo_2.jpeg",
         "title": "台北｜家樂福｜壓克力陳列道具",
         "desc": "了解通路需求與視覺優勢，一直是我們專研努力的地方！"
+      }
+    ]
+  },
+  "extend_page_a": {
+    "items": [
+      {
+        "image": "images/uploads/extend_page_a_0.jpg",
+        "title": "試媒體TryMedia",
+        "desc": "是台灣深耕多年的網紅與部落客行銷平台，擁有超過21年行銷經驗，累積媒合超過5000位網紅部落客、合作超過5000家品牌企業。\n我們專注於「溫暖真實的開箱行銷」，透過部落客文章、短影音創作、KOC口碑推薦、團購帶貨與社群擴散，協助品牌建立信任感與市場聲量。\n\n從美食餐飲、美妝保養、母嬰商品，到實體店家與品牌活動，試媒體不只是曝光，更重視「轉單與信任轉化」。\n我們相信，在AI時代裡，真正能打動人的，依然是真實的人與故事。\n\n試媒體致力於成為品牌與創作者之間最有溫度的橋樑，陪伴更多品牌被看見、被信任、被分享。\n\nhttps://www.trymedia.tw/m/home.php"
+      },
+      {
+        "image": "images/uploads/extend_page_a_1.jpg",
+        "title": "錢包太太",
+        "desc": "是試媒體旗下的「全通路變現品牌」。\n我們不是單純幫你上架商品，\n而是幫品牌做到一件更重要的事：\n讓產品「被看見」到「被買走」\n\n專門協助品牌快速進入市場、擴大曝光與銷售的全通路上架整合的品牌通路代理商 \n\n透過我們，廠商不需要再逐一對接不同平台、不需要學習通路規則，只要專注在產品，我們負責把商品送上最大量的通路。\n\n1️⃣協助品牌找到適合的通路定位\n不同商品適合不同通路，我們會依產品定位、售價與產能，協助評估最佳通路策略，避免踩雷。\n\n2️⃣ 速度快、效率高，替你節省大量時間與成本\n你不需要再花 3–6 個月摸索各平台規則。我們的團隊熟悉 SOP，可快速讓商品上架。\n\n3️⃣ 打造多元銷售管道，降低單一平台風險\n我們協助品牌建立：\n\n「實體通路 + 電商平台 + 社群團購」的三層式銷售架構\n\n超過300個KOL 200個KOC 3000個以上的團媽，讓廠商快速的對接多元渠道 讓商品不只曝光廣，也真正能賣得長久。\n\nhttps://www.cocotaitai.tw/"
+      },
+      {
+        "image": "images/uploads/extend_page_a_2.jpg",
+        "title": "試大運 TryMoving",
+        "desc": "影音創作者媒合平台\n\n試大運是一個專注於「品牌 × 影音創作者 × 流量變現」的一站式媒合平台，協助企業快速找到合適的短影音、KOL、部落客與直播創作者，並讓創作者能穩定接案、擴大商業合作機會。\n\n品牌與影音創作者精準媒合（短影音 / YouTube / IG / TikTok/reals/脆）\nKOL、部落客、直播主合作案媒合\n產品開箱、團購、業配、口碑行銷規劃\n短影音內容策略與腳本協作\n\nhttps://www.trymov..."
+      }
+    ]
+  },
+  "extend_page_b": {
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
+  },
+  "extend_page_c": {
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
+  },
+  "extend_page_d": {
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
       }
     ]
   }
