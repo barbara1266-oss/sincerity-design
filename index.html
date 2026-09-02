@@ -99,7 +99,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .service-title{font-size:21px;font-weight:700;margin-bottom:12px;}
 .service-desc{font-size:14px;color:var(--mute);line-height:1.8;font-weight:400;}
 .service-arrow{margin-top:20px;font-size:13px;color:var(--klein);font-weight:500;}
-.service-photo-tile{position:relative;overflow:hidden;background:linear-gradient(135deg,#0A2E7A 0%,#002FA7 45%,#001F70 100%);display:flex;align-items:flex-end;padding:36px;text-decoration:none;min-height:100%;grid-column:span 2;}
+.service-photo-tile{position:relative;overflow:hidden;background:linear-gradient(135deg,#0A2E7A 0%,#002FA7 45%,#001F70 100%);display:flex;align-items:flex-end;padding:36px;text-decoration:none;grid-column:span 2;aspect-ratio:3/4;align-self:start;}
 .service-photo-tile::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.14) 0%, transparent 45%),repeating-linear-gradient(115deg,transparent 0 40px, rgba(255,255,255,0.05) 40px 42px);}
 .service-photo-tile-arrow{margin-top:4px;font-size:12px;color:var(--klein-deep);font-weight:600;background:rgba(255,255,255,0.95);padding:4px 12px;border-radius:14px;text-align:right;}
 .spec-strip{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:56px 0;}
@@ -166,7 +166,8 @@ footer a:hover{color:var(--klein);}
 .stat-band-num{font-size:clamp(32px,4.5vw,52px);font-weight:900;}
 .stat-band-label{font-size:13.5px;margin-top:8px;color:#C8D5F5;font-weight:400;}
 .extend-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-.extend-card{border-radius:6px;overflow:hidden;display:flex;flex-direction:column;background:var(--white);box-shadow:0 4px 14px rgba(0,0,0,0.05);}
+.extend-card{border-radius:6px;overflow:hidden;display:flex;flex-direction:column;background:var(--white);box-shadow:0 4px 14px rgba(0,0,0,0.05);text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s;cursor:pointer;}
+.extend-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.1);}
 .extend-photo{position:relative;overflow:hidden;aspect-ratio:9/16;}
 .extend-photo.card-blueprint svg,.extend-photo.card-sketch svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:55%;height:55%;}
 .extend-card .sd-caption-tag{font-size:10.5px!important;padding:3px 10px!important;}
@@ -345,15 +346,15 @@ footer a:hover{color:var(--klein);}
     <div class="section-desc">設計只是起點。我們攜手業界口碑深厚的各領域夥伴，陪你把品牌的每一步，走得更穩。</div>
   </div>
   <div class="extend-grid">
-    <div class="extend-card">
+    <a href="services/extend-influencer.html" class="extend-card">
       <div class="extend-photo card-shine" id="slot-extend_influencer">
         <div class="sd-photo-caption">
           <div class="sd-caption-title" id="slot-extend_influencer-title">網紅／部落客行銷</div>
         </div>
       </div>
       <div class="extend-desc" id="slot-extend_influencer-desc">單靠線上，或只靠線下，都不夠讓人被記住了。我們攜手熟悉全通路操作的行銷夥伴，讓你的品牌，線上線下都被看見。</div>
-    </div>
-    <div class="extend-card">
+    </a>
+    <a href="services/extend-construction.html" class="extend-card">
       <div class="extend-photo card-particle" id="slot-extend_construction">
         <div class="dot"></div><div class="dot"></div><div class="dot"></div>
         <div class="sd-photo-caption">
@@ -361,8 +362,8 @@ footer a:hover{color:var(--klein);}
         </div>
       </div>
       <div class="extend-desc" id="slot-extend_construction-desc">好設計，需要有人穩穩把它做出來。我們攜手熟悉商空木工與結構施作的夥伴，把圖紙上的想法，變成摸得到的現場。</div>
-    </div>
-    <div class="extend-card">
+    </a>
+    <a href="services/extend-efficiency.html" class="extend-card">
       <div class="extend-photo card-blueprint" id="slot-extend_efficiency">
         <svg viewBox="0 0 200 140">
           <rect x="20" y="30" width="160" height="90" fill="none" stroke="#002FA7" stroke-width="1"/>
@@ -375,8 +376,8 @@ footer a:hover{color:var(--klein);}
         </div>
       </div>
       <div class="extend-desc" id="slot-extend_efficiency-desc">人力成本，是連鎖經營最現實的壓力。我們攜手熟悉動線規劃、送餐機器人、產線流程優化的夥伴，讓你把人力，留在真正需要人的地方。</div>
-    </div>
-    <div class="extend-card">
+    </a>
+    <a href="services/extend-online.html" class="extend-card">
       <div class="extend-photo card-sketch" id="slot-extend_online">
         <svg viewBox="0 0 100 60">
           <rect x="15" y="15" width="70" height="35"/>
@@ -387,7 +388,7 @@ footer a:hover{color:var(--klein);}
         </div>
       </div>
       <div class="extend-desc" id="slot-extend_online-desc">我們攜手業界口碑深厚的線上行銷夥伴，讓你的品牌從實體延伸到線上，持續被看見。</div>
-    </div>
+    </a>
   </div>
 </section>
 
