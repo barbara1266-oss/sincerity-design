@@ -237,15 +237,38 @@ function renderForm(){
   });
 }
 
-function handleFile(evt, key, idx){
+// 自動瘦身：縮到最長邊 1600px（Logo 600px），轉成 WebP 品質 80%
+async function slimImage(file, key){
+  const maxSide = key.startsWith('logo') ? 600 : 1600;
+  try{
+    let bmp;
+    try{ bmp = await createImageBitmap(file, {imageOrientation:'from-image'}); }
+    catch(e){ bmp = await createImageBitmap(file); }
+    const scale = Math.min(1, maxSide / Math.max(bmp.width, bmp.height));
+    const w = Math.round(bmp.width*scale), h = Math.round(bmp.height*scale);
+    const canvas = document.createElement('canvas');
+    canvas.width = w; canvas.height = h;
+    canvas.getContext('2d').drawImage(bmp, 0, 0, w, h);
+    const blob = await new Promise(res=>canvas.toBlob(res, 'image/webp', 0.8));
+    if(!blob || blob.type !== 'image/webp') return { blob: file, ext: (file.name.split('.').pop()||'jpg').toLowerCase(), slimmed:false };
+    if(blob.size >= file.size && scale === 1) return { blob: file, ext: (file.name.split('.').pop()||'jpg').toLowerCase(), slimmed:false };
+    return { blob, ext:'webp', slimmed:true };
+  }catch(e){
+    return { blob: file, ext: (file.name.split('.').pop()||'jpg').toLowerCase(), slimmed:false };
+  }
+}
+function fmtSize(n){ return n>=1048576 ? (n/1048576).toFixed(1)+' MB' : Math.round(n/1024)+' KB'; }
+
+async function handleFile(evt, key, idx){
   const file = evt.target.files[0];
   if(!file) return;
-  pendingFiles[`${key}__${idx}`] = { key, idx, file };
-  const reader = new FileReader();
-  reader.onload = e=>{
-    document.getElementById(`thumb-${key}-${idx}`).innerHTML = `<img src="${e.target.result}"><div class="thumb-label">尚未儲存</div>`;
-  };
-  reader.readAsDataURL(file);
+  const thumb = document.getElementById(`thumb-${key}-${idx}`);
+  thumb.innerHTML = `<div class="thumb-label" style="position:static;background:none;color:#002FA7;">圖片瘦身中…</div>`;
+  const r = await slimImage(file, key);
+  pendingFiles[`${key}__${idx}`] = { key, idx, file: r.blob, ext: r.ext };
+  const url = URL.createObjectURL(r.blob);
+  const note = r.slimmed ? `已瘦身 ${fmtSize(file.size)} → ${fmtSize(r.blob.size)}，尚未儲存` : `尚未儲存（${fmtSize(file.size)}）`;
+  thumb.innerHTML = `<img src="${url}"><div class="thumb-label">${note}</div>`;
 }
 
 function fileToBase64(file){
@@ -263,8 +286,7 @@ async function saveAll(){
   btn.textContent = '儲存中，請稍候...';
   try{
     for(const pendKey of Object.keys(pendingFiles)){
-      const { key, idx, file } = pendingFiles[pendKey];
-      const ext = file.name.split('.').pop();
+      const { key, idx, file, ext } = pendingFiles[pendKey];
       const path = `images/uploads/${key}_${idx}.${ext}`;
       const base64 = await fileToBase64(file);
 

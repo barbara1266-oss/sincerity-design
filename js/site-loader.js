@@ -1,4 +1,4 @@
-// 晨諾創意 官網 · 共用輪播 + 內容讀取程式 v9
+// 晨諾創意 官網 · 共用輪播 + 內容讀取程式 v11（圖片延遲載入 + 圖片替代文字 + 全站海報彈窗＋需求單入口）
 // 修正：標題絕不留空白，一開始就先記住所有預設文字
 
 (async function(){
@@ -67,6 +67,9 @@ function buildCarousel(slot, items, base, defaultTexts){
     img.onload = function(){
       if(this.dataset.idx == '0' && !this.dataset.broken){ this.style.opacity = 1; }
     };
+    img.alt = item.title || ((items.find(x=>x.title)||{}).title) || '晨諾創意實績';
+    img.decoding = 'async';
+    if(i > 0) img.loading = 'lazy';
     img.src = base + item.image;
     imgLayer.appendChild(img);
   });
@@ -170,6 +173,7 @@ function applyLogo(data, base){
     const imgH = document.createElement('img');
     imgH.src = base + horizPath;
     imgH.className = 'sd-logo-horizontal';
+    imgH.alt = '晨諾創意 Sincerity Design';
     imgH.style.cssText = 'height:36px;width:auto;display:block;';
     logoSlot.appendChild(imgH);
   }
@@ -177,6 +181,7 @@ function applyLogo(data, base){
     const imgR = document.createElement('img');
     imgR.src = base + roundPath;
     imgR.className = 'sd-logo-round';
+    imgR.alt = '晨諾創意';
     imgR.style.cssText = 'height:36px;width:36px;border-radius:50%;object-fit:cover;display:none;';
     logoSlot.appendChild(imgR);
   }
@@ -192,3 +197,32 @@ function applyLogo(data, base){
     document.head.appendChild(style);
   }
 }
+
+
+// === 全站「讓相遇，從這裡開始」海報彈窗（連到 contact.html 的按鈕一律改開海報）===
+(function(){
+  const base = window.SD_BASE || '';
+  function ensureModal(){
+    let m = document.getElementById('ctaModal');
+    if(m) return m;
+    m = document.createElement('div');
+    m.id = 'ctaModal';
+    m.style.cssText = 'display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.75);align-items:center;justify-content:center;padding:24px;';
+    m.innerHTML = '<div style="position:relative;max-width:420px;width:100%;max-height:100%;">'
+      + '<button type="button" aria-label="關閉" style="position:absolute;top:-44px;right:0;background:none;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer;">×</button>'
+      + '<img src="' + base + 'images/cta-poster.png" alt="讓相遇，從這裡開始" style="width:100%;height:auto;max-height:85vh;object-fit:contain;border-radius:8px;display:block;">'
+      + '<a href="' + base + 'quote.html" style="display:block;margin-top:14px;text-align:center;background:#fff;color:#002FA7;font-weight:700;font-size:15px;padding:13px 16px;border-radius:4px;text-decoration:none;">填寫線上需求單，讓我們更快為你規劃</a></div>';
+    m.addEventListener('click', function(e){ if(e.target === m || e.target.tagName === 'BUTTON') closeIt(); });
+    document.body.appendChild(m);
+    return m;
+  }
+  function closeIt(){ const m = document.getElementById('ctaModal'); if(m){ m.style.display='none'; document.body.style.overflow=''; } }
+  document.addEventListener('click', function(e){
+    const a = e.target.closest && e.target.closest('a[href$="contact.html"]');
+    if(!a) return;
+    e.preventDefault();
+    ensureModal().style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeIt(); });
+})();

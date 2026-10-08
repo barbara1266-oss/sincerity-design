@@ -3,17 +3,17 @@
     "tag": "桃園｜自律放縱",
     "items": [
       {
-        "image": "images/uploads/hero_0.jpeg",
+        "image": "images/uploads/hero_0.webp",
         "title": "整體空間視覺規劃",
         "desc": ""
       },
       {
-        "image": "images/uploads/hero_1.jpeg",
+        "image": "images/uploads/hero_1.webp",
         "title": "品牌核心價值",
         "desc": ""
       },
       {
-        "image": "images/uploads/hero_2.jpeg",
+        "image": "images/uploads/hero_2.webp",
         "title": "門柱規劃設計",
         "desc": ""
       }
@@ -25,20 +25,20 @@
       {
         "title": "台北內湖｜鮮番咖哩｜視覺微軟裝",
         "desc": "在競爭激烈的內科戰區！協助店家在不動裝潢的情況底下！協助重新規劃增加品牌記憶點，短短幾週的曝光，在一級戰區留下令客戶讓人記住品牌的樣子。",
-        "image": "images/uploads/work1_0.png"
+        "image": "images/uploads/work1_0.webp"
       },
       {
         "title": "台北內湖｜鮮番咖哩｜視覺微軟裝",
         "desc": "重新規劃後，讓溫馨的店內氛圍，更能展現出店家對於食材與餐點的用心。",
-        "image": "images/uploads/work1_1.png"
+        "image": "images/uploads/work1_1.webp"
       },
       {
         "title": "台北內湖｜鮮番咖哩｜視覺微軟裝",
         "desc": "沿用店家原有裝潢，加上視覺巧思讓門店更為溫馨有記憶點。",
-        "image": "images/uploads/work1_2.jpg"
+        "image": "images/uploads/work1_2.webp"
       },
       {
-        "image": "images/uploads/work1_3.jpg",
+        "image": "images/uploads/work1_3.webp",
         "title": "台北內湖｜鮮番咖哩｜視覺微軟裝",
         "desc": "當店家希望可以增加外觀招牌在街道上更為醒目時，我們通常都會以先讓我們把整體視覺翻新後再來決定是否需要額外支出這筆費用！\n\n很開心這次外觀我們維持原本招牌結構除了視覺畫面----其餘沒有更動，就可讓店家生意當月上揚25％！"
       }
@@ -50,12 +50,12 @@
       {
         "title": "專利合作｜龍探吉展攤",
         "desc": "結合視覺與結構，打造獨一無二可重複使用展攤----讓參展費用大大降低！",
-        "image": "images/uploads/work2_0.jpg"
+        "image": "images/uploads/work2_0.webp"
       },
       {
         "title": "專利合作｜龍探吉展攤",
         "desc": "結合視覺與結構，打造獨一無二可重複使用展攤----讓參展費用大大降低！",
-        "image": "images/uploads/work2_1.png"
+        "image": "images/uploads/work2_1.webp"
       },
       {
         "title": "",
@@ -73,12 +73,12 @@
       {
         "title": "台北唐吉柯德｜KOSE｜POSM",
         "desc": "一個符合空間與品牌需求的陳列，使需要有多面向的視覺經驗，才得以讓整體更為加分有效果！",
-        "image": "images/uploads/work3_0.jpg"
+        "image": "images/uploads/work3_0.webp"
       },
       {
         "title": "台北唐吉柯德｜KOSE｜POSM",
         "desc": "除了設計，我們也有完整經驗豐富的執行單位，讓設計與執行度達100%！ 讓你不費心省又溝通時間成本！",
-        "image": "images/uploads/work3_1.jpeg"
+        "image": "images/uploads/work3_1.webp"
       },
       {
         "title": "",
@@ -96,12 +96,12 @@
       {
         "title": "品牌延伸｜微型櫥窗｜推廣道具",
         "desc": "想把品牌創意隨處帶嗎？我們有好的想法可以裝在一個小小櫥窗裡！讓你帶著到處曝光！",
-        "image": "images/uploads/work4_0.jpg"
+        "image": "images/uploads/work4_0.webp"
       },
       {
         "title": "品牌延伸｜手提袋｜推廣道具",
         "desc": "曝光從來不是只有文字，我們更考慮吸睛度與實用兼具！讓品牌印象長續在他人心中！",
-        "image": "images/uploads/work4_1.jpg"
+        "image": "images/uploads/work4_1.webp"
       },
       {
         "title": "",
@@ -149,17 +149,17 @@
   "svc_popup_banner": {
     "items": [
       {
-        "image": "images/uploads/svc_popup_banner_0.jpg",
+        "image": "images/uploads/svc_popup_banner_0.webp",
         "title": "台北復興SOGO｜REC咖啡｜快閃櫃",
         "desc": ""
       },
       {
-        "image": "images/uploads/svc_popup_banner_1.jpg",
+        "image": "images/uploads/svc_popup_banner_1.webp",
         "title": "林口｜義式迷｜快閃櫃",
         "desc": ""
       },
       {
-        "image": "images/uploads/svc_popup_banner_2.jpg",
+        "image": "images/uploads/svc_popup_banner_2.webp",
         "title": "台北101｜金德老爹｜快閃櫃",
         "desc": ""
       }
@@ -168,17 +168,17 @@
   "svc_store_banner": {
     "items": [
       {
-        "image": "images/uploads/svc_store_banner_0.jpeg",
+        "image": "images/uploads/svc_store_banner_0.webp",
         "title": "台北汐止｜天然茶莊｜視覺微軟裝",
         "desc": ""
       },
       {
-        "image": "images/uploads/svc_store_banner_1.jpeg",
+        "image": "images/uploads/svc_store_banner_1.webp",
         "title": "桃園｜自律放縱｜整體裝修規劃＋視覺微軟裝",
         "desc": ""
       },
       {
-        "image": "images/uploads/svc_store_banner_2.png",
+        "image": "images/uploads/svc_store_banner_2.webp",
         "title": "台北內湖｜鮮番咖哩｜視覺微軟裝",
         "desc": ""
       }
@@ -187,17 +187,17 @@
   "svc_posm_banner": {
     "items": [
       {
-        "image": "images/uploads/svc_posm_banner_0.png",
+        "image": "images/uploads/svc_posm_banner_0.webp",
         "title": "",
         "desc": ""
       },
       {
-        "image": "images/uploads/svc_posm_banner_1.png",
+        "image": "images/uploads/svc_posm_banner_1.webp",
         "title": "",
         "desc": ""
       },
       {
-        "image": "images/uploads/svc_posm_banner_2.png",
+        "image": "images/uploads/svc_posm_banner_2.webp",
         "title": "",
         "desc": ""
       }
@@ -206,17 +206,17 @@
   "svc_branding_banner": {
     "items": [
       {
-        "image": "images/uploads/svc_branding_banner_0.jpg",
+        "image": "images/uploads/svc_branding_banner_0.webp",
         "title": "",
         "desc": ""
       },
       {
-        "image": "images/uploads/svc_branding_banner_1.jpg",
+        "image": "images/uploads/svc_branding_banner_1.webp",
         "title": "",
         "desc": ""
       },
       {
-        "image": "images/uploads/svc_branding_banner_2.jpg",
+        "image": "images/uploads/svc_branding_banner_2.webp",
         "title": "",
         "desc": ""
       }
@@ -225,12 +225,12 @@
   "svc_booth_banner": {
     "items": [
       {
-        "image": "images/uploads/svc_booth_banner_0.png",
+        "image": "images/uploads/svc_booth_banner_0.webp",
         "title": "",
         "desc": ""
       },
       {
-        "image": "images/uploads/svc_booth_banner_1.jpg",
+        "image": "images/uploads/svc_booth_banner_1.webp",
         "title": "",
         "desc": ""
       },
@@ -262,12 +262,12 @@
       {
         "title": "紅威媒體｜讓產品一定紅",
         "desc": "",
-        "image": "images/uploads/extend_influencer_0.jpg"
+        "image": "images/uploads/extend_influencer_0.webp"
       },
       {
         "title": "",
         "desc": "",
-        "image": "images/uploads/extend_influencer_1.jpg"
+        "image": "images/uploads/extend_influencer_1.webp"
       },
       {
         "title": "",
@@ -281,17 +281,17 @@
       {
         "title": "大型道具製作",
         "desc": "利用廣告板材與結構，可以製作以假亂真的視覺道具！承重跟耐用度至少可以3個月以上，短期活動最佳選擇！",
-        "image": "images/uploads/extend_construction_0.jpg"
+        "image": "images/uploads/extend_construction_0.webp"
       },
       {
         "title": "大型道具製作",
         "desc": "板材結構與木工做完美結合，整體成本下降40％up！",
-        "image": "images/uploads/extend_construction_1.jpg"
+        "image": "images/uploads/extend_construction_1.webp"
       },
       {
         "title": "大型道具製作",
         "desc": "有效率的組裝，使活動順利進行！",
-        "image": "images/uploads/extend_construction_2.jpg"
+        "image": "images/uploads/extend_construction_2.webp"
       }
     ]
   },
@@ -300,7 +300,7 @@
       {
         "title": "",
         "desc": "",
-        "image": "images/uploads/extend_efficiency_0.jpg"
+        "image": "images/uploads/extend_efficiency_0.webp"
       },
       {
         "title": "",
@@ -317,7 +317,7 @@
       {
         "title": "品牌全通路全方位打造",
         "desc": "",
-        "image": "images/uploads/extend_online_0.png"
+        "image": "images/uploads/extend_online_0.webp"
       },
       {
         "title": "",
@@ -333,17 +333,17 @@
     "tag": "延伸服務項目",
     "items": [
       {
-        "image": "images/uploads/service_grid_photo_0.jpg",
+        "image": "images/uploads/service_grid_photo_0.webp",
         "title": "台北｜小富貴｜視覺微軟裝",
         "desc": "每個蒞臨的顧客，會觀察門店每一處小巧思！我們越用心就會越讓顧客認同！"
       },
       {
-        "image": "images/uploads/service_grid_photo_1.jpeg",
+        "image": "images/uploads/service_grid_photo_1.webp",
         "title": "台北創媒會｜御璽徵信｜展場規劃",
         "desc": "從平面動線規劃，到創意發想到完成！感謝給我們最大的信任！"
       },
       {
-        "image": "images/uploads/service_grid_photo_2.jpeg",
+        "image": "images/uploads/service_grid_photo_2.webp",
         "title": "台北｜家樂福｜壓克力陳列道具",
         "desc": "了解通路需求與視覺優勢，一直是我們專研努力的地方！"
       }
@@ -352,17 +352,17 @@
   "extend_page_a": {
     "items": [
       {
-        "image": "images/uploads/extend_page_a_0.jpg",
+        "image": "images/uploads/extend_page_a_0.webp",
         "title": "試媒體TryMedia",
         "desc": "是台灣深耕多年的網紅與部落客行銷平台，擁有超過21年行銷經驗，累積媒合超過5000位網紅部落客、合作超過5000家品牌企業。\n我們專注於「溫暖真實的開箱行銷」，透過部落客文章、短影音創作、KOC口碑推薦、團購帶貨與社群擴散，協助品牌建立信任感與市場聲量。\n\n從美食餐飲、美妝保養、母嬰商品，到實體店家與品牌活動，試媒體不只是曝光，更重視「轉單與信任轉化」。\n我們相信，在AI時代裡，真正能打動人的，依然是真實的人與故事。\n\n試媒體致力於成為品牌與創作者之間最有溫度的橋樑，陪伴更多品牌被看見、被信任、被分享。\n\nhttps://www.trymedia.tw/m/home.php"
       },
       {
-        "image": "images/uploads/extend_page_a_1.jpg",
+        "image": "images/uploads/extend_page_a_1.webp",
         "title": "錢包太太",
         "desc": "是試媒體旗下的「全通路變現品牌」。\n我們不是單純幫你上架商品，\n而是幫品牌做到一件更重要的事：\n讓產品「被看見」到「被買走」\n\n專門協助品牌快速進入市場、擴大曝光與銷售的全通路上架整合的品牌通路代理商 \n\n透過我們，廠商不需要再逐一對接不同平台、不需要學習通路規則，只要專注在產品，我們負責把商品送上最大量的通路。\n\n1️⃣協助品牌找到適合的通路定位\n不同商品適合不同通路，我們會依產品定位、售價與產能，協助評估最佳通路策略，避免踩雷。\n\n2️⃣ 速度快、效率高，替你節省大量時間與成本\n你不需要再花 3–6 個月摸索各平台規則。我們的團隊熟悉 SOP，可快速讓商品上架。\n\n3️⃣ 打造多元銷售管道，降低單一平台風險\n我們協助品牌建立：\n\n「實體通路 + 電商平台 + 社群團購」的三層式銷售架構\n\n超過300個KOL 200個KOC 3000個以上的團媽，讓廠商快速的對接多元渠道 讓商品不只曝光廣，也真正能賣得長久。\n\nhttps://www.cocotaitai.tw/"
       },
       {
-        "image": "images/uploads/extend_page_a_2.jpg",
+        "image": "images/uploads/extend_page_a_2.webp",
         "title": "試大運 TryMoving",
         "desc": "影音創作者媒合平台\n\n試大運是一個專注於「品牌 × 影音創作者 × 流量變現」的一站式媒合平台，協助企業快速找到合適的短影音、KOL、部落客與直播創作者，並讓創作者能穩定接案、擴大商業合作機會。\n\n品牌與影音創作者精準媒合（短影音 / YouTube / IG / TikTok/reals/脆）\nKOL、部落客、直播主合作案媒合\n產品開箱、團購、業配、口碑行銷規劃\n短影音內容策略與腳本協作\n\nhttps://www.trymov..."
       }
