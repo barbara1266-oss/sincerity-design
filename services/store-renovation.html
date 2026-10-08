@@ -34,6 +34,46 @@
   "areaServed": "TW"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "不動裝潢，也能改變門店嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。從視覺著手，往往就能帶來明顯的改變。我們會依現場狀況評估，告訴你可以做到什麼程度。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "接手別人的店，要從哪裡開始？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "先一起看看現場，確認哪些可以保留、哪些用視覺調整即可。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "大概要多久、多少預算？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "依店況而定，現場評估後給你建議。也可以先填寫線上需求單。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "門店或診所的指引，可以只做局部嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。可以先從最需要的位置開始，例如櫃檯、入口或布告區，之後再逐步擴大，維持同一套風格。"
+      }
+    }
+  ]
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23002FA7'/%3E%3Ctext x='50' y='68' font-size='55' fill='white' text-anchor='middle' font-family='sans-serif' font-weight='900'%3E晨%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap">
@@ -116,6 +156,39 @@ footer a:hover{color:var(--klein);}
 .sd-photo-caption{position:absolute!important;bottom:14px!important;right:14px!important;left:14px!important;top:auto!important;z-index:5!important;display:flex!important;flex-direction:column!important;align-items:flex-end!important;gap:6px!important;}
 .sd-caption-tag{font-size:12px!important;font-weight:600!important;line-height:1.4!important;color:var(--klein-deep)!important;background:rgba(255,255,255,0.95)!important;padding:4px 12px!important;border-radius:14px!important;max-width:100%!important;text-align:right!important;word-break:break-word!important;display:inline-block!important;}
 .sd-caption-title{font-size:16px!important;font-weight:700!important;line-height:1.4!important;color:var(--klein-deep)!important;background:rgba(255,255,255,0.95)!important;padding:6px 14px!important;border-radius:2px!important;max-width:100%!important;text-align:right!important;word-break:break-word!important;display:inline-block!important;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:36px;}
+.step{background:var(--white);padding:30px 24px;}
+.step-n{width:34px;height:34px;border-radius:50%;background:var(--klein);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.step-t{font-size:17px;font-weight:700;margin-bottom:8px;}
+.step-d{font-size:14px;color:var(--mute);line-height:1.8;}
+.list-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 40px;margin-top:28px;max-width:860px;}
+.list-item{font-size:15.5px;color:var(--ink);line-height:1.8;padding-left:22px;position:relative;}
+.list-item::before{content:'';position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:50%;background:var(--gold);}
+.faq{max-width:760px;margin-top:28px;}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0;}
+.faq summary{font-weight:700;font-size:16.5px;cursor:pointer;list-style:none;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:'＋';float:right;color:var(--klein);}
+.faq details[open] summary::after{content:'－';}
+.faq p{margin-top:12px;font-size:15px;color:var(--mute);line-height:1.9;}
+footer{padding:44px 6vw;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:13px;color:var(--mute);border-top:1px solid var(--line);}
+footer .foot-links{display:flex;flex-wrap:wrap;gap:8px 24px;}
+footer a{text-decoration:none;color:var(--mute);}
+footer a:hover{color:var(--klein);}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.steps{grid-template-columns:1fr;}.list-grid{grid-template-columns:1fr;}}
+
+.steps.three{grid-template-columns:repeat(3,1fr);}
+@media(max-width:900px){.steps.three{grid-template-columns:1fr;}}
+.case-seg{padding:48px 6vw 0;}
+.case-seg:last-of-type{padding-bottom:64px;}
+.case-banner{max-width:960px;margin:0 6vw;}
+
+.case-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:900px;margin-top:24px;}
+.case-link{display:block;padding:22px 24px;border:1.5px solid var(--line);border-radius:4px;text-decoration:none;color:var(--ink);background:#fff;transition:border-color .2s;}
+.case-link:hover{border-color:var(--klein);}
+.case-link b{display:block;font-size:16px;margin-bottom:8px;}
+.case-link span{font-size:13.5px;color:var(--klein);font-weight:700;}
 </style>
 </head>
 <body>
@@ -149,6 +222,80 @@ footer a:hover{color:var(--klein);}
     <div class="sd-photo-caption">
       <div class="sd-caption-title" id="slot-svc_store_banner-title">門店輕裝修規劃示意</div>
     </div>
+  </div>
+</section>
+
+<section class="section tight" style="background:var(--offwhite);">
+  <div class="block-title">這項服務能幫你做到什麼</div>
+  <div class="list-grid" style="grid-template-columns:1fr;max-width:760px;">
+    <div class="list-item">不大動裝潢，也能讓門店有全新的樣子</div>
+    <div class="list-item">把接手的店，變成你的品牌樣子</div>
+    <div class="list-item">在預算內，把投資放在看得見的視覺上</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="block-title">適合這樣的你</div>
+  <div class="list-grid" style="grid-template-columns:1fr;max-width:760px;">
+    <div class="list-item">頂讓或接手他人店面，想快速變成自己品牌的新店主</div>
+    <div class="list-item">已有門市，想煥然一新，又不想大動硬裝</div>
+    <div class="list-item">能接受不動或微動硬裝，希望用視覺創造改變的店家</div>
+    <div class="list-item">多家門店或診所，希望指引與布告維持一致</div>
+  </div>
+</section>
+
+<section class="section tight" style="background:var(--offwhite);">
+  <div class="block-title">常見的做法</div>
+  <div class="list-grid" style="grid-template-columns:1fr;max-width:760px;">
+    <div class="list-item">外觀柱體招牌</div>
+    <div class="list-item">無框畫作與掛軸</div>
+    <div class="list-item">大圖輸出</div>
+    <div class="list-item">品牌文案與命名</div>
+    <div class="list-item">門店指引與布告優化</div>
+    <div class="list-item">整體視覺重新規劃</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="block-title">門店與診所的指引優化</div>
+  <p class="block-text">指引與標示，影響顧客到店後的每一個感受。我們協助門店與診所，把流程與資訊整理得清楚好懂，讓人安心、順暢。</p>
+</section>
+
+<section class="section tight" style="background:var(--offwhite);">
+  <div class="block-title">我們怎麼做</div>
+  <div class="steps three">
+    <div class="step"><div class="step-n">1</div><div class="step-t">現場評估</div><div class="step-d">了解店況、品牌調性與預算。</div></div>
+    <div class="step"><div class="step-n">2</div><div class="step-t">兩案提案</div><div class="step-d">提供兩個方向，各含兩次修正。</div></div>
+    <div class="step"><div class="step-n">3</div><div class="step-t">輸出視覺完稿</div><div class="step-d">依需求協助現場落地。</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="block-title">你會拿到什麼</div>
+  <p class="block-text">依現場評估，提供視覺規劃建議與完稿，並依需求協助落地。</p>
+</section>
+
+<section class="section tight" style="background:var(--offwhite);">
+  <div class="block-title">預算與時程</div>
+  <p class="block-text">每間店的條件不同，現場評估後，我們會告訴你最合適的安排。我們習慣讓硬裝成本控制在 20% 以下，把更多預算留給看得見的視覺。</p>
+</section>
+
+<section class="section">
+  <div class="block-title">常見問題</div>
+  <div class="faq">
+    <details><summary>不動裝潢，也能改變門店嗎？</summary><p>可以。從視覺著手，往往就能帶來明顯的改變。我們會依現場狀況評估，告訴你可以做到什麼程度。</p></details>
+    <details><summary>接手別人的店，要從哪裡開始？</summary><p>先一起看看現場，確認哪些可以保留、哪些用視覺調整即可。</p></details>
+    <details><summary>大概要多久、多少預算？</summary><p>依店況而定，現場評估後給你建議。也可以先填寫線上需求單。</p></details>
+    <details><summary>門店或診所的指引，可以只做局部嗎？</summary><p>可以。可以先從最需要的位置開始，例如櫃檯、入口或布告區，之後再逐步擴大，維持同一套風格。</p></details>
+  </div>
+</section>
+
+<section class="section tight" style="background:var(--offwhite);">
+  <div class="block-title">相關實績</div>
+  <div class="case-links">
+    <a class="case-link" href="../cases/curry-store-refresh.html"><b>鮮番咖哩｜台北內湖門店視覺微軟裝</b><span>看案例 →</span></a>
+    <a class="case-link" href="../cases/zilu-tea-store-refresh.html"><b>自律放縱茶療所｜桃園</b><span>看案例 →</span></a>
+    <a class="case-link" href="../cases/youshi-clinic-wayfinding.html"><b>悠適｜門店指引與布告優化</b><span>看案例 →</span></a>
   </div>
 </section>
 
