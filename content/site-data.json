@@ -161,7 +161,7 @@
       {
         "image": "images/uploads/svc_popup_banner_2.webp",
         "title": "台北101｜金德老爹｜快閃櫃",
-        "desc": ""
+        "desc": "為期35 天展攤。在匯集眾多外國顧客的超市裡，讓品牌被看見、建立知名度。依客人回饋，35 天賣出 400 多條。"
       }
     ]
   },
@@ -226,33 +226,37 @@
     "items": [
       {
         "image": "images/uploads/svc_booth_banner_0.webp",
-        "title": "",
-        "desc": ""
+        "title": "巨佳食品Ｘ常態市集擺攤",
+        "desc": "常態市集的擺攤陳列，用立體造型與品牌視覺，讓商品在人潮中一眼被看見。"
       },
       {
         "image": "images/uploads/svc_booth_banner_1.webp",
-        "title": "",
-        "desc": ""
+        "title": "酒商活動Ｘ電音趴大蜘蛛",
+        "desc": "酒商活動的帳篷攤位，以品牌視覺包覆整個攤位，在活動現場吸引目光。"
       },
       {
-        "title": "",
-        "desc": ""
+        "title": "試好漁Ｘ內科路跑",
+        "desc": "",
+        "image": "images/uploads/svc_booth_banner_2.webp"
       }
     ]
   },
   "svc_chain_banner": {
     "items": [
       {
-        "title": "",
-        "desc": ""
+        "title": "設計：同規格、同品質",
+        "desc": "",
+        "image": "images/uploads/svc_chain_banner_0.webp"
       },
       {
-        "title": "",
-        "desc": ""
+        "title": "印刷：輔銷品一次到位",
+        "desc": "",
+        "image": "images/uploads/svc_chain_banner_1.webp"
       },
       {
-        "title": "",
-        "desc": ""
+        "title": "配送：送到每一間分店",
+        "desc": "",
+        "image": "images/uploads/svc_chain_banner_2.webp"
       }
     ]
   },
@@ -402,6 +406,86 @@
   },
   "extend_page_d": {
     "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
+  },
+  "case_rec": {
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
+  },
+  "case_jin": {
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
+  },
+  "case_zilu": {
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      },
+      {
+        "title": "",
+        "desc": ""
+      }
+    ]
+  },
+  "case_youshi": {
+    "items": [
+      {
+        "title": "",
+        "desc": ""
+      },
       {
         "title": "",
         "desc": ""
