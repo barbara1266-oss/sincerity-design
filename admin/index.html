@@ -106,6 +106,7 @@ const SLOTS = [
   { group: "「空間有了樣子，故事還沒說完」· 03 動線效率", key: "extend_efficiency", img: "800×500px" },
   { group: "「空間有了樣子，故事還沒說完」· 04 品牌延伸", key: "extend_online", img: "800×500px" },
   { group: "案例頁 · REC 咖啡｜SOGO 復興店快閃櫃", key: "case_rec", img: "1600×900px", maxImages: 4 },
+  { group: "案例頁 · 金德老爹｜台北101 B1 展攤", key: "case_jin", img: "1600×900px", maxImages: 4 },
   { group: "案例頁 · 自律放縱茶療所｜桃園", key: "case_zilu", img: "1600×900px", maxImages: 4 },
   { group: "案例頁 · 悠適｜門店指引與布告優化", key: "case_youshi", img: "1600×900px", maxImages: 4 },
   { group: "網站設定 · Logo", key: "logo_horizontal", img: "200×60px（電腦版橫式）" },
@@ -240,9 +241,28 @@ function renderForm(){
   });
 }
 
-// 自動瘦身：縮到最長邊 1600px（Logo 600px），轉成 WebP 品質 80%
+// 浮水印：「晨諾創意」斜向平鋪，白色約 20%（客戶 Logo 不壓），直接燒進圖片
+function drawWatermark(ctx, w, h){
+  const fs = Math.max(14, Math.round(w*0.045));
+  ctx.save();
+  ctx.font = `700 ${fs}px "Noto Sans TC","PingFang TC","Microsoft JhengHei","Heiti TC",sans-serif`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.rotate(-30*Math.PI/180);
+  const diag = Math.hypot(w,h), stepX = fs*7, stepY = fs*4.2;
+  let row = 0;
+  for(let y=-diag; y<diag*1.2; y+=stepY, row++){
+    for(let x=-diag+(row%2?stepX/2:0); x<diag*1.2; x+=stepX){
+      ctx.fillStyle = 'rgba(0,0,0,0.12)'; ctx.fillText('晨諾創意', x+1.5, y+1.5);
+      ctx.fillStyle = 'rgba(255,255,255,0.20)'; ctx.fillText('晨諾創意', x, y);
+    }
+  }
+  ctx.restore();
+}
+// 自動瘦身：縮到最長邊 1600px（Logo 600px），壓上浮水印（Logo 除外），轉成 WebP 品質 80%
 async function slimImage(file, key){
-  const maxSide = key.startsWith('logo') ? 600 : 1600;
+  const isLogo = key.startsWith('logo');
+  const maxSide = isLogo ? 600 : 1600;
+  const origExt = (file.name.split('.').pop()||'jpg').toLowerCase();
   try{
     let bmp;
     try{ bmp = await createImageBitmap(file, {imageOrientation:'from-image'}); }
@@ -251,13 +271,20 @@ async function slimImage(file, key){
     const w = Math.round(bmp.width*scale), h = Math.round(bmp.height*scale);
     const canvas = document.createElement('canvas');
     canvas.width = w; canvas.height = h;
-    canvas.getContext('2d').drawImage(bmp, 0, 0, w, h);
-    const blob = await new Promise(res=>canvas.toBlob(res, 'image/webp', 0.8));
-    if(!blob || blob.type !== 'image/webp') return { blob: file, ext: (file.name.split('.').pop()||'jpg').toLowerCase(), slimmed:false };
-    if(blob.size >= file.size && scale === 1) return { blob: file, ext: (file.name.split('.').pop()||'jpg').toLowerCase(), slimmed:false };
-    return { blob, ext:'webp', slimmed:true };
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(bmp, 0, 0, w, h);
+    if(!isLogo) drawWatermark(ctx, w, h);
+    let blob = await new Promise(res=>canvas.toBlob(res, 'image/webp', 0.8));
+    let ext = 'webp';
+    if(!blob || blob.type !== 'image/webp'){
+      blob = await new Promise(res=>canvas.toBlob(res, 'image/jpeg', 0.85)); ext = 'jpg';
+    }
+    if(!blob) return { blob: file, ext: origExt, slimmed:false, wm:false };
+    // Logo 不加浮水印：若瘦身後沒變小，就用原檔；其餘圖片一律使用已壓浮水印的版本
+    if(isLogo && blob.size >= file.size && scale === 1) return { blob: file, ext: origExt, slimmed:false, wm:true };
+    return { blob, ext, slimmed:true, wm:!isLogo };
   }catch(e){
-    return { blob: file, ext: (file.name.split('.').pop()||'jpg').toLowerCase(), slimmed:false };
+    return { blob: file, ext: origExt, slimmed:false, wm:false };
   }
 }
 function fmtSize(n){ return n>=1048576 ? (n/1048576).toFixed(1)+' MB' : Math.round(n/1024)+' KB'; }
@@ -270,7 +297,8 @@ async function handleFile(evt, key, idx){
   const r = await slimImage(file, key);
   pendingFiles[`${key}__${idx}`] = { key, idx, file: r.blob, ext: r.ext };
   const url = URL.createObjectURL(r.blob);
-  const note = r.slimmed ? `已瘦身 ${fmtSize(file.size)} → ${fmtSize(r.blob.size)}，尚未儲存` : `尚未儲存（${fmtSize(file.size)}）`;
+  const wmNote = (!key.startsWith('logo') && !r.wm) ? '⚠ 浮水印未加上，請換張圖或換瀏覽器；' : (key.startsWith('logo') ? '' : '已加浮水印；');
+  const note = wmNote + (r.slimmed ? `已瘦身 ${fmtSize(file.size)} → ${fmtSize(r.blob.size)}，尚未儲存` : `尚未儲存（${fmtSize(file.size)}）`);
   thumb.innerHTML = `<img src="${url}"><div class="thumb-label">${note}</div>`;
 }
 

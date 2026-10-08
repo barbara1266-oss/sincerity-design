@@ -1,4 +1,4 @@
-// 晨諾創意 官網 · 共用輪播 + 內容讀取程式 v11（圖片延遲載入 + 圖片替代文字 + 全站海報彈窗＋需求單入口）
+// 晨諾創意 官網 · 共用輪播 + 內容讀取程式 v12（圖片延遲載入 + 首圖優先 + 圖片替代文字 + 全站海報彈窗＋需求單入口 + 圖片防另存門檻）
 // 修正：標題絕不留空白，一開始就先記住所有預設文字
 
 (async function(){
@@ -13,7 +13,7 @@
   });
 
   try{
-    const res = await fetch(base + 'content/site-data.json', {cache:'no-store'});
+    const res = await fetch(base + 'content/site-data.json', {cache:'no-cache'});
     if(!res.ok) return;
     const data = await res.json();
 
@@ -69,7 +69,8 @@ function buildCarousel(slot, items, base, defaultTexts){
     };
     img.alt = item.title || ((items.find(x=>x.title)||{}).title) || '晨諾創意實績';
     img.decoding = 'async';
-    if(i > 0) img.loading = 'lazy';
+    if(i > 0){ img.loading = 'lazy'; } else { img.loading = 'eager'; img.fetchPriority = 'high'; }
+    img.draggable = false;
     img.src = base + item.image;
     imgLayer.appendChild(img);
   });
@@ -225,4 +226,14 @@ function applyLogo(data, base){
     document.body.style.overflow = 'hidden';
   });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeIt(); });
+})();
+
+
+// === 圖片防另存門檻：禁右鍵另存、禁拖曳、手機長按不跳儲存（輔助用；真正的保護是燒進圖片的浮水印）===
+(function(){
+  const st = document.createElement('style');
+  st.textContent = 'img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none;}';
+  document.head.appendChild(st);
+  document.addEventListener('contextmenu', function(e){ if(e.target && e.target.tagName === 'IMG') e.preventDefault(); });
+  document.addEventListener('dragstart', function(e){ if(e.target && e.target.tagName === 'IMG') e.preventDefault(); });
 })();
