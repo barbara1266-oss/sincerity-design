@@ -200,7 +200,7 @@ function applyLogo(data, base){
 }
 
 
-// === 全站「讓相遇，從這裡開始」海報彈窗（連到 contact.html 的按鈕一律改開海報）===
+// === 全站「讓相遇，從這裡開始」海報彈窗（標記 data-cta="poster" 的按鈕一律改開海報；按鈕本身連到需求單當安全網）===
 (function(){
   const base = window.SD_BASE || '';
   function ensureModal(){
@@ -219,7 +219,7 @@ function applyLogo(data, base){
   }
   function closeIt(){ const m = document.getElementById('ctaModal'); if(m){ m.style.display='none'; document.body.style.overflow=''; } }
   document.addEventListener('click', function(e){
-    const a = e.target.closest && e.target.closest('a[href$="contact.html"]');
+    const a = e.target.closest && e.target.closest('a[href$="contact.html"], a[data-cta="poster"]');
     if(!a) return;
     e.preventDefault();
     ensureModal().style.display = 'flex';
